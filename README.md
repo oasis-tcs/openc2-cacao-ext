@@ -22,4 +22,4 @@ This repository supports development of a standards track document to clarify an
 
 ## Contact
 
-Please send questions or comments about [OASIS TC GitHub repositories](https://www.oasis-open.org/resources/tcadmin/github-repositories-for-oasis-tc-members-chartered-work) to the [OASIS TC Administrator](mailto:tc-admin@oasis-open.org).  For questions about content in this repository, please contact the TC Chair or Co-Chairs as listed on the  <tc short name> TC's [home page](https://www.oasis-open.org/committees/<tc abbrev>/).
+Please send questions or comments about [OASIS TC GitHub repositories](https://www.oasis-open.org/resources/tcadmin/github-repositories-for-oasis-tc-members-chartered-work) to the [OASIS TC Administrator](mailto:tc-admin@oasis-open.org).  For questions about content in this repository, please contact the TC Chair or Co-Chairs as listed on the OpenC2 TC's [home page](https://www.oasis-open.org/committees/openc2/).
