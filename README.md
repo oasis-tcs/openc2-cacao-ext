@@ -10,7 +10,7 @@ OpenC2 is a suite of specifications to enable command and control (C2) of cyber 
 
 ## Contributions
 
-As stated in this repository's [CONTRIBUTING](https://github.com/oasis-tcs/<tc-repo-name>/blob/master/CONTRIBUTING.md) file, contributors to this repository must be Members of the OASIS <TC shortname> TC for any substantive contributions or change requests.  Anyone wishing to contribute to this GitHub project and [participate](https://www.oasis-open.org/join/participation-instructions) in the TC's technical activity is invited to join as an OASIS TC Member. Public feedback is also accepted, subject to the terms of the [OASIS Feedback License](https://www.oasis-open.org/policies-guidelines/ipr#appendixa). 
+As stated in this repository's [CONTRIBUTING](https://github.com/oasis-tcs/openc2-cacao-ext/blob/master/CONTRIBUTING.md) file, contributors to this repository must be Members of the OASIS <TC shortname> TC for any substantive contributions or change requests.  Anyone wishing to contribute to this GitHub project and [participate](https://www.oasis-open.org/join/participation-instructions) in the TC's technical activity is invited to join as an OASIS TC Member. Public feedback is also accepted, subject to the terms of the [OASIS Feedback License](https://www.oasis-open.org/policies-guidelines/ipr#appendixa). 
 
 ## Licensing
 
