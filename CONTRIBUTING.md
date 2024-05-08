@@ -1,5 +1,3 @@
-=== CONTRIBUTING.md ===
-
 # Repository Contributions, Participation, and Public Access
 
 **Who may Contribute?** Contributors to [this repository](https://github.com/oasis-tcs/openc2-cacao-ext/) must be [Members](https://www.oasis-open.org/policies-guidelines/oasis-defined-terms-2018-05-22/#dEligiblePerson) of the  [OpenC2 TC](https://www.oasis-open.org/committees/openc2/) for any substantive contributions.  Anyone wishing to participate in the TC's technical activity is invited to [join](https://www.oasis-open.org/committees/join) as a TC Member.
