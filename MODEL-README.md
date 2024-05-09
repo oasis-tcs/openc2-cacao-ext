@@ -16,7 +16,7 @@ licensing. For more details, see the
 
 ## :blue_book: _OpenC2 Extension for CACAO_ :blue_book:
 
-The Collaborative Automated Course of Action Operations (CACAO) specification
+The [Collaborative Automated Course of Action Operations (CACAO) specification](https://docs.oasis-open.org/cacao/security-playbooks/v2.security-playbooks-v2.0.html)
 describes how cybersecurity automation playbooks can be created, documented, and
 shared in a structured and standardized way across organizational boundaries and
 technological solutions. This extension builds on existing [CACAO
@@ -51,11 +51,21 @@ Norms](https://github.com/oasis-tcs/openc2-tc-ops/blob/main/Documentation-Norms.
 
 ### :left_speech_bubble: Description :left_speech_bubble:
 
-_Provide a 1-2 paragraph summary of the work product contained in this repo._
+The *OpenC2 Extension for CACAO* will provide guidance for specifying the use of
+OpenC2 commands and transfer mechanisms in CACAO playbooks in order to
+facilitate standardization of OpenC2 use in that contexts.  Specific goals for
+this specification include:
+- Defining an updated CACAO OpenC2 Command Type not bound to a specific transfer
+mechanism (extending/replacing the command-type-ov defined in section 5.2 of the
+CACAO v2.0 spec).
+- Defining standardized CACAO MQTT and HTTPS Agents for OpenC2 message
+transfers.
+- Identifying CACAO control flow capabilities needed for OpenC2 (e.g., await
+Consumer response) that may be missing from CACAO v2.0 spec.
 
 ### :writing_hand: Contributions :writing_hand:
 <div>
-<p>As stated in this repository's <a href="CONTRIBUTING.md">CONTRIBUTING file</a>, contributors to this repository are expected to be Members of the OASIS OpenC2 TC, for any substantive change requests.  Anyone wishing to contribute to this GitHub project and <a href="https://www.oasis-open.org/join/participation-instructions">participate</a> in the TC's technical activity is invited to join as an OASIS TC Member.  Public feedback is also accepted, subject to the terms of the <a href="https://www.oasis-open.org/policies-guidelines/ipr#appendixa">OASIS Feedback License</a>.</p>
+<p>As stated in this repository's <a href="CONTRIBUTING.md">CONTRIBUTING file</a>, contributors to this repository are expected to be Members of the OASIS OpenC2 TC, for any substantive change requests.  Anyone wishing to contribute to this GitHub project and <a href="https://www.oasis-open.org/join/participation-instructions" target="_blank">participate</a> in the TC's technical activity is invited to join as an OASIS TC Member.  Public feedback is also accepted, subject to the terms of the <a href="https://www.oasis-open.org/policies-guidelines/ipr#appendixa" target="_blank">OASIS Feedback License</a>.</p>
 </div>
 
 
@@ -67,8 +77,6 @@ _Provide a 1-2 paragraph summary of the work product contained in this repo._
 
 ### :left_speech_bubble:   Further Description of this Repository :left_speech_bubble: 
 
-
-
 This repository is designed to support TC members' work on a
 formal specification that describes _identify work product_. This
 GitHub repository supports development of the content and change
@@ -77,7 +85,7 @@ level revisions are created and the associated CSDs mature.
 
 <div>
 
-<p>Members of the <a href="https://www.oasis-open.org/committees/openc2/">OASIS Open Command and Control (OpenC2) TC</a> create and manage technical content in this TC GitHub repository ( <a href="https://github.com/oasis-tcs/openc2-jadn">https://github.com/oasis-tcs/openc2-jadn</a> ) as part of the TC's chartered work (<i>i.e.</i>, the program of work and deliverables described in its <a href="https://www.oasis-open.org/committees/openc2/charter.php">charter</a>).</p>
+<p>Members of the <a href="https://groups.oasis-open.org/communities/tc-community-home2?CommunityKey=a34c9baf-48b2-44c5-a567-018dc7d32296" target="_blank">OASIS Open Command and Control (OpenC2) TC</a> create and manage technical content in this TC GitHub repository ( <a href="https://github.com/oasis-tcs/openc2-cacao-ext" target="_blank">https://github.com/oasis-tcs/openc2-cacao-ext</a> ) as part of the TC's chartered work (<i>i.e.</i>, the program of work and deliverables described in its <a href="https://www.oasis-open.org/committees/openc2/charter.php" target="_blank">charter</a>).</p>
 
 <p>OASIS TC GitHub repositories, as described in <a href="https://www.oasis-open.org/resources/tcadmin/github-repositories-for-oasis-tc-members-chartered-work">GitHub Repositories for OASIS TC Members' Chartered Work</a>, are governed by the OASIS <a href="https://www.oasis-open.org/policies-guidelines/tc-process">TC Process</a>, <a href="https://www.oasis-open.org/policies-guidelines/ipr">IPR Policy</a>, and other policies, similar to TC Wikis, TC JIRA issues tracking instances, TC SVN/Subversion repositories, etc.  While they make use of public GitHub repositories, these TC GitHub repositories are distinct from <a href="https://www.oasis-open.org/resources/open-repositories">OASIS Open Repositories</a>, which are used for development of open source <a href="https://www.oasis-open.org/resources/open-repositories/licenses">licensed</a> content.</p>
 </div>
@@ -85,7 +93,7 @@ level revisions are created and the associated CSDs mature.
 
 ###  :envelope_with_arrow: Contact :envelope_with_arrow:
 <div>
-<p>Please send questions or comments about <a href="https://www.oasis-open.org/resources/tcadmin/github-repositories-for-oasis-tc-members-chartered-work">OASIS TC GitHub repositories</a> to the <a href="mailto:tc-admin@oasis-open.org">OASIS TC Administrator</a>.  For questions about content in this repository, please contact the TC Chair or Co-Chairs as listed on the the <a href="https://www.oasis-open.org/committees/tc_home.php?wg_abbrev=openc2">OpenC2 TC's OASIS home page</a>.</p>
+<p>Please send questions or comments about <a href="https://www.oasis-open.org/resources/tcadmin/github-repositories-for-oasis-tc-members-chartered-work">OASIS TC GitHub repositories</a> to the <a href="mailto:tc-admin@oasis-open.org">OASIS TC Administrator</a>.  For questions about content in this repository, please contact the TC Chair or Co-Chairs as listed on the the <a href="https://groups.oasis-open.org/communities/tc-community-home2?CommunityKey=a34c9baf-48b2-44c5-a567-018dc7d32296">OpenC2 TC's OASIS home page</a>.</p>
 </div>
 
 
