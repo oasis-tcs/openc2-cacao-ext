@@ -20,7 +20,7 @@ The [Collaborative Automated Course of Action Operations (CACAO) specification](
 describes how cybersecurity automation playbooks can be created, documented, and
 shared in a structured and standardized way across organizational boundaries and
 technological solutions. This extension builds on existing [CACAO
-v2.0](https://docs.oasis-open.org/cacao/security-playbooks/v2.security-playbooks-v2.0.html)
+v2.0](https://docs.oasis-open.org/cacao/security-playbooks/v2.0/security-playbooks-v2.0.html)
 OpenC2 features to improve modularity and utilize the current OpenC2 Transfer
 Specifications for 
 [MQTT (v1.0)](https://docs.oasis-open.org/openc2/transf-mqtt/v1.0/transf-mqtt-v1.0.html)
