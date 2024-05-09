@@ -16,7 +16,7 @@ licensing. For more details, see the
 
 ## :blue_book: _OpenC2 Extension for CACAO_ :blue_book:
 
-The [Collaborative Automated Course of Action Operations (CACAO) specification](https://docs.oasis-open.org/cacao/security-playbooks/v2.security-playbooks-v2.0.html)
+The [Collaborative Automated Course of Action Operations (CACAO) specification](https://docs.oasis-open.org/cacao/security-playbooks/v2.0/security-playbooks-v2.0.html)
 describes how cybersecurity automation playbooks can be created, documented, and
 shared in a structured and standardized way across organizational boundaries and
 technological solutions. This extension builds on existing [CACAO
