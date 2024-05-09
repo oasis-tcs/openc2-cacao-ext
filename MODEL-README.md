@@ -11,7 +11,7 @@ work](https://www.oasis-open.org/committees/openc2/charter.php).
 Contributors must be Members of the TC. Work is governed by the
 OASIS policies and is not done under typical open source
 licensing. For more details, see the
-[Contributions](#writinghand-contributions-writinghand) and
+[Contributions](#writing_hand-contributions-writing_hand) and
 [Licensing](#scroll-licensing-scroll) sections below. 
 
 ## :blue_book: _OpenC2 Extension for CACAO_ :blue_book:
