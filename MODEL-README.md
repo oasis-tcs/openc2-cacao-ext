@@ -42,7 +42,9 @@ than typical open source software project repositories:
   captured, and is the place to go for the [current working
   version]() of this work product.
 
-> In the above bullet about the Working branch edit the `READMD.md` source to insert a link to the working version markdown file in the `working` branch of the repo.
+> In the above bullet about the Working branch edit the `READMD.md` source to
+> insert a link to the working version markdown file in the `working` branch of
+> the repo.
 
 More information about the TC's repository organizing conventions
 and branching strategy can be found in our [Documentation
@@ -77,11 +79,11 @@ Consumer response) that may be missing from CACAO v2.0 spec.
 
 ### :left_speech_bubble:   Further Description of this Repository :left_speech_bubble: 
 
-This repository is designed to support TC members' work on a
-formal specification that describes _identify work product_. This
-GitHub repository supports development of the content and change
-tracking for the _identify work product_ as new working draft
-level revisions are created and the associated CSDs mature.
+This repository is designed to support TC members' work on a formal
+specification that describes an OpenC2 extension to the CACAO v2.0
+specification. This GitHub repository supports development of the content and
+change tracking for the OpenC2 CACAO Extension as new working draft level
+revisions are created and the associated CSDs mature.
 
 <div>
 
