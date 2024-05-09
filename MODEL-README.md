@@ -5,7 +5,7 @@
 ## ![oasis-avatar](https://avatars.githubusercontent.com/u/47402065?s=24&v=4) An OASIS [Work Product](https://www.oasis-open.org/policies-guidelines/oasis-defined-terms-2018-05-22/#dWorkProduct) Repository ![oasis-avatar](https://avatars.githubusercontent.com/u/47402065?s=24&v=4) 
 
 Members of the OASIS [Open Command and Control (OpenC2) Technical
-Committee](https://www.oasis-open.org/committees/tc_home.php?wg_abbrev=openc2)
+Committee](https://groups.oasis-open.org/communities/tc-community-home2?CommunityKey=a34c9baf-48b2-44c5-a567-018dc7d32296)
 use this GitHub repository as part of the [TC's chartered
 work](https://www.oasis-open.org/committees/openc2/charter.php).
 Contributors must be Members of the TC. Work is governed by the
@@ -14,9 +14,17 @@ licensing. For more details, see the
 [Contributions](#writinghand-contributions-writinghand) and
 [Licensing](#scroll-licensing-scroll) sections below. 
 
-## :blue_book: _OpenC2 TC Work Product Title_ :blue_book:
+## :blue_book: _OpenC2 Extension for CACAO_ :blue_book:
 
-_Provide a 1-2 sentence summary of the work product contained in this repo._
+The Collaborative Automated Course of Action Operations (CACAO) specification
+describes how cybersecurity automation playbooks can be created, documented, and
+shared in a structured and standardized way across organizational boundaries and
+technological solutions. This extension builds on existing [CACAO
+v2.0](https://docs.oasis-open.org/cacao/security-playbooks/v2.security-playbooks-v2.0.html)
+OpenC2 features to improve modularity and utilize the current OpenC2 Transfer
+Specifications for 
+[MQTT (v1.0)](https://docs.oasis-open.org/openc2/transf-mqtt/v1.0/transf-mqtt-v1.0.html)
+and [HTTPS (v1.1)](https://docs.oasis-open.org/openc2/open-impl-https/v1.1/cs01/open-impl-https-v1.1-cs01.html).
 
 ### :twisted_rightwards_arrows: Repository Organization :twisted_rightwards_arrows:
 
