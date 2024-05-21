@@ -125,6 +125,9 @@ Introductory text.
 
 ## 2.2 CACAO Vocabulary Modifications
 
+- `command-type-ov` is extended with the type `openc2`.
+- Command type `openc2-http` is deprecated in favor of the non-transport specific `openc2` command type
+
 
 ---
 
