@@ -147,12 +147,19 @@ Introductory text.
 
 ## 4.1 OpenC2 CACAO Agents
 
+CACAO agents for OpenC2 correspond to OpenC2 transfer specifications. Each type of OpenC2 CACAO agent supports the use of one transfer protocol for sending OpenC2 commands and receiving OpenC2 responses.
+
 ### 4.1.1 MQTT Agents
 
 ### 4.1.2 HTTPS Agents
 
 ## 4.2 OpenC2 CACAO Targets
 
+OpenC2 CACAO Targets correspond to OpenC2 Actuator Specifications.
+
+> NOTE: determine what, if anything, needs to be defined beyond the correlation of APs and CACAO Targets.
+
+> NOTE: provide examples of CACAO targets for OpenC2 APs
 
 -------
 
