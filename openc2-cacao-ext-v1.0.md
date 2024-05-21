@@ -83,7 +83,45 @@ For complete copyright information please see the full Notices section in an App
 -------
 
 # Table of Contents
-[[TOC will be inserted here]]
+
+- [1 Introduction](#1-introduction)
+  - [1.1 Glossary](#11-glossary)
+    - [1.1.1 Definitions of terms](#111-definitions-of-terms)
+    - [1.1.2 Acronyms and abbreviations](#112-acronyms-and-abbreviations)
+    - [1.1.3 Document conventions](#113-document-conventions)
+- [2 Key Concepts \& Vocabularies](#2-key-concepts--vocabularies)
+  - [2.1 Key Concepts](#21-key-concepts)
+  - [2.2 CACAO Vocabulary Modifications](#22-cacao-vocabulary-modifications)
+- [3 OpenC2 Commands In CACAO](#3-openc2-commands-in-cacao)
+  - [3.1 OpenC2 Command Action Step](#31-openc2-command-action-step)
+  - [3.2 Base64 Encoding and Decoding](#32-base64-encoding-and-decoding)
+  - [3.3 Invoking OpenC2 via Playbook Action Step](#33-invoking-openc2-via-playbook-action-step)
+- [4 OpenC2 CACAO Agents and Targets](#4-openc2-cacao-agents-and-targets)
+  - [4.1 OpenC2 CACAO Agents](#41-openc2-cacao-agents)
+    - [4.1.1 MQTT Agents](#411-mqtt-agents)
+    - [4.1.2 HTTPS Agents](#412-https-agents)
+  - [4.2 OpenC2 CACAO Targets](#42-openc2-cacao-targets)
+- [5 Conformance](#5-conformance)
+- [Appendix A. References](#appendix-a-references)
+  - [A.1 Normative References](#a1-normative-references)
+  - [A.2 Informative References](#a2-informative-references)
+- [Appendix B. Safety, Security and Privacy Considerations](#appendix-b-safety-security-and-privacy-considerations)
+- [Appendix C. Acknowledgments](#appendix-c-acknowledgments)
+  - [C.1 Special Thanks](#c1-special-thanks)
+  - [C.2 Participants](#c2-participants)
+- [Appendix D. Revision History](#appendix-d-revision-history)
+- [Appendix E. Use Cases and Examples](#appendix-e-use-cases-and-examples)
+  - [E.1 Use Cases](#e1-use-cases)
+    - [E.1.1 Multiple OpenC2 Consumers With Common Profile](#e11-multiple-openc2-consumers-with-common-profile)
+    - [E.1.2 OpenC2 Command With Response Requested](#e12-openc2-command-with-response-requested)
+    - [E.1.3 OpenC2 Message Transfer via MQTT](#e13-openc2-message-transfer-via-mqtt)
+    - [E.1.4 Extended OpenC2 Consumer Execution Times](#e14-extended-openc2-consumer-execution-times)
+  - [E.2 Examples](#e2-examples)
+    - [E.2.1 OpenC2 Single Consumer Command / Response via MQTT](#e21-openc2-single-consumer-command--response-via-mqtt)
+    - [E.2.2 OpenC2 Multiple Consumer Command / Response via MQTT](#e22-openc2-multiple-consumer-command--response-via-mqtt)
+    - [E.2.3 OpenC2 Command / Response via HTTPS](#e23-openc2-command--response-via-https)
+- [Appendix F. Notices](#appendix-f-notices)
+
 
 -------
 
