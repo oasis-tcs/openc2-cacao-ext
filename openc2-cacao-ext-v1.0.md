@@ -127,6 +127,9 @@ Introductory text.
 
 - `command-type-ov` is extended with the type `openc2`.
 - Command type `openc2-http` is deprecated in favor of the non-transport specific `openc2` command type
+- `agent-target-type-ov` "Devices and Equipment" vocabulary is extended with the following types:
+  -  `openc2-mqtt` agent type for message transfer via MQTT
+  -  `openc2-https` agent type for message transfer via HTTPS
 
 
 ---
