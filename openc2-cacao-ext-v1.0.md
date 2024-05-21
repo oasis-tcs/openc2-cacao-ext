@@ -144,12 +144,16 @@ Introductory text.
 
 ## 4.1 OpenC2 CACAO Agents
 
+### 4.1.1 MQTT Agents
+
+### 4.1.2 HTTPS Agents
+
 ## 4.2 OpenC2 CACAO Targets
 
 
 -------
 
-# 3 Conformance
+# 5 Conformance
 <!-- Required section -->
 
 (Note: The [OASIS TC Process](https://www.oasis-open.org/policies-guidelines/tc-process#wpComponentsConfClause) requires that a specification approved by the TC at the Committee Specification Public Review Draft, Committee Specification or OASIS Standard level must include a separate section, listing a set of numbered conformance clauses, to which any implementation of the specification must adhere in order to claim conformance to the specification (or any optional portion thereof). This is done by listing the conformance clauses here.
