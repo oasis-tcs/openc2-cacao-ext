@@ -3,7 +3,7 @@
 
 -------
 
-# CACAO OpenC2 Extension Version 1.0
+# OpenC2 Extension for CACAO Version 1.0
 
 ## Committee Specification Draft 01
 
@@ -93,176 +93,59 @@ For complete copyright information please see the full Notices section in an App
 
 Introductory text.
 
-## 1.1 Changes from earlier versions
 
-<!-- Optional section -->
-
-## 1.2 Glossary
+## 1.1 Glossary
 
 <!-- Optional section with suggested subsections -->
 
-### 1.2.1 Definitions of terms
+### 1.1.1 Definitions of terms
 
-### 1.2.2 Acronyms and abbreviations
+### 1.1.2 Acronyms and abbreviations
 
-### 1.2.3 Document conventions
+### 1.1.3 Document conventions
 
 - Naming conventions
 - Font colors and styles
 - Typographic conventions
 
-## 1.3 Some markdown usage examples
+---
 
-**Text.**
+# 2 Key Concepts & Vocabularies
 
-Note that text paragraphs in markdown should be separated by a blank line between them -
+## 2.1 Key Concepts
 
-Otherwise the separate paragraphs will be joined together when the HTML is generated.
-Even if the text appears to be separate lines in the markdown source.
-
-To avoid having the usual vertical space between paragraphs,  
-append two or more space characters (or space-backslash) to the end of the lines  
-which will generate an HTML break tag instead of a new paragraph tag \
-(as demonstrated here).
-
-### 1.3.1 Figures and Captions
-
-FIGURE EXAMPLE:
-<note caption is best placed ABOVE figure, so a hyperlink to it will actually display the figure, instead of rendering the figure off the screen above the caption. The same placement should be used for table captions>
-
-###### Figure 1 -- Title of Figure
-![image-label should be meaningful](images/image_0.png) (this image is intentionally missing)
-
-###### Figure 2 -- OpenC2 Message Exchange
-![message exchange](images/image_1.png)
+- OpenC2 Command
+-	OpenC2 Response
+-	OpenC2 Actuator Profile
+-	OpenC2 Transfer Specification
+- CACAO Action Step
+- CACAO Agent
+- CACAO Target
 
 
-### 1.3.2 Tables
-
-#### 1.3.2.1 Basic Table
-**Table 1-1. Table Label**
-
-| Item | Description |
-| :--- | :--- |
-| Item 1 | Something<br>(second line) |
-| Item 2 | Something |
-| Item 3 | Something<br>(second line) |
-| Item 4 | text |
-
-#### 1.3.2.2 Table with Three Columns and Some Bold Text
-text.
-
-| Title 1 | Title 2 | title 3 |
-| :--- | :--- | :--- |
-| something | something | something else that is a long string of text that **might** need to wrap around inside the table box and will just continue until the column divider is reached |
-| something | something | something |
-
-#### 1.3.2.3 Table with a caption which can be referenced
-
-###### Table 1-5. See reference label construction
-
-| Name | Description |
-| :--- | :--- |
-| **content** | Message body as specified by content_type and msg_type. |
-
-Here is a reference to the table caption:
-Please see [Table 1-5 or other meaningful label](#table-1-5-see-reference-label-construction) 
+## 2.2 CACAO Vocabulary Modifications
 
 
-### 1.3.3 Lists
+---
 
-Bulleted list:
-* bullet item 1.
-* **Bold** bullet item 2.
-* bullet item 3.
-* bullet item 4.
-
-Indented or multi-level bullet list - add two spaces per level before bullet character (* or -):
-* main bullet type
-  * Example second bullet
-    * See third level
-      * fourth level
-
-Numbered list:
-1. item 1
-2. item 2
-3. item 3
-
-Left-justified list without bullets or numbers:
-To list multiple items without full paragraph breaks between items, add space-backslash after each item except the last.
-
-### 1.3.4 Reference Label Construction
-
-REFERENCES and ANCHORS
-- in markdown source, format the Reference tags as level 6 headings like: `###### [RFC2119]`
-###### [RFC2119]
-Bradner, S., "Key words ..."
-
-- reference text has to be on a separate line below the tag
-
-- format cross-references (citations of the references) like: `see [[RFC2119](#rfc2119)]`  
-"see [[RFC2119](#rfc2119)]"  
-(note the outer square brackets in markdown will appear in the visible HTML text)
-
-- The text in the Reference tag (following ###### ) will become an HTML anchor using the following conversion rules:  
-  - punctuation marks will be dropped (including "[" )  
-  - leading white spaces will be dropped  
-  - upper case will be converted to lower  
-  - spaces between letters will be converted to a single hyphen
-
-- The same HTML anchor construction rules apply to cross-references and to section headings.  
-  - Thus, a section heading like "## 1.2 Glossary"  
-  - becomes an anchor in HTML like `<a href="#12-glossary">`  
-  - referenced in the markdown like: see [Section 1.2](#12-glossary)  
-  - in markdown: `"see [Section 1.2](#12-glossary)"`  
-  - similar HTML anchors are also used in constructing the TOC
-
-### 1.3.5 Code Blocks
-
-Text to appear as an indented code block with grey background and monospace font - use three back-ticks before and after the code block.
-
-Note the actual backticks will not appear in the HTML format. If it's necessary to display visible backticks, place a back-slash before them like: \``` .
-
-```
-{   
-    "target": {
-        "x_kmip_2.0": {
-            {"kmip_type": "json"},
-            {"operation": "RekeyKeyPair"},
-            {"name": "publicWebKey11DEC2017"}
-        }
-    }
-}
-```
-
-Text to be highlighted as code can also be surrounded by a single "backtick" character: 
-`code text`
-
-## 1.4 Page Breaks
-Add horizontal rule lines where page breaks are desired in the PDF - before each major section
-- insert the line rules in markdown by inserting 3 or more hyphens on a line by themselves:  ---
-- place these before each main section in markdown (usually "#" - which generates the HTML `<h1>` tag)
-
--------
-
-# 2 Section Heading
-text.
-
-## 2.1 Level 2 Heading
-text.
-
-### 2.1.1 Level 3 Heading
-text.
-
-#### 2.1.1.1 Level 4 Heading
-text.
-
-##### 2.1.1.1.1 Level 5 Heading
-This is the deepest level, because six # gets transformed into a Reference tag.
+# 3 OpenC2 Commands In CACAO
 
 
-## 2.2 Next Heading
-text.
+## 3.1 OpenC2 Command Action Step
+
+
+## 3.2 Base64 Encoding and Decoding
+
+## 3.3 Invoking OpenC2 via Playbook Action Step
+
+---
+
+# 4 OpenC2 CACAO Agents and Targets
+
+## 4.1 OpenC2 CACAO Agents
+
+## 4.2 OpenC2 CACAO Targets
+
 
 -------
 
@@ -299,20 +182,42 @@ For references to W3C Recommendations, use the approved citation formats at:
 http://docs.oasis-open.org/templates/w3c-recommendations-list/w3c-recommendations-list.html.  
 Remove this note before submitting for publication.)
 
+
+######
+
+[CACAO-Security-Playbooks-v2.0]
+
+CACAO Security Playbooks Version 2.0. Edited by Bret Jordan and Allan Thomson. 27 November 2023. OASIS Committee Specification 01. https://docs.oasis-open.org/cacao/security-playbooks/v2.0/cs01/security-playbooks-v2.0-cs01.html. Latest version: https://docs.oasis-open.org/cacao/security-playbooks/v2.0/security-playbooks-v2.0.html.
+
 ###### [OpenC2-Lang-v1.1]
+
 _Open Command and Control (OpenC2) Language Specification Version 1.1_. Edited by Duncan Sparrell and Toby Considine. Latest stage: https://docs.oasis-open.org/openc2/oc2ls/v1.1/oc2ls-v1.1.html
-<!--
+
+###### [OpenC2-MQTT-v1.0]
+
+Specification for Transfer of OpenC2 Messages via MQTT Version 1.0. Edited by David Lemire. 19 November 2021. OASIS Committee Specification 01. https://docs.oasis-open.org/openc2/transf-mqtt/v1.0/cs01/transf-mqtt-v1.0-cs01.html. Latest stage: https://docs.oasis-open.org/openc2/transf-mqtt/v1.0/transf-mqtt-v1.0.html
+
 ###### [OpenC2-HTTPS-v1.1]
+
 _Specification for Transfer of OpenC2 Messages via HTTPS Version 1.1_. Edited by David Lemire. Latest stage: https://docs.oasis-open.org/openc2/open-impl-https/v1.1/open-impl-https-v1.1.html
+
 ###### [OpenC2-SLPF-v1.1]
+
 _Open Command and Control (OpenC2) Profile for Stateless Packet Filtering Version 1.1_. Edited by Joe Brule, Duncan Sparrell, and Alex Everett. Latest stage: https://docs.oasis-open.org/openc2/oc2slpf/v1.1/oc2slpf-v1.1.html
--->
+
 ###### [RFC2119]
+
 Bradner, S., "Key words for use in RFCs to Indicate Requirement Levels", BCP 14, RFC 2119, DOI 10.17487/RFC2119, March 1997, http://www.rfc-editor.org/info/rfc2119.
+
 ###### [RFC8174]
+
 Leiba, B., "Ambiguity of Uppercase vs Lowercase in RFC 2119 Key Words", BCP 14, RFC 8174, DOI 10.17487/RFC8174, May 2017, http://www.rfc-editor.org/info/rfc8174.
 
 ## A.2 Informative References
+
+###### [OpenC2-Arch-v1.0]
+
+Open Command and Control (OpenC2) Architecture Specification Version 1.0. Edited by Duncan Sparrell. 30 September 2022. OASIS Committee Specification 01. https://docs.oasis-open.org/openc2/oc2arch/v1.0/cs01/oc2arch-v1.0-cs01.html. Latest stage: https://docs.oasis-open.org/openc2/oc2arch/v1.0/oc2arch-v1.0.html.
 
 ###### [RFC3552]
 Rescorla, E. and B. Korver, "Guidelines for Writing RFC Text on Security Considerations", BCP 72, RFC 3552, DOI 10.17487/RFC3552, July 2003, https://www.rfc-editor.org/info/rfc3552.
@@ -321,17 +226,8 @@ Rescorla, E. and B. Korver, "Guidelines for Writing RFC Text on Security Conside
 
 # Appendix B. Safety, Security and Privacy Considerations
 
-<!-- Optional section -->
+> NOTE: Reference the related sections in the OpenC2 Architecture Specification and CACAO v2.0 Playbook Specification
 
-(Note: OASIS strongly recommends that Technical Committees consider issues that might affect safety, security, privacy, and/or data protection in implementations of their specification and document them for implementers and adopters. For some purposes, you may find it required, e.g. if you apply for IANA registration.
-
-While it may not be immediately obvious how your specification might make systems vulnerable to attack, most specifications, because they involve communications between systems, message formats, or system settings, open potential channels for exploit. For example, IETF [[RFC3552](#rfc3552)] lists “eavesdropping, replay, message insertion, deletion, modification, and man-in-the-middle” as well as potential denial of service attacks as threats that must be considered and, if appropriate, addressed in IETF RFCs.
-
-In addition to considering and describing foreseeable risks, this section should include guidance on how implementers and adopters can protect against these risks.
-
-We encourage editors and TC members concerned with this subject to read _Guidelines for Writing RFC Text on Security Considerations_, IETF [[RFC3552](#rfc3552)], for more information.
-
-Remove this note before submitting for publication.)
 
 -------
 
@@ -376,11 +272,25 @@ Darren | Anstman | Big Networks
 
 -------
 
-# Appendix E. Example Appendix with subsections
+# Appendix E. Use Cases and Examples
 
-## E.1 Subsection title
+## E.1 Use Cases
 
-### E.1.1 Sub-subsection
+### E.1.1 Multiple OpenC2 Consumers With Common Profile
+
+### E.1.2 OpenC2 Command With Response Requested
+
+### E.1.3 OpenC2 Message Transfer via MQTT
+
+### E.1.4 Extended OpenC2 Consumer Execution Times
+
+## E.2 Examples
+
+### E.2.1 OpenC2 Single Consumer Command / Response via MQTT
+
+### E.2.2 OpenC2 Multiple Consumer Command / Response via MQTT
+
+### E.2.3 OpenC2 Command / Response via HTTPS
 
 -------
 
