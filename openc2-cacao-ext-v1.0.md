@@ -174,9 +174,97 @@ Introductory text.
 
 # 3 OpenC2 Commands In CACAO
 
+This section describes the implementation of OpenC2 commands under CACAO,
+including the format and processing of an `openc2 ` command object, the handling
+of base64 encoding and decoding, and the invocation of OpenC2 via `openc2`
+command objects in a subordinate playbook.
+
+This specification recommends deprecating CACAO's `openc2-http` command type in
+favor of the transport-neutral `openc2` command type defined here, in keeping
+with OpenC2's intent for the language to be defined in an transport-independent
+manner.
+
 
 ## 3.1 OpenC2 Command Action Step
 
+> NOTE: Copying in the `openc2-http` command from the CACAO v2.0 spec as a
+> starting point
+
+The `openc2` command represents a command that is intended to be processed via
+an OpenC2 processor. The delivery of the command and specification of transfer
+mechanism and desired OpenC2 AP are handled by defining appropriate CACAO agents
+and targets. In addition to the inherited properties of a command object defined
+in Section 5.1 of [[CACAO v2.0](#cacao-security-playbooks-v20)], this section
+defines the following additional properties that are valid for this type.
+
+The command type open vocabulary (`command-type-ov`) defined in Section 5.2 of
+[[CACAO v2.0](#cacao-security-playbooks-v20)] is extended with the new value
+`openc2`.
+
+| **Property Name** | **Data Type** | **Details** |
+|---|---|---|
+| **type** (required) | `string` | The value of this property **must** be `openc2` |
+| **command** (required) | `string` |  |
+| **content_b64** (required) | `string` | An OpenC2 command that is base64 encoded (see Section 4 of [RFC 4649]). |
+| **headers** (optional) | `dictionary` | This property contains any required HTTP headers.   The key for each entry **MUST** be a `string` that uniquely identifies this header. The value for each key **MUST** be a `list` of `string`. |
+
+
+**Example 3.1 (OpenC2 Command)**
+
+```json
+{
+  "type": "openc2-http",
+  "command": "POST /api1/newObjects/ HTTP/1.1",
+  "content_b64": "ewogICJoZWFkZXJzIjogewogICAgInJlcXVlc3RfaWQiOiAiZDFhYzA0ODktZWQ1MS00MzQ1LTkxNzUtZjMwNzhmMzBhZmU1IiwKICAgICJjcmVhdGVkIjogMTU0NTI1NzcwMDAwMCwKICAgICJmcm9tIjogIm9jMnByb2R1Y2VyLmNvbXBhbnkubmV0IiwKICAgICJ0byI6IFsKICAgICAgIm9jMmNvbnN1bWVyLmNvbXBhbnkubmV0IgogICAgXQogIH0sCiAgImJvZHkiOiB7CiAgICAib3BlbmMyIjogewogICAgICAicmVxdWVzdCI6IHsKICAgICAgICAiYWN0aW9uIjogImRlbnkiLAogICAgICAgICJ0YXJnZXQiOiB7CiAgICAgICAgICAiaXB2NF9jb25uZWN0aW9uIjogewogICAgICAgICAgICAicHJvdG9jb2wiOiAidGNwIiwKICAgICAgICAgICAgInNyY19hZGRyIjogIjEuMi4zLjQiLAogICAgICAgICAgICAic3JjX3BvcnQiOiAxMDk5NiwKICAgICAgICAgICAgImRzdF9hZGRyIjogIjE5OC4yLjMuNCIsCiAgICAgICAgICAgICJkc3RfcG9ydCI6IDgwCiAgICAgICAgICB9CiAgICAgICAgfSwKICAgICAgICAiYXJncyI6IHsKICAgICAgICAgICJzdGFydF90aW1lIjogMTUzNDc3NTQ2MDAwMCwKICAgICAgICAgICJkdXJhdGlvbiI6IDUwMCwKICAgICAgICAgICJyZXNwb25zZV9yZXF1ZXN0ZWQiOiAiYWNrIiwKICAgICAgICAgICJzbHBmIjogewogICAgICAgICAgICAiZHJvcF9wcm9jZXNzIjogIm5vbmUiCiAgICAgICAgICB9CiAgICAgICAgfSwKICAgICAgICAicHJvZmlsZSI6ICJzbHBmIgogICAgICB9CiAgICB9CiAgfQp9",
+  "headers": {
+    "Content-Type": [
+      "application/openc2+json;version=1.0"
+    ]
+  }
+}
+```
+
+The content of the above base64 command (**command\_b64**) is the encoded
+version of the openc2-http content that is shown below (decoded version). The
+command content is shown as text for illustration purposes only.
+
+```json
+{
+  "headers": {
+    "request_id": "d1ac0489-ed51-4345-9175-f3078f30afe5",
+    "created": 1545257700000,
+    "from": "oc2producer.company.net",
+    "to": [
+      "oc2consumer.company.net"
+    ]
+  },
+  "body": {
+    "openc2": {
+      "request": {
+        "action": "deny",
+        "target": {
+          "ipv4_connection": {
+            "protocol": "tcp",
+            "src_addr": "1.2.3.4",
+            "src_port": 10996,
+            "dst_addr": "198.2.3.4",
+            "dst_port": 80
+          }
+        },
+        "args": {
+          "start_time": 1534775460000,
+          "duration": 500,
+          "response_requested": "ack",
+          "slpf": {
+            "drop_process": "none"
+          }
+        },
+        "profile": "slpf"
+      }
+    }
+  }
+}
+```
 
 ## 3.2 Base64 Encoding and Decoding
 
