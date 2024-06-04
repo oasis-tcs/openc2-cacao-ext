@@ -181,7 +181,7 @@ command objects in a subordinate playbook.
 
 This specification recommends deprecating CACAO's `openc2-http` command type in
 favor of the transport-neutral `openc2` command type defined here, in keeping
-with OpenC2's intent for the language to be defined in an transport-independent
+with OpenC2's intent for the language to be defined in a transport-independent
 manner.
 
 
@@ -191,7 +191,7 @@ manner.
 > starting point
 
 The `openc2` command represents a command that is intended to be processed via
-an OpenC2 processor. The delivery of the command and specification of transfer
+an OpenC2 Consumer. The delivery of the command and specification of transfer
 mechanism and desired OpenC2 AP are handled by defining appropriate CACAO agents
 and targets. In addition to the inherited properties of a command object defined
 in Section 5.1 of [[CACAO v2.0](#cacao-security-playbooks-v20)], this section
@@ -206,7 +206,7 @@ The command type open vocabulary (`command-type-ov`) defined in Section 5.2 of
 | **type** (required) | `string` | The value of this property **must** be `openc2` |
 | **command** (required) | `string` |  |
 | **content_b64** (required) | `string` | An OpenC2 command that is base64 encoded (see Section 4 of [RFC 4649]). |
-| **headers** (optional) | `dictionary` | This property contains any required HTTP headers.   The key for each entry **MUST** be a `string` that uniquely identifies this header. The value for each key **MUST** be a `list` of `string`. |
+| **headers** (optional) | `dictionary` | This property contains headers to be passed to the OpenC2 agent providing message transfer functions. The key for each entry **MUST** be a `string` that uniquely identifies this header. The value for each key **MUST** be a `list` of `string`. |
 
 
 **Example 3.1 (OpenC2 Command)**
