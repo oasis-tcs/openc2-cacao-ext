@@ -138,7 +138,19 @@ Introductory text.
 
 ### 1.1.1 Definitions of terms
 
+The [[OpenC2 Architecture](#openc2-arch-v10)] and [[CACAO Security
+Playbooks](#cacao-security-playbooks-v20)] specifications should be consulted
+for the authoritative definition of terms used in this specification. An brief
+overview of relevant concepts and associated terminology from those
+specification is provided in [Section&nbsp;2.1](#21-key-concepts).
+
 ### 1.1.2 Acronyms and abbreviations
+
+| **Acronym** | **Expansion**                      |
+|:-----------:|------------------------------------|
+|      AP     | Actuator Profile                   |
+|    HTTPS    | Hypertext Transfer Protocol Secure |
+|             |                                    |
 
 ### 1.1.3 Document conventions
 
@@ -152,22 +164,56 @@ Introductory text.
 
 ## 2.1 Key Concepts
 
-- OpenC2 Command
--	OpenC2 Response
--	OpenC2 Actuator Profile
--	OpenC2 Transfer Specification
-- CACAO Action Step
-- CACAO Agent
-- CACAO Target
+The following key concepts from OpenC2 and CACAO are applicable to this
+specification:
 
+* **OpenC2 Command:** An OpenC2 action-target pair, plus other optional
+  information, used to command an OpenC2 Consumer.
+
+* **OpenC2 Response:** An OpenC2 message sent from a Consumer to a Producer
+  reporting on the outcome of processing a Command.
+
+* **OpenC2 Actuator Profile:** A tailored  subset of the OpenC2 language plus
+  any extensions that specifies the use of OpenC2 to command a particular
+  function.
+
+* **OpenC2 Transfer Specification:** The description of how an existing standard
+  transfer protocol (e.g., MQTT, HTTPS) is used to send and receive OpenC2
+  commands and responses.
+
+* **CACAO Action Step:** This type of CACAO workflow step contains commands to
+  be executed.
+
+* **CACAO Playbook Action:** This type of CACAO workflow step executes a
+  referenced playbook using the agents and targets defined in the referenced
+  playbook.
+
+* **CACAO Agents and Targets:** CACAO agents are entities that execute commands
+  on or against CACAO targets.
+
+Both OpenC2 and CACAO employ the term "target" but the meanings differ. In this
+extension specification, the CACAO target is used to integrate the OpenC2
+Actuator Profile concept. The logical flow is as follows:
+
+* An OpenC2 command is defined in a CACAO playbook `openc2` action step
+* The `openc2` action step specifies a CACAO agent that supports the desired
+  transfer protocol
+* The `openc2` action step specifies a CACAO target that represents the AP that
+  should process the command.
 
 ## 2.2 CACAO Vocabulary Modifications
 
-- `command-type-ov` is extended with the type `openc2`.
-- Command type `openc2-http` is deprecated in favor of the non-transport specific `openc2` command type
-- `agent-target-type-ov` "Devices and Equipment" vocabulary is extended with the following types:
-  -  `openc2-mqtt` agent type for message transfer via MQTT
-  -  `openc2-https` agent type for message transfer via HTTPS
+This extension specification defines the following modifications to the
+vocabularies defined in the [[CACAO Security
+Playbooks](#cacao-security-playbooks-v20)] specification.
+
+* `command-type-ov` is extended with the type `openc2`.
+* Command type `openc2-http` is deprecated in favor of the non-transport
+  specific `openc2` command type
+* `agent-target-type-ov` "Devices and Equipment" vocabulary is extended with the
+  following types:
+  * `openc2-mqtt`: agent type for message transfer via MQTT
+  * `openc2-https`: agent type for message transfer via HTTPS
 
 
 ---
