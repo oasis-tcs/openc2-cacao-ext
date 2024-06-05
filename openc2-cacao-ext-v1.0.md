@@ -180,6 +180,8 @@ specification is provided in [Section&nbsp;2.1](#21-key-concepts).
 
 ## 2.1 Key Concepts
 
+_This section is non-normative._
+
 The following key concepts from OpenC2 and CACAO are applicable to this
 specification:
 
