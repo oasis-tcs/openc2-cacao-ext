@@ -156,7 +156,7 @@ Transfer Specifications for [[MQTT](#openc2-mqtt-v10)] and
 
 The [[OpenC2 Architecture](#openc2-arch-v10)] and [[CACAO Security
 Playbooks](#cacao-security-playbooks-v20)] specifications should be consulted
-for the authoritative definition of terms used in this specification. An brief
+for the authoritative definition of terms used in this specification. A brief
 overview of relevant concepts and associated terminology from those
 specification is provided in [Section&nbsp;2.1](#21-key-concepts).
 
