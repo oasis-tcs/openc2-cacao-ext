@@ -127,9 +127,25 @@ For complete copyright information please see the full Notices section in an App
 
 # 1 Introduction
 
-<!-- All text is normative unless otherwise labeled -->
+_This section is non-normative._
 
-Introductory text.
+Collaborative Automated Course of Action Operations (CACAO) is a schema and
+taxonomy for cyber security playbooks. The [[CACAO Security
+Playbooks](#cacao-security-playbooks-v20)] specification describes how these
+playbooks can be created, documented, and shared in a structured and
+standardized way across organizational boundaries and technological solutions.
+
+OpenC2 is a suite of specifications that enables command and control of cyber
+defense systems and components. OpenC2 typically uses a request-response
+paradigm where a Command is encoded by a Producer (managing application) and
+transferred to a Consumer (managed device or virtualized function) using a
+secure transfer protocol, and the Consumer can respond with status and any
+requested information.
+
+This extension builds on existing CACAO v2.0 OpenC2 features to improve playbook
+modularity when using OpenC2 capabilities, and to utilize the current OpenC2
+Transfer Specifications for [[MQTT](#openc2-mqtt-v10)] and
+[[HTTPS](#openc2-https-v11)].
 
 
 ## 1.1 Glossary
