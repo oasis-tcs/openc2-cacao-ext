@@ -271,7 +271,7 @@ command content is shown as text for illustration purposes only.
 
 ## 3.2 Base64 Encoding and Decoding
 
-
+CACAO use base64 encoding, as defined in Section 4 of [RFC 4648], to preserve
 
 
 ## 3.3 Invoking OpenC2 via Playbook Action Step
@@ -355,6 +355,10 @@ _Open Command and Control (OpenC2) Profile for Stateless Packet Filtering Versio
 ###### [RFC2119]
 
 Bradner, S., "Key words for use in RFCs to Indicate Requirement Levels", BCP 14, RFC 2119, DOI 10.17487/RFC2119, March 1997, http://www.rfc-editor.org/info/rfc2119.
+
+###### [RFC4648] 
+
+Josefsson, S., "The Base16, Base32, and Base64 Data Encodings", RFC 4648, DOI 10.17487/RFC4648, October 2006, <https://www.rfc-editor.org/info/rfc4648>.
 
 ###### [RFC8174]
 
