@@ -308,7 +308,9 @@ context of a CACAO playbook are:
 
 ## 4.1 OpenC2 CACAO Agents
 
-CACAO agents for OpenC2 correspond to OpenC2 transfer specifications. Each type of OpenC2 CACAO agent supports the use of one transfer protocol for sending OpenC2 commands and receiving OpenC2 responses.
+CACAO agents for OpenC2 correspond to OpenC2 transfer specifications. Each type
+of OpenC2 CACAO agent supports the use of one transfer protocol for sending
+OpenC2 commands and receiving OpenC2 responses.
 
 ### 4.1.1 MQTT Agents
 
