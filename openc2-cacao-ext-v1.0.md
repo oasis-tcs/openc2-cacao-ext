@@ -271,8 +271,34 @@ command content is shown as text for illustration purposes only.
 
 ## 3.2 Base64 Encoding and Decoding
 
-CACAO use base64 encoding, as defined in Section 4 of [RFC 4648], to preserve
+CACAO use base64 encoding, as defined in Section 4 of [[RFC 4648](#rfc4648)], to
+preserve the integrity of complex commands and scripts, such as the example
+OpenC2 command shown in [Section&nbsp;3.1](#31-openc2-command-action-step). The
+default encoding for OpenC2 commands and responses is JSON, as defined in the
+[[OpenC2 Language Specification](#openc2-lang-v11)]. The recommended conventions
+for the handling of base64 encoding of OpenC2 commands and responses in the
+context of a CACAO playbook are:
 
+- OpenC2 commands in JSON format will be base64 encoded by the creator of the
+  playbook and stored as a string in the `content_b64` field of an OpenC2
+  command object.
+
+- The base64-encoded content will be passed to the specified OpenC2 CACAO agent
+  when the OpenC2 command object is executed
+
+- The OpenC2 CACAO agent will decode the base64-encoded content and re-encode in
+  the appropriate transfer encoding (e.g., JSON, CBOR) for transfer to the
+  Consumer identified by the specified OpenC2 CACAO target. The mechanism for
+  exchange of the the transfer-encoded command between agent and target is the
+  responsibility of the CACAO Consumer executing the playbook.
+
+- The OpenC2 CACAO agent will accept transfer-encoded responses from the OpenC2
+  CACAO target.
+
+> TO-DO: what happens to responses once they are accepted by the OpenC2 CACAO
+> agent? Are they base64 encoded? Where do they go? How are they represented
+> back to the CACAO Consumer to support any decision(s) that are dependent on
+> the response(s)?
 
 ## 3.3 Invoking OpenC2 via Playbook Action Step
 
