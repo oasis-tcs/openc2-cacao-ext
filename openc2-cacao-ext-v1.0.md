@@ -271,20 +271,20 @@ command content is shown as text for illustration purposes only.
 
 ## 3.2 Base64 Encoding and Decoding
 
-CACAO use base64 encoding, as defined in Section 4 of [[RFC 4648](#rfc4648)], to
+CACAO uses base64 encoding, as defined in Section 4 of [[RFC 4648](#rfc4648)], to
 preserve the integrity of complex commands and scripts, such as the example
 OpenC2 command shown in [Section&nbsp;3.1](#31-openc2-command-action-step). The
 default encoding for OpenC2 commands and responses is JSON, as defined in the
 [[OpenC2 Language Specification](#openc2-lang-v11)]. The recommended conventions
 for the handling of base64 encoding of OpenC2 commands and responses in the
-context of a CACAO playbook are:
+context of a CACAO playbook being executed by a CACAO Consumer are:
 
-- OpenC2 commands in JSON format will be base64 encoded by the creator of the
-  playbook and stored as a string in the `content_b64` field of an OpenC2
-  command object.
+- OpenC2 commands in JSON format will be base64 encoded by the CACAO Producer
+  creating the playbook and stored as a string in the `content_b64` field of an
+  OpenC2 command object.
 
 - The base64-encoded content will be passed to the specified OpenC2 CACAO agent
-  when the OpenC2 command object is executed
+  when the OpenC2 command object is executed.
 
 - The OpenC2 CACAO agent will decode the base64-encoded content and re-encode in
   the appropriate transfer encoding (e.g., JSON, CBOR) for transfer to the
