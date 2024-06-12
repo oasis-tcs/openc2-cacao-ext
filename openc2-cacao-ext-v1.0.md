@@ -324,9 +324,52 @@ OpenC2 CACAO Targets correspond to OpenC2 Actuator Specifications.
 
 > NOTE: provide examples of CACAO targets for OpenC2 APs
 
+# 5 Standard Playbook Variables
+
+A set of standard CACAO variables have been defined for use when invoking an
+MQTT or HTTP agent to handle message transfer. These CACAO variables are
+playbook variables whose values can be set internally via an `openc2` command
+object or from a `playbook-action` step in a calling playbook and access by the
+appropriate agent.
+
+## 5.1 `__mqtt-topics__` Variable
+
+The `__mqtt-topics__` variable is used to convey a list of MQTT topics onto
+which a message should be published. The `mqtt-broker` agent is general purpose
+and not limited to sending and receiving OpenC2 commands and responses, however
+when employed for that purpose the topics specified as `__mqtt-topics__:value`
+should conform to the topic structure guidance in Section&nbsp;2.2 of the
+[[OpenC2 MQTT Transfer Specification](#openc2-mqtt-v10)].
+
+The `variable-type-ov` is extended as follows:
+| **Vocabulary Value** | **Description**                                                                                     | **Example**                                                          |
+|------------------|-------------------------------------------------------------------------------------------------|-------------------------------------------------------------------|
+| `topic-list`       | A list of strings that identify one or more publish/subscribe topics to which a message should be published. The format of a topic name should be appropriate to the type of messaging system.  | `"type": "topic-list",`<br>`"value": "["oc2/cmd/ap/pf","oc2/cmd/ap/edr"]"` |
+
+
+**Example 5.1 (__mqtt-topics__)**
+*The IDs used in this example are notional and for illustrative purposes, they do not represent real objects.*
+
+```json
+{
+  "type": "playbook",
+  …,
+  "playbook_variables": {
+    "__mqtt-topics__": {
+      "type": "topics-list",
+      "description": "Provides a list of topics to publish a message via an MQTT broker",
+      "value": "["oc2/cmd/ap/pf","oc2/cmd/ap/edr"]",
+      "constant": false,
+      "external": true
+    }
+  }
+}
+```
+
+
 -------
 
-# 5 Conformance
+# 6 Conformance
 <!-- Required section -->
 
 (Note: The [OASIS TC Process](https://www.oasis-open.org/policies-guidelines/tc-process#wpComponentsConfClause) requires that a specification approved by the TC at the Committee Specification Public Review Draft, Committee Specification or OASIS Standard level must include a separate section, listing a set of numbered conformance clauses, to which any implementation of the specification must adhere in order to claim conformance to the specification (or any optional portion thereof). This is done by listing the conformance clauses here.
