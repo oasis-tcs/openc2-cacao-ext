@@ -329,8 +329,8 @@ OpenC2 CACAO Targets correspond to OpenC2 Actuator Specifications.
 A set of standard CACAO variables have been defined for use when invoking an
 MQTT or HTTP agent to handle message transfer. These CACAO variables are
 playbook variables whose values can be set internally via an `openc2` command
-object or from a `playbook-action` step in a calling playbook and access by the
-appropriate agent.
+object or from a `playbook-action` step in a calling playbook and accessed by
+the appropriate agent.
 
 ## 5.1 `__mqtt-topics__` Variable
 
