@@ -357,7 +357,7 @@ The `variable-type-ov` is extended as follows:
   …,
   "playbook_variables": {
     "__mqtt-topics__": {
-      "type": "topics-list",
+      "type": "topic-list",
       "description": "Provides a list of topics to publish a message via an MQTT broker",
       "value": ["oc2/cmd/ap/pf","oc2/cmd/ap/edr"],
       "constant": false,
