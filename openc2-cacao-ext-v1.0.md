@@ -505,7 +505,7 @@ Playbooks](#cacao-security-playbooks-v20)] specification).
       "value": {
         "url": ["https://oc2consumer.example.com"],
         "ipv4" : ["11.22.33.44", "55.66.77.88"]
-    },
+      },
       "constant": false,
       "external": true
     }
