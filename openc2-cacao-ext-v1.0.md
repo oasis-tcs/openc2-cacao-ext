@@ -359,7 +359,9 @@ _The IDs used in this example are notional and for illustrative purposes, they d
     "type": "mqtt-broker",
     "name": "mqtt.example.com",
     "description": "An MQTT pub/sub broker for company example dot com",
-    "address": "https://mqtt.example.com",
+    "address": {
+      "url": ["https://mqtt.example.com"]
+    },
     "category": "server"
   }
 }
