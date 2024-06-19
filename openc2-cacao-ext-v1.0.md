@@ -382,7 +382,10 @@ and Equipment" subcategory is extended as follows:
 |-------------|:--------------------------------------------------------------------------------------|
 | `oc2-http-api` | A agent capable of transferring OpenC2 commands to one or more specified endpoints per requirements of the OASIS [[OpenC2 HTTPS Transfer Protocol Specification](#openc2-https-v11)].|
 
-The `oc2-http-api` agent is an extension of the CACAO `http-api` agent to address the particular requirements for handling OpenC2 messages defined in the . In particular:
+The `oc2-http-api` agent is an extension of the CACAO `http-api` agent to
+address the particular requirements for handling OpenC2 messages defined in the
+[[OpenC2 HTTPS Transfer Protocol Specification](#openc2-https-v11)]. In
+particular:
 
 - The preferred transfer protocols is HTTPS.
 
@@ -390,7 +393,9 @@ The `oc2-http-api` agent is an extension of the CACAO `http-api` agent to addres
   - `POST /.well-known/openc2 HTTP/1.1`
   - `Content-type: application/openc2+json;version=1.0`
 
-- The URL for destinations (i.e., OpenC2 consumers) MUST use the URI scheme specified in Section 3.2.2 of the [[OpenC2 HTTPS Transfer Protocol Specification](#openc2-https-v11)].
+- The URL for destinations (i.e., OpenC2 consumers) MUST use the URI scheme
+  specified in Section 3.2.2 of the [[OpenC2 HTTPS Transfer Protocol
+  Specification](#openc2-https-v11)].
 
 The `__http-endpoints__` variable (see
 [Section&nbsp;5.2](#52-__http_endpoints__-variable)) is used to pass the desired
