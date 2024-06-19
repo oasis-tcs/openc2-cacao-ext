@@ -203,9 +203,10 @@ The command type open vocabulary (`command-type-ov`) defined in Section 5.2 of
 [[CACAO v2.0](#cacao-security-playbooks-v20)] is extended with the new value
 `openc2`.
 
-> **To-Do:** Should `content_b64` be changed to `command_b64` for consistency with
-> virtually all other CACAO command objects?  Opened issue in CACAO repo; using
-> `command_b64` for now.
+> **To-Do:** Should `content_b64` be changed to `command_b64` for consistency
+> with virtually all other CACAO command objects?  Opened [issue in CACAO
+> repo](https://github.com/oasis-tcs/cacao/issues/12); using `command_b64` for
+> now.
 
 | **Property Name** | **Data Type** | **Details** |
 |---|---|---|
