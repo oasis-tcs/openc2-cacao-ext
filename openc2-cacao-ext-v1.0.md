@@ -317,7 +317,22 @@ OpenC2 commands and receiving OpenC2 responses.
 
 ### 4.1.1 MQTT Broker Agent
 
-An `mqtt-broker` agent type supports publish / subscribe communications via the OASIS [[MQTT v5](#mqtt-v50)] protocol. This agent is not specific to OpenC2 but when used for sending and receiving OpenC2 messages its use should conform to the OpenC2 [[MQTT Transfer Specification](#openc2-mqtt-v10)]. In particular, topics passed to this agent for transmitting OpenC2 messages MUST conform to the .
+An `mqtt-broker` agent type supports publish / subscribe communications via the
+OASIS [[MQTT v5](#mqtt-v50)] protocol. This agent is not specific to OpenC2 but
+when used for sending and receiving OpenC2 messages its use MUST conform to the
+OpenC2 [[MQTT Transfer Specification](#openc2-mqtt-v10)]. In particular, topics
+passed to this agent for transmitting OpenC2 messages MUST conform to the
+Default Topic Structure specified in Section&nbsp;2.2 of the Transfer
+Specification.
+
+The CACAO `agent-target-type-ov` "Devices and Equipment" subcategory is extended
+as follows:
+
+| **Type**    |                                     **Description**                                   |
+|-------------|:--------------------------------------------------------------------------------------|
+| mqtt-broker | A publish/subscribe message transfer agent conforming to the OASIS MQTT v5.0 protocol.|
+
+
 
 
 ### 4.1.2 HTTPS Agent
