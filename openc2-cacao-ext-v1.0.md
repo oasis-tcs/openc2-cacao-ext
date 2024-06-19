@@ -200,7 +200,11 @@ an OpenC2 Consumer. The delivery of the command and specification of transfer
 mechanism and desired OpenC2 AP are handled by defining appropriate CACAO agents
 and targets. The command type open vocabulary (`command-type-ov`) defined in Section 5.2 of
 [[CACAO v2.0](#cacao-security-playbooks-v20)] is extended with the new value
-`openc2`.
+`openc2`:
+
+| **Command Type**    |                                         **Description**                                   |
+|---------------------|:------------------------------------------------------------------------------------------|
+| `openc2`            | An OpenC2 command to be transmitted to an OpenC2 Consumer via an OpenC2 transfer protocol.|
 
 In addition to the inherited properties of a command object defined
 in Section 5.1 of [[CACAO v2.0](#cacao-security-playbooks-v20)], this section
