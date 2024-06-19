@@ -215,14 +215,13 @@ The command type open vocabulary (`command-type-ov`) defined in Section 5.2 of
 | **type** (required) | `string` | The value of this property **must** be `openc2` |
 | **command_b64** (required) | `string` | An OpenC2 command that is base64 encoded (see Section 4 of [RFC 4649]). |
 | **headers** (optional) | `dictionary` | This property contains headers to be passed to the OpenC2 agent providing message transfer functions. The key for each entry **MUST** be a `string` that uniquely identifies this header. The value for each key **MUST** be a `list` of `string`. |
-| **step_variables** | `dictionary` | The `step_variables` for an `openc2` command **MUST** include an agent for message transfer. That agent **MUST** be one of `mqtt-broker` or `http-api`. |
+| **step_variables** | `dictionary` | The common workflow `step_variables` property for an `openc2` command **MUST** include an agent for message transfer. That agent **MUST** be one of `mqtt-broker` or `http-api`. |
 
 **Example 3.1 (OpenC2 Command)**
 
 ```json
 {
   "type": "openc2-http",
-  "command": "POST /api1/newObjects/ HTTP/1.1",
   "command_b64": "ewogICJoZWFkZXJzIjogewogICAgInJlcXVlc3RfaWQiOiAiZDFhYzA0ODktZWQ1MS00MzQ1LTkxNzUtZjMwNzhmMzBhZmU1IiwKICAgICJjcmVhdGVkIjogMTU0NTI1NzcwMDAwMCwKICAgICJmcm9tIjogIm9jMnByb2R1Y2VyLmNvbXBhbnkubmV0IiwKICAgICJ0byI6IFsKICAgICAgIm9jMmNvbnN1bWVyLmNvbXBhbnkubmV0IgogICAgXQogIH0sCiAgImJvZHkiOiB7CiAgICAib3BlbmMyIjogewogICAgICAicmVxdWVzdCI6IHsKICAgICAgICAiYWN0aW9uIjogImRlbnkiLAogICAgICAgICJ0YXJnZXQiOiB7CiAgICAgICAgICAiaXB2NF9jb25uZWN0aW9uIjogewogICAgICAgICAgICAicHJvdG9jb2wiOiAidGNwIiwKICAgICAgICAgICAgInNyY19hZGRyIjogIjEuMi4zLjQiLAogICAgICAgICAgICAic3JjX3BvcnQiOiAxMDk5NiwKICAgICAgICAgICAgImRzdF9hZGRyIjogIjE5OC4yLjMuNCIsCiAgICAgICAgICAgICJkc3RfcG9ydCI6IDgwCiAgICAgICAgICB9CiAgICAgICAgfSwKICAgICAgICAiYXJncyI6IHsKICAgICAgICAgICJzdGFydF90aW1lIjogMTUzNDc3NTQ2MDAwMCwKICAgICAgICAgICJkdXJhdGlvbiI6IDUwMCwKICAgICAgICAgICJyZXNwb25zZV9yZXF1ZXN0ZWQiOiAiYWNrIiwKICAgICAgICAgICJzbHBmIjogewogICAgICAgICAgICAiZHJvcF9wcm9jZXNzIjogIm5vbmUiCiAgICAgICAgICB9CiAgICAgICAgfSwKICAgICAgICAicHJvZmlsZSI6ICJzbHBmIgogICAgICB9CiAgICB9CiAgfQp9",
   "headers": {
     "Content-Type": [
@@ -374,7 +373,58 @@ _The IDs used in this example are notional and for illustrative purposes, they d
 
 
 
-### 4.1.2 HTTPS Agent
+### 4.1.2 OpenC2 HTTP-API Agent
+
+An `oc2-http-api` agent type supports point-to-pooint communications via the
+HTTP or HTTPS protocol. The CACAO `agent-target-type-ov` "Devices
+and Equipment" subcategory is extended as follows:
+
+| **Type**    |                                     **Description**                                   |
+|-------------|:--------------------------------------------------------------------------------------|
+| `oc2-http-api` | A agent capable of transferring OpenC2 commands to one or more specified endpoints per requirements of the OASIS [[OpenC2 HTTPS Transfer Protocol Specification](#openc2-https-v11)].|
+
+The `oc2-http-api` agent is an extension of the CACAO `http-api` agent to address the particular requirements for handling OpenC2 messages defined in the . In particular:
+
+- The preferred transfer protocols is HTTPS.
+
+- The HTTP message MUST begin with the headers:
+  - `POST /.well-known/openc2 HTTP/1.1`
+  - `Content-type: application/openc2+json;version=1.0`
+
+- The URL for destinations (i.e., OpenC2 consumers) MUST use the URI scheme specified in Section 3.2.2 of the [[OpenC2 HTTPS Transfer Protocol Specification](#openc2-https-v11)].
+
+The `__http-endpoints__` variable (see
+[Section&nbsp;5.2](#52-__http_endpoints__-variable)) is used to pass the desired
+destinations for transferring an OpenC2 message to an `oc2-http-api` agent.
+
+This type defines an OpenC2 HTTP-API agent object and is used for messages to be
+transmitted via HTTP(S). In addition to the inherited properties, this section
+defines the following additional properties that are valid for this type.
+
+| **Property Name**                  |      **Data Type**     | **Details**                                          |
+|------------------------------------|------------------------|------------------------------------------------------|
+| **type** (required)                | `string`               | The value of this property **MUST** be `oc2-http-api` |
+| **address** (required)             | `dictionary`           | The destination(s) for transfer of this OpenC2 command. The values for `address` are taken from the `http_endpoints__` variable |
+| **authentication_info** (optional) | `identifier`           | This property contains an ID reference to a CACAO `authentication-info` object that is stored at the Playbook level in the **`authentication_info_definitions`** property.<br><br>The ID **MUST** reference a CACAO `authentication-info` object (see section 6 of the [[CACAO v2.0 Specification](#cacao-security-playbooks-v20)]). |
+| **category** (optional)            | `list` of `open-vocab` | One or more identified categories of security infrastructure types that this agent represents (see section 7.11.1 of the [[CACAO v2.0 Specification](#cacao-security-playbooks-v20)]).<br><br>The value for this property **SHOULD** come from the `security-category-type-ov` vocabulary. |
+
+_The IDs used in this example are notional and for illustrative purposes, they do not represent real objects._
+
+**Example 4.1.1 (OpenC2 HTTP-API)**
+```json
+"agent_definitions": {
+  "oc2-http-api--5ceccd83-8052-4d12-8b42-e941647867c7": {
+    "type": "oc2-http-api",
+    "name": "p2p.example.com",
+    "description": "An MQTT pub/sub broker for company example dot com",
+    "address": "__http-endpoints__:value",
+    "category": "server"
+  }
+}
+```
+> **To-Do:** Should we define a new `security-category-ov` entry `oc2-consumer`
+> or is `server` sufficient?
+
 
 ## 4.2 OpenC2 CACAO Targets
 
@@ -426,6 +476,15 @@ The `variable-type-ov` is extended as follows:
   }
 }
 ```
+## 5.2 `__http_endpoints__` Variable
+
+The `__http_endpoints__` variable is used to convey a list of endpoints to an OpenC2 command should be published. 
+
+The `variable-type-ov` for `__http-endpoints__` MUST be `dictionary`. 
+
+The value of `__http-endpoints__` MUST be a `dictionary` of address(es) as
+defined for the CACAO `http-api` agent object (section 7.8 of the [[CACAO
+Playbooks](#cacao-security-playbooks-v20)] specification).
 
 
 -------
