@@ -166,7 +166,7 @@ Introductory text.
 - `command-type-ov` is extended with the type `openc2` (see [Section&nbsp;3.1](#31-openc2-command-action-step))
 - Command type `openc2-http` is deprecated in favor of the non-transport specific `openc2` command type
 - `agent-target-type-ov` "Devices and Equipment" vocabulary is extended with the following types:
-  -  `openc2-mqtt` agent type for message transfer via MQTT (see [Section&nbsp;4.1.1](#411-mqtt-agent))
+  -  `mqtt-broker` agent type for message transfer via MQTT (see [Section&nbsp;4.1.1](#411-mqtt-broker-agent))
   -  `openc2-https` agent type for message transfer via HTTPS (see [Section&nbsp;4.1.2](#412-https-agent)
 - `variable-type-ov` is extended with the following types
   - `topic-list` to identify publish / subscribe topics to which a message should be published (see [Section&nbsp;5.1](#51-__mqtt-topics__-variable))
@@ -315,8 +315,9 @@ CACAO agents for OpenC2 correspond to OpenC2 transfer specifications. Each type
 of OpenC2 CACAO agent supports the use of one transfer protocol for sending
 OpenC2 commands and receiving OpenC2 responses.
 
-### 4.1.1 MQTT Agent
+### 4.1.1 MQTT Broker Agent
 
+An `mqtt-broker` agent type supports publish / subscribe communications via the OASIS MQTT v5 protocol.
 
 
 ### 4.1.2 HTTPS Agent
@@ -412,6 +413,10 @@ Remove this note before submitting for publication.)
 ###### [CACAO-Security-Playbooks-v2.0]
 
 CACAO Security Playbooks Version 2.0. Edited by Bret Jordan and Allan Thomson. 27 November 2023. OASIS Committee Specification 01. https://docs.oasis-open.org/cacao/security-playbooks/v2.0/cs01/security-playbooks-v2.0-cs01.html. Latest version: https://docs.oasis-open.org/cacao/security-playbooks/v2.0/security-playbooks-v2.0.html.
+
+###### [mqtt-v5.0]
+
+MQTT Version 5.0. Edited by Andrew Banks, Ed Briggs, Ken Borgendale, and Rahul Gupta. 15 May 2018. OASIS Committee Specification 02. http://docs.oasis-open.org/mqtt/mqtt/v5.0/cs02/mqtt-v5.0-cs02.html. Latest version: http://docs.oasis-open.org/mqtt/mqtt/v5.0/mqtt-v5.0.html.
 
 ###### [OpenC2-Lang-v1.1]
 
