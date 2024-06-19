@@ -327,6 +327,10 @@ context of a CACAO playbook being executed by a CACAO Consumer are:
 
 ## 3.3 Invoking OpenC2 via Playbook Action Step
 
+> **To-Do:** How much complexity is worthwhile here?
+> - Selection of agent based on values in __mqtt-topics__ or __http-endpoints__?
+> - Selection of targets based on _something_ that identifies the desired AP?
+
 ---
 
 # 4 OpenC2 CACAO Agents and Targets
