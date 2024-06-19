@@ -198,13 +198,13 @@ manner.
 The `openc2` command represents a command that is intended to be processed via
 an OpenC2 Consumer. The delivery of the command and specification of transfer
 mechanism and desired OpenC2 AP are handled by defining appropriate CACAO agents
-and targets. In addition to the inherited properties of a command object defined
-in Section 5.1 of [[CACAO v2.0](#cacao-security-playbooks-v20)], this section
-defines the following additional properties that are valid for this type.
-
-The command type open vocabulary (`command-type-ov`) defined in Section 5.2 of
+and targets. The command type open vocabulary (`command-type-ov`) defined in Section 5.2 of
 [[CACAO v2.0](#cacao-security-playbooks-v20)] is extended with the new value
 `openc2`.
+
+In addition to the inherited properties of a command object defined
+in Section 5.1 of [[CACAO v2.0](#cacao-security-playbooks-v20)], this section
+defines the following additional properties that are valid for this type.
 
 > **To-Do:** Should `content_b64` be changed to `command_b64` for consistency
 > with virtually all other CACAO command objects?  Opened [issue in CACAO
