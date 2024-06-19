@@ -459,7 +459,7 @@ The `variable-type-ov` is extended as follows:
 
 | Vocabulary Value | Description                                                                                                                                                                                                      | Examples                                                             |
 |------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|----------------------------------------------------------------------|
-| `topic-list`       | A list of strings that identify one or more publish / subscribe topics to which a message should be published. <br>The format of the topic names should be appropriate to the messaging protocol being invoked.  | `"type": "topic-list",`<br>`"value": ["oc2/cmd/"]` |
+| `topic-list`       | A list of strings that identify one or more publish / subscribe topics to which a message should be published. The format of the topic names should be appropriate to the messaging protocol being invoked.  | `"type": "topic-list",`<br>`"value": ["oc2/cmd/"]` |
 
 
 **Example 5.1 (`__mqtt-topics__`)**<br>
