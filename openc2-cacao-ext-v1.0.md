@@ -98,17 +98,17 @@ For complete copyright information please see the full Notices section in an App
   - [3.3 Invoking OpenC2 via Playbook Action Step](#33-invoking-openc2-via-playbook-action-step)
 - [4 OpenC2 CACAO Agents and Targets](#4-openc2-cacao-agents-and-targets)
   - [4.1 OpenC2 CACAO Agents](#41-openc2-cacao-agents)
-    - [4.1.1 MQTT Agents](#411-mqtt-agents)
-    - [4.1.2 HTTPS Agents](#412-https-agents)
+    - [4.1.1 MQTT Broker Agent](#411-mqtt-broker-agent)
+    - [4.1.2 HTTPS Agent](#412-https-agent)
   - [4.2 OpenC2 CACAO Targets](#42-openc2-cacao-targets)
-- [5 Conformance](#5-conformance)
+- [5 Standard Playbook Variables](#5-standard-playbook-variables)
+  - [5.1 `__mqtt-topics__` Variable](#51-__mqtt-topics__-variable)
+- [6 Conformance](#6-conformance)
 - [Appendix A. References](#appendix-a-references)
   - [A.1 Normative References](#a1-normative-references)
   - [A.2 Informative References](#a2-informative-references)
 - [Appendix B. Safety, Security and Privacy Considerations](#appendix-b-safety-security-and-privacy-considerations)
 - [Appendix C. Acknowledgments](#appendix-c-acknowledgments)
-  - [C.1 Special Thanks](#c1-special-thanks)
-  - [C.2 Participants](#c2-participants)
 - [Appendix D. Revision History](#appendix-d-revision-history)
 - [Appendix E. Use Cases and Examples](#appendix-e-use-cases-and-examples)
   - [E.1 Use Cases](#e1-use-cases)
@@ -121,6 +121,8 @@ For complete copyright information please see the full Notices section in an App
     - [E.2.2 OpenC2 Multiple Consumer Command / Response via MQTT](#e22-openc2-multiple-consumer-command--response-via-mqtt)
     - [E.2.3 OpenC2 Command / Response via HTTPS](#e23-openc2-command--response-via-https)
 - [Appendix F. Notices](#appendix-f-notices)
+
+
 
 
 -------
@@ -216,7 +218,7 @@ The command type open vocabulary (`command-type-ov`) defined in Section 5.2 of
 | **headers** (optional) | `dictionary` | This property contains headers to be passed to the OpenC2 agent providing message transfer functions. The key for each entry **MUST** be a `string` that uniquely identifies this header. The value for each key **MUST** be a `list` of `string`. |
 | **step_variables** | `dictionary` | The `step_variables` for an `openc2` command **MUST** include an agent for message transfer. That agent **MUST** be one of `mqtt-broker` or `http-api`. |
 
-##### **Example 3.1 (OpenC2 Command)**
+**Example 3.1 (OpenC2 Command)**
 
 ```json
 {
@@ -353,6 +355,8 @@ defines the following additional properties that are valid for this type.
 | **category** (optional)            | `list` of `open-vocab` | One or more identified categories of security infrastructure types that this agent represents (see section 7.11.1 of the [[CACAO v2.0 Specification](#cacao-security-playbooks-v20)]).<br><br>The value for this property **SHOULD** come from the `security-category-type-ov` vocabulary. |
 
 _The IDs used in this example are notional and for illustrative purposes, they do not represent real objects._
+
+**Example 4.1.1 (MQTT Broker Agent)**
 ```json
 "agent_definitions": {
   "mqtt-broker--7125c6f6-7f78-4a3d-8a43-f20d20632305": {
@@ -377,9 +381,9 @@ _The IDs used in this example are notional and for illustrative purposes, they d
 
 OpenC2 CACAO Targets correspond to OpenC2 Actuator Specifications.
 
-> NOTE: determine what, if anything, needs to be defined beyond the correlation of APs and CACAO Targets.
+> **To-Do:** determine what, if anything, needs to be defined beyond the correlation of APs and CACAO Targets.
 
-> NOTE: provide examples of CACAO targets for OpenC2 APs
+> **To-Do:** provide examples of CACAO targets for OpenC2 APs
 
 # 5 Standard Playbook Variables
 
@@ -405,7 +409,7 @@ The `variable-type-ov` is extended as follows:
 | `topic-list`       | A list of strings that identify one or more publish / subscribe topics to which a message should be published. <br>The format of the topic names should be appropriate to the messaging protocol being invoked.  | `"type": "topic-list",`<br>`"value": ["oc2/cmd/"]` |
 
 
-**Example 5.1 (__mqtt-topics__)**
+**Example 5.1 (`__mqtt-topics__`)**
 *The IDs used in this example are notional and for illustrative purposes, they do not represent real objects.*
 
 ```json
