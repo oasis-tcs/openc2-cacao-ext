@@ -352,9 +352,9 @@ defines the following additional properties that are valid for this type.
 | **authentication_info** (optional) | `identifier`           | This property contains an ID reference to a CACAO `authentication-info` object that is stored at the Playbook level in the **`authentication_info_definitions`** property.<br><br>The ID **MUST** reference a CACAO `authentication-info` object (see section 6 of the [[CACAO v2.0 Specification](#cacao-security-playbooks-v20)]). |
 | **category** (optional)            | `list` of `open-vocab` | One or more identified categories of security infrastructure types that this agent represents (see section 7.11.1 of the [[CACAO v2.0 Specification](#cacao-security-playbooks-v20)]).<br><br>The value for this property **SHOULD** come from the `security-category-type-ov` vocabulary. |
 
-_The IDs used in this example are notional and for illustrative purposes, they do not represent real objects._
 
-**Example 4.1.1 (MQTT Broker Agent)**
+**Example 4.1.1 (MQTT Broker Agent)**<br>
+_The IDs used in this example are notional and for illustrative purposes, they do not represent real objects._
 ```json
 "agent_definitions": {
   "mqtt-broker--7125c6f6-7f78-4a3d-8a43-f20d20632305": {
@@ -408,9 +408,9 @@ defines the following additional properties that are valid for this type.
 | **authentication_info** (optional) | `identifier`           | This property contains an ID reference to a CACAO `authentication-info` object that is stored at the Playbook level in the **`authentication_info_definitions`** property.<br><br>The ID **MUST** reference a CACAO `authentication-info` object (see section 6 of the [[CACAO v2.0 Specification](#cacao-security-playbooks-v20)]). |
 | **category** (optional)            | `list` of `open-vocab` | One or more identified categories of security infrastructure types that this agent represents (see section 7.11.1 of the [[CACAO v2.0 Specification](#cacao-security-playbooks-v20)]).<br><br>The value for this property **SHOULD** come from the `security-category-type-ov` vocabulary. |
 
-_The IDs used in this example are notional and for illustrative purposes, they do not represent real objects._
 
-**Example 4.1.1 (OpenC2 HTTP-API)**
+**Example 4.1.1 (OpenC2 HTTP-API)**<br>
+_The IDs used in this example are notional and for illustrative purposes, they do not represent real objects._
 ```json
 "agent_definitions": {
   "oc2-http-api--5ceccd83-8052-4d12-8b42-e941647867c7": {
@@ -458,8 +458,8 @@ The `variable-type-ov` is extended as follows:
 | `topic-list`       | A list of strings that identify one or more publish / subscribe topics to which a message should be published. <br>The format of the topic names should be appropriate to the messaging protocol being invoked.  | `"type": "topic-list",`<br>`"value": ["oc2/cmd/"]` |
 
 
-**Example 5.1 (`__mqtt-topics__`)**
-*The IDs used in this example are notional and for illustrative purposes, they do not represent real objects.*
+**Example 5.1 (`__mqtt-topics__`)**<br>
+_The IDs used in this example are notional and for illustrative purposes, they do not represent real objects._*_
 
 ```json
 {
@@ -476,7 +476,8 @@ The `variable-type-ov` is extended as follows:
   }
 }
 ```
-## 5.2 `__http_endpoints__` Variable
+
+## 5.2 `__http-endpoints__` Variable
 
 The `__http_endpoints__` variable is used to convey a list of endpoints to an OpenC2 command should be published. 
 
@@ -486,6 +487,27 @@ The value of `__http-endpoints__` MUST be a `dictionary` of address(es) as
 defined for the CACAO `http-api` agent object (section 7.8 of the [[CACAO
 Playbooks](#cacao-security-playbooks-v20)] specification).
 
+**Example 5.2 (`__http-endpoints__`)**<br>
+*The IDs used in this example are notional and for illustrative purposes, they do not represent real objects.*
+
+```json
+{
+  "type": "playbook",
+  …,
+  "playbook_variables": {
+    "__http-endpoints__": {
+      "type": "dictionary",
+      "description": "A list of endpoints for delivery of an OpenC2 command via HTTP(S)",
+      "value": {
+      "url": ["https://oc2consumer.example.com"],
+      "ipv4" : ["11.22.33.44", "55.66.77.88"]
+    },
+      "constant": false,
+      "external": true
+    }
+  }
+}
+```
 
 -------
 
