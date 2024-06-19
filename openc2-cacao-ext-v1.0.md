@@ -452,9 +452,9 @@ _The IDs used in this example are notional and for illustrative purposes, they d
   }
 }
 ```
+
 > **To-Do:** Should we define a new `security-category-ov` entry `oc2-consumer`
 > or is `server` sufficient?
-
 
 ## 4.2 OpenC2 CACAO Targets
 
@@ -486,7 +486,6 @@ The `variable-type-ov` is extended as follows:
 | Vocabulary Value | Description                                                                                                                                                                                                      | Examples                                                             |
 |------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|----------------------------------------------------------------------|
 | `topic-list`       | A list of strings that identify one or more publish / subscribe topics to which a message should be published. The format of the topic names should be appropriate to the messaging protocol being invoked.  | `"type": "topic-list",`<br>`"value": ["oc2/cmd/"]` |
-
 
 **Example 5.1 (`__mqtt-topics__`)**<br>
 _The IDs used in this example are notional and for illustrative purposes, they do not represent real objects._*_
