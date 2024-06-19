@@ -374,7 +374,7 @@ _The IDs used in this example are notional and for illustrative purposes, they d
 
 ### 4.1.2 OpenC2 HTTP-API Agent
 
-An `oc2-http-api` agent type supports point-to-pooint communications via the
+An `oc2-http-api` agent type supports point-to-point communications via the
 HTTP or HTTPS protocol. The CACAO `agent-target-type-ov` "Devices
 and Equipment" subcategory is extended as follows:
 
