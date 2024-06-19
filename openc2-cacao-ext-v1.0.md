@@ -338,7 +338,33 @@ the response topics specified in Section&nbsp;2.2 of the Transfer Specification.
 
 The `__mqtt-topics__` variable (see
 [Section&nbsp;5.1](#51-__mqtt-topics__-variable)) is used to pass the
-requested topic(s) for publishing a message to an `mqtt-broker` agent
+requested topic(s) for publishing a message to an `mqtt-broker` agent.
+
+This type defines an MQTT Broker object and is used for messages to be
+transmitted via MQTT. In addition to the inherited properties, this section
+defines the following additional properties that are valid for this type.
+
+| **Property Name**                  |      **Data Type**     | **Details**                                          |
+|------------------------------------|------------------------|------------------------------------------------------|
+| **type** (required)                | `string`               | The value of this property **MUST** be `mqtt-broker` |
+| **address** (required)             | `dictionary`           | The key for each entry in the dictionary **MUST** be a string that uniquely identifies one or more address types. The key(s) MUST be one of the following values `dname` (domain name), `ipv4`, `ipv6`, `l2mac`, `vlan`, or `url`. The dictionary value associated with each key **MUST** be a `list` of `string` that contains the corresponding address(es) for that particular key type. |
+| **authentication_info** (optional) | `identifier`           | This property contains an ID reference to a CACAO `authentication-info` object that is stored at the Playbook level in the **`authentication_info_definitions`** property.<br><br>The ID **MUST** reference a CACAO `authentication-info object` (see section 6 of the [[CACAO v2.0 Specification](#cacao-security-playbooks-v20)]). |
+| **category** (optional)            | `list` of `open-vocab` | One or more identified categories of security infrastructure types that this agent represents (see section 7.11.1).<br><br>The value for this property **SHOULD** come from the `security-category-type-ov` vocabulary. |
+
+_The IDs used in this example are notional and for illustrative purposes, they do not represent real objects._
+```json
+"agent_definitions": {
+  "mqtt-broker--7125c6f6-7f78-4a3d-8a43-f20d20632305": {
+    "type": "mqtt-broker",
+    "name": "mqtt.example.com",
+    "description": "An MQTT pub/sub broker for company example dot com",
+    "address": "https://mqtt.example.com",
+    "category": "server"
+  }
+}
+```
+> To-Do: Should we defined a new `security-category-ov` entry `message-broker`?
+
 
 
 ### 4.1.2 HTTPS Agent
