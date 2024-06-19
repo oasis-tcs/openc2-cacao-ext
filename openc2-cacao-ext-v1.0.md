@@ -398,7 +398,7 @@ particular:
   Specification](#openc2-https-v11)] i.e., `https://<consumer address>/.well-known/openc2`).
 
 The `__http-endpoints__` variable (see
-[Section&nbsp;5.2](#52-__http_endpoints__-variable)) is used to pass the desired
+[Section&nbsp;5.2](#52-__http-endpoints__-variable)) is used to pass the desired
 destinations for transferring an OpenC2 message to an `oc2-http-api` agent.
 
 This type defines an OpenC2 HTTP-API agent object and is used for messages to be
