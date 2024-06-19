@@ -503,8 +503,8 @@ Playbooks](#cacao-security-playbooks-v20)] specification).
       "type": "dictionary",
       "description": "A list of endpoints for delivery of an OpenC2 command via HTTP(S)",
       "value": {
-      "url": ["https://oc2consumer.example.com"],
-      "ipv4" : ["11.22.33.44", "55.66.77.88"]
+        "url": ["https://oc2consumer.example.com"],
+        "ipv4" : ["11.22.33.44", "55.66.77.88"]
     },
       "constant": false,
       "external": true
