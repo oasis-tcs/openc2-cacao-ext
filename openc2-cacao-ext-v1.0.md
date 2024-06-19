@@ -251,11 +251,10 @@ _The IDs used in this example are notional and for illustrative purposes, they d
 }
 ```
 
-
-
-The content of the above base64 command (**command\_b64**) is the encoded
-version of the OpenC2 content that is shown below (decoded version). The
-command content is shown as text for illustration purposes only.
+The content of the above base64 command (**command\_b64**) in both of the above
+examples is the encoded version of the OpenC2 content that is shown below
+(decoded version). The command content is shown as text for illustration
+purposes only.
 
 ```json
 {
