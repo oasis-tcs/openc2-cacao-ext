@@ -187,7 +187,7 @@ manner.
 
 ## 3.1 OpenC2 Command Action Step
 
-> NOTE: Copying in the `openc2-http` command from the CACAO v2.0 spec as a
+> NOTE: Copied in the `openc2-http` command from the CACAO v2.0 spec as a
 > starting point
 
 The `openc2` command represents a command that is intended to be processed via
@@ -202,13 +202,14 @@ The command type open vocabulary (`command-type-ov`) defined in Section 5.2 of
 `openc2`.
 
 > TO-DO: Should `content_b64` be changed to `command_b64` for consistency with
-> virtually all other CACAO command objects?
+> virtually all other CACAO command objects?  Opened issue in CACAO repo; using
+> `command_b64` for now.
 
 | **Property Name** | **Data Type** | **Details** |
 |---|---|---|
 | **type** (required) | `string` | The value of this property **must** be `openc2` |
 | **command** (required) | `string` |  |
-| **content_b64** (required) | `string` | An OpenC2 command that is base64 encoded (see Section 4 of [RFC 4649]). |
+| **command_b64** (required) | `string` | An OpenC2 command that is base64 encoded (see Section 4 of [RFC 4649]). |
 | **headers** (optional) | `dictionary` | This property contains headers to be passed to the OpenC2 agent providing message transfer functions. The key for each entry **MUST** be a `string` that uniquely identifies this header. The value for each key **MUST** be a `list` of `string`. |
 
 
@@ -218,7 +219,7 @@ The command type open vocabulary (`command-type-ov`) defined in Section 5.2 of
 {
   "type": "openc2-http",
   "command": "POST /api1/newObjects/ HTTP/1.1",
-  "content_b64": "ewogICJoZWFkZXJzIjogewogICAgInJlcXVlc3RfaWQiOiAiZDFhYzA0ODktZWQ1MS00MzQ1LTkxNzUtZjMwNzhmMzBhZmU1IiwKICAgICJjcmVhdGVkIjogMTU0NTI1NzcwMDAwMCwKICAgICJmcm9tIjogIm9jMnByb2R1Y2VyLmNvbXBhbnkubmV0IiwKICAgICJ0byI6IFsKICAgICAgIm9jMmNvbnN1bWVyLmNvbXBhbnkubmV0IgogICAgXQogIH0sCiAgImJvZHkiOiB7CiAgICAib3BlbmMyIjogewogICAgICAicmVxdWVzdCI6IHsKICAgICAgICAiYWN0aW9uIjogImRlbnkiLAogICAgICAgICJ0YXJnZXQiOiB7CiAgICAgICAgICAiaXB2NF9jb25uZWN0aW9uIjogewogICAgICAgICAgICAicHJvdG9jb2wiOiAidGNwIiwKICAgICAgICAgICAgInNyY19hZGRyIjogIjEuMi4zLjQiLAogICAgICAgICAgICAic3JjX3BvcnQiOiAxMDk5NiwKICAgICAgICAgICAgImRzdF9hZGRyIjogIjE5OC4yLjMuNCIsCiAgICAgICAgICAgICJkc3RfcG9ydCI6IDgwCiAgICAgICAgICB9CiAgICAgICAgfSwKICAgICAgICAiYXJncyI6IHsKICAgICAgICAgICJzdGFydF90aW1lIjogMTUzNDc3NTQ2MDAwMCwKICAgICAgICAgICJkdXJhdGlvbiI6IDUwMCwKICAgICAgICAgICJyZXNwb25zZV9yZXF1ZXN0ZWQiOiAiYWNrIiwKICAgICAgICAgICJzbHBmIjogewogICAgICAgICAgICAiZHJvcF9wcm9jZXNzIjogIm5vbmUiCiAgICAgICAgICB9CiAgICAgICAgfSwKICAgICAgICAicHJvZmlsZSI6ICJzbHBmIgogICAgICB9CiAgICB9CiAgfQp9",
+  "command_b64": "ewogICJoZWFkZXJzIjogewogICAgInJlcXVlc3RfaWQiOiAiZDFhYzA0ODktZWQ1MS00MzQ1LTkxNzUtZjMwNzhmMzBhZmU1IiwKICAgICJjcmVhdGVkIjogMTU0NTI1NzcwMDAwMCwKICAgICJmcm9tIjogIm9jMnByb2R1Y2VyLmNvbXBhbnkubmV0IiwKICAgICJ0byI6IFsKICAgICAgIm9jMmNvbnN1bWVyLmNvbXBhbnkubmV0IgogICAgXQogIH0sCiAgImJvZHkiOiB7CiAgICAib3BlbmMyIjogewogICAgICAicmVxdWVzdCI6IHsKICAgICAgICAiYWN0aW9uIjogImRlbnkiLAogICAgICAgICJ0YXJnZXQiOiB7CiAgICAgICAgICAiaXB2NF9jb25uZWN0aW9uIjogewogICAgICAgICAgICAicHJvdG9jb2wiOiAidGNwIiwKICAgICAgICAgICAgInNyY19hZGRyIjogIjEuMi4zLjQiLAogICAgICAgICAgICAic3JjX3BvcnQiOiAxMDk5NiwKICAgICAgICAgICAgImRzdF9hZGRyIjogIjE5OC4yLjMuNCIsCiAgICAgICAgICAgICJkc3RfcG9ydCI6IDgwCiAgICAgICAgICB9CiAgICAgICAgfSwKICAgICAgICAiYXJncyI6IHsKICAgICAgICAgICJzdGFydF90aW1lIjogMTUzNDc3NTQ2MDAwMCwKICAgICAgICAgICJkdXJhdGlvbiI6IDUwMCwKICAgICAgICAgICJyZXNwb25zZV9yZXF1ZXN0ZWQiOiAiYWNrIiwKICAgICAgICAgICJzbHBmIjogewogICAgICAgICAgICAiZHJvcF9wcm9jZXNzIjogIm5vbmUiCiAgICAgICAgICB9CiAgICAgICAgfSwKICAgICAgICAicHJvZmlsZSI6ICJzbHBmIgogICAgICB9CiAgICB9CiAgfQp9",
   "headers": {
     "Content-Type": [
       "application/openc2+json;version=1.0"
@@ -228,7 +229,7 @@ The command type open vocabulary (`command-type-ov`) defined in Section 5.2 of
 ```
 
 The content of the above base64 command (**command\_b64**) is the encoded
-version of the openc2-http content that is shown below (decoded version). The
+version of the openc2 content that is shown below (decoded version). The
 command content is shown as text for illustration purposes only.
 
 ```json
@@ -280,7 +281,7 @@ for the handling of base64 encoding of OpenC2 commands and responses in the
 context of a CACAO playbook being executed by a CACAO Consumer are:
 
 - OpenC2 commands in JSON format will be base64 encoded by the CACAO Producer
-  creating the playbook and stored as a string in the `content_b64` field of an
+  creating the playbook and stored as a string in the `command_b64` field of an
   OpenC2 command object.
 
 - The base64-encoded content will be passed to the specified OpenC2 CACAO agent
