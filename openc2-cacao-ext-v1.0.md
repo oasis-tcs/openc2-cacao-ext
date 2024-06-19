@@ -213,7 +213,6 @@ The command type open vocabulary (`command-type-ov`) defined in Section 5.2 of
 | **Property Name** | **Data Type** | **Details** |
 |---|---|---|
 | **type** (required) | `string` | The value of this property **must** be `openc2` |
-| **command** (required) | `string` |  |
 | **command_b64** (required) | `string` | An OpenC2 command that is base64 encoded (see Section 4 of [RFC 4649]). |
 | **headers** (optional) | `dictionary` | This property contains headers to be passed to the OpenC2 agent providing message transfer functions. The key for each entry **MUST** be a `string` that uniquely identifies this header. The value for each key **MUST** be a `list` of `string`. |
 | **step_variables** | `dictionary` | The `step_variables` for an `openc2` command **MUST** include an agent for message transfer. That agent **MUST** be one of `mqtt-broker` or `http-api`. |
