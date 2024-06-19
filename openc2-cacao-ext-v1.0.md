@@ -99,16 +99,19 @@ For complete copyright information please see the full Notices section in an App
 - [4 OpenC2 CACAO Agents and Targets](#4-openc2-cacao-agents-and-targets)
   - [4.1 OpenC2 CACAO Agents](#41-openc2-cacao-agents)
     - [4.1.1 MQTT Broker Agent](#411-mqtt-broker-agent)
-    - [4.1.2 HTTPS Agent](#412-https-agent)
+    - [4.1.2 OpenC2 HTTP-API Agent](#412-openc2-http-api-agent)
   - [4.2 OpenC2 CACAO Targets](#42-openc2-cacao-targets)
 - [5 Standard Playbook Variables](#5-standard-playbook-variables)
   - [5.1 `__mqtt-topics__` Variable](#51-__mqtt-topics__-variable)
+  - [5.2 `__http-endpoints__` Variable](#52-__http-endpoints__-variable)
 - [6 Conformance](#6-conformance)
 - [Appendix A. References](#appendix-a-references)
   - [A.1 Normative References](#a1-normative-references)
   - [A.2 Informative References](#a2-informative-references)
 - [Appendix B. Safety, Security and Privacy Considerations](#appendix-b-safety-security-and-privacy-considerations)
 - [Appendix C. Acknowledgments](#appendix-c-acknowledgments)
+  - [C.1 Special Thanks](#c1-special-thanks)
+  - [C.2 Participants](#c2-participants)
 - [Appendix D. Revision History](#appendix-d-revision-history)
 - [Appendix E. Use Cases and Examples](#appendix-e-use-cases-and-examples)
   - [E.1 Use Cases](#e1-use-cases)
@@ -121,8 +124,6 @@ For complete copyright information please see the full Notices section in an App
     - [E.2.2 OpenC2 Multiple Consumer Command / Response via MQTT](#e22-openc2-multiple-consumer-command--response-via-mqtt)
     - [E.2.3 OpenC2 Command / Response via HTTPS](#e23-openc2-command--response-via-https)
 - [Appendix F. Notices](#appendix-f-notices)
-
-
 
 
 -------
