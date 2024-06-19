@@ -395,7 +395,7 @@ particular:
 
 - The URL for destinations (i.e., OpenC2 consumers) MUST use the URI scheme
   specified in Section 3.2.2 of the [[OpenC2 HTTPS Transfer Protocol
-  Specification](#openc2-https-v11)].
+  Specification](#openc2-https-v11)] i.e., `https://<consumer address>/.well-known/openc2`).
 
 The `__http-endpoints__` variable (see
 [Section&nbsp;5.2](#52-__http_endpoints__-variable)) is used to pass the desired
