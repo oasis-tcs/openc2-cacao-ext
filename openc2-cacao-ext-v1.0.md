@@ -163,11 +163,13 @@ Introductory text.
 
 ## 2.2 CACAO Vocabulary Modifications
 
-- `command-type-ov` is extended with the type `openc2`.
+- `command-type-ov` is extended with the type `openc2` (see [Section&nbsp;3.1](#31-openc2-command-action-step))
 - Command type `openc2-http` is deprecated in favor of the non-transport specific `openc2` command type
 - `agent-target-type-ov` "Devices and Equipment" vocabulary is extended with the following types:
-  -  `openc2-mqtt` agent type for message transfer via MQTT
-  -  `openc2-https` agent type for message transfer via HTTPS
+  -  `openc2-mqtt` agent type for message transfer via MQTT (see [Section&nbsp;4.1.1](#411-mqtt-agent))
+  -  `openc2-https` agent type for message transfer via HTTPS (see [Section&nbsp;4.1.2](#412-https-agent)
+- `variable-type-ov` is extended with the following types
+  - `topic-list` to identify publish / subscribe topics to which a message should be published (see [Section&nbsp;5.1](#51-__mqtt-topics__-variable))
 
 
 ---
@@ -313,9 +315,11 @@ CACAO agents for OpenC2 correspond to OpenC2 transfer specifications. Each type
 of OpenC2 CACAO agent supports the use of one transfer protocol for sending
 OpenC2 commands and receiving OpenC2 responses.
 
-### 4.1.1 MQTT Agents
+### 4.1.1 MQTT Agent
 
-### 4.1.2 HTTPS Agents
+
+
+### 4.1.2 HTTPS Agent
 
 ## 4.2 OpenC2 CACAO Targets
 
