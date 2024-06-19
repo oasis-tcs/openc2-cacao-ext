@@ -380,7 +380,7 @@ and Equipment" subcategory is extended as follows:
 
 | **Type**    |                                     **Description**                                   |
 |-------------|:--------------------------------------------------------------------------------------|
-| `oc2-http-api` | A agent capable of transferring OpenC2 commands to one or more specified endpoints per requirements of the OASIS [[OpenC2 HTTPS Transfer Protocol Specification](#openc2-https-v11)].|
+| `oc2-http-api` | An agent capable of transferring OpenC2 commands to one or more specified endpoints per requirements of the OASIS [[OpenC2 HTTPS Transfer Protocol Specification](#openc2-https-v11)].|
 
 The `oc2-http-api` agent is an extension of the CACAO `http-api` agent to
 address the particular requirements for handling OpenC2 messages defined in the
