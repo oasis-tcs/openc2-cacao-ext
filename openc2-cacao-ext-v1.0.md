@@ -317,7 +317,7 @@ OpenC2 commands and receiving OpenC2 responses.
 
 ### 4.1.1 MQTT Broker Agent
 
-An `mqtt-broker` agent type supports publish / subscribe communications via the OASIS MQTT v5 protocol.
+An `mqtt-broker` agent type supports publish / subscribe communications via the OASIS [[MQTT v5](#mqtt-v50)] protocol. This agent is not specific to OpenC2 but when used for sending and receiving OpenC2 messages its use should conform to the OpenC2 [[MQTT Transfer Specification](#openc2-mqtt-v10)]. In particular, topics passed to this agent for transmitting OpenC2 messages MUST conform to the .
 
 
 ### 4.1.2 HTTPS Agent
@@ -416,7 +416,7 @@ CACAO Security Playbooks Version 2.0. Edited by Bret Jordan and Allan Thomson. 2
 
 ###### [mqtt-v5.0]
 
-MQTT Version 5.0. Edited by Andrew Banks, Ed Briggs, Ken Borgendale, and Rahul Gupta. 15 May 2018. OASIS Committee Specification 02. http://docs.oasis-open.org/mqtt/mqtt/v5.0/cs02/mqtt-v5.0-cs02.html. Latest version: http://docs.oasis-open.org/mqtt/mqtt/v5.0/mqtt-v5.0.html.
+MQTT Version 5.0. Edited by Andrew Banks, Ed Briggs, Ken Borgendale, and Rahul Gupta. 07 March 2019. OASIS Standard. https://docs.oasis-open.org/mqtt/mqtt/v5.0/os/mqtt-v5.0-os.html. Latest version: https://docs.oasis-open.org/mqtt/mqtt/v5.0/mqtt-v5.0.html.
 
 ###### [OpenC2-Lang-v1.1]
 
