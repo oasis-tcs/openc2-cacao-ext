@@ -250,7 +250,7 @@ _The IDs used in this example are notional and for illustrative purposes, they d
   "step_variables": {
     "__http-endpoints__:value": {
         "ipv4" : ["11.22.33.44", "55.66.77.88"]
-      },
+    },
   }
 }
 ```
