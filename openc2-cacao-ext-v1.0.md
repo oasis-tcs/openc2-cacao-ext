@@ -210,10 +210,14 @@ In addition to the inherited properties of a command object defined
 in Section 5.1 of [[CACAO v2.0](#cacao-security-playbooks-v20)], this section
 defines the following additional properties that are valid for this type.
 
+***
+
 > **To-Do:** Should `content_b64` be changed to `command_b64` for consistency
 > with virtually all other CACAO command objects?  Opened [issue in CACAO
 > repo](https://github.com/oasis-tcs/cacao/issues/12); using `command_b64` for
 > now.
+
+***
 
 | **Property Name** | **Data Type** | **Details** |
 |---|---|---|
@@ -320,16 +324,24 @@ context of a CACAO playbook being executed by a CACAO Consumer are:
 - The OpenC2 CACAO agent will accept transfer-encoded responses from the OpenC2
   CACAO target.
 
+***
+
 > **To-Do:** what happens to responses once they are accepted by the OpenC2 CACAO
 > agent? Are they base64 encoded? Where do they go? How are they represented
 > back to the CACAO Consumer to support any decision(s) that are dependent on
 > the response(s)?
 
+***
+
 ## 3.3 Invoking OpenC2 via Playbook Action Step
+
+***
 
 > **To-Do:** How much complexity is worthwhile here?
 > - Selection of agent based on values in __mqtt-topics__ or __http-endpoints__?
 > - Selection of targets based on _something_ that identifies the desired AP?
+
+***
 
 ---
 
@@ -393,10 +405,13 @@ _The IDs used in this example are notional and for illustrative purposes, they d
   }
 }
 ```
+
+***
+
 > **To-Do:** Should we define a new `security-category-ov` entry `message-broker`
 > or is `server` sufficient?
 
-
+***
 
 ### 4.1.2 OpenC2 HTTP-API Agent
 
@@ -452,17 +467,23 @@ _The IDs used in this example are notional and for illustrative purposes, they d
   }
 }
 ```
+***
 
 > **To-Do:** Should we define a new `security-category-ov` entry `oc2-consumer`
 > or is `server` sufficient?
+
+***
 
 ## 4.2 OpenC2 CACAO Targets
 
 OpenC2 CACAO Targets correspond to OpenC2 Actuator Specifications.
 
-> **To-Do:** determine what, if anything, needs to be defined beyond the correlation of APs and CACAO Targets.
+***
 
+> **To-Do:** determine what, if anything, needs to be defined beyond the correlation of APs and CACAO Targets.<br>
 > **To-Do:** provide examples of CACAO targets for OpenC2 APs
+
+***
 
 # 5 Standard Playbook Variables
 
