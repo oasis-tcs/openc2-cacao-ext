@@ -436,7 +436,7 @@ particular:
 
 - The URL for destinations (i.e., OpenC2 consumers) MUST use the URI scheme
   specified in Section 3.2.2 of the [[OpenC2 HTTPS Transfer Protocol
-  Specification](#openc2-https-v11)] i.e., `https://<consumer address>/.well-known/openc2`).
+  Specification](#openc2-https-v11)] (i.e., `https://<consumer address>/.well-known/openc2`).
 
 The `__http-endpoints__` variable (see
 [Section&nbsp;5.2](#52-__http-endpoints__-variable)) is used to pass the desired
@@ -449,7 +449,7 @@ defines the following additional properties that are valid for this type.
 | **Property Name**                  |      **Data Type**     | **Details**                                          |
 |------------------------------------|------------------------|------------------------------------------------------|
 | **type** (required)                | `string`               | The value of this property **MUST** be `oc2-http-api` |
-| **address** (required)             | `dictionary`           | The destination(s) for transfer of this OpenC2 command. The values for `address` are taken from the `http_endpoints__` variable |
+| **address** (required)             | `dictionary`           | The destination(s) for transfer of this OpenC2 command. The values for `address` are taken from the `__http_endpoints__` variable |
 | **authentication_info** (optional) | `identifier`           | This property contains an ID reference to a CACAO `authentication-info` object that is stored at the Playbook level in the **`authentication_info_definitions`** property.<br><br>The ID **MUST** reference a CACAO `authentication-info` object (see section 6 of the [[CACAO v2.0 Specification](#cacao-security-playbooks-v20)]). |
 | **category** (optional)            | `list` of `open-vocab` | One or more identified categories of security infrastructure types that this agent represents (see section 7.11.1 of the [[CACAO v2.0 Specification](#cacao-security-playbooks-v20)]).<br><br>The value for this property **SHOULD** come from the `security-category-type-ov` vocabulary. |
 
