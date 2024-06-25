@@ -343,7 +343,15 @@ Rescorla, E. and B. Korver, "Guidelines for Writing RFC Text on Security Conside
 
 # Appendix B. Safety, Security and Privacy Considerations
 
-> NOTE: Reference the related sections in the OpenC2 Architecture Specification and CACAO v2.0 Playbook Specification
+OpenC2, as a cyber defense automation tool, is high-value target for adversaries
+attempting to exploit an environment where it is used. Appendix B of the OpenC2
+Architecture Specification [[OpenC2-Arch-v1.0](#openc2-arch-v10)] discusses:
+
+- Threats to OpenC2
+- Applying security services to OpenC2 operations
+- Network topology considerations for OpenC2 messages
+
+Refer to that document for a review of these topics in the context of OpenC2.
 
 
 -------
