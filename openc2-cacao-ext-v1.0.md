@@ -98,10 +98,13 @@ For complete copyright information please see the full Notices section in an App
   - [3.3 Invoking OpenC2 via Playbook Action Step](#33-invoking-openc2-via-playbook-action-step)
 - [4 OpenC2 CACAO Agents and Targets](#4-openc2-cacao-agents-and-targets)
   - [4.1 OpenC2 CACAO Agents](#41-openc2-cacao-agents)
-    - [4.1.1 MQTT Agents](#411-mqtt-agents)
-    - [4.1.2 HTTPS Agents](#412-https-agents)
+    - [4.1.1 MQTT Broker Agent](#411-mqtt-broker-agent)
+    - [4.1.2 OpenC2 HTTP-API Agent](#412-openc2-http-api-agent)
   - [4.2 OpenC2 CACAO Targets](#42-openc2-cacao-targets)
-- [5 Conformance](#5-conformance)
+- [5 Standard Playbook Variables](#5-standard-playbook-variables)
+  - [5.1 `__mqtt-topics__` Variable](#51-__mqtt-topics__-variable)
+  - [5.2 `__http-endpoints__` Variable](#52-__http-endpoints__-variable)
+- [6 Conformance](#6-conformance)
 - [Appendix A. References](#appendix-a-references)
   - [A.1 Normative References](#a1-normative-references)
   - [A.2 Informative References](#a2-informative-references)
@@ -221,30 +224,182 @@ Actuator Profile concept. The logical flow is as follows:
 
 ## 2.2 CACAO Vocabulary Modifications
 
-This extension specification defines the following modifications to the
-vocabularies defined in the [[CACAO Security
-Playbooks](#cacao-security-playbooks-v20)] specification.
-
-* `command-type-ov` is extended with the type `openc2`.
-* Command type `openc2-http` is deprecated in favor of the non-transport
-  specific `openc2` command type
-* `agent-target-type-ov` "Devices and Equipment" vocabulary is extended with the
-  following types:
-  * `openc2-mqtt`: agent type for message transfer via MQTT
-  * `openc2-https`: agent type for message transfer via HTTPS
+- `command-type-ov` is extended with the type `openc2` (see [Section&nbsp;3.1](#31-openc2-command-action-step))
+- Command type `openc2-http` is deprecated in favor of the non-transport specific `openc2` command type
+- `agent-target-type-ov` "Devices and Equipment" vocabulary is extended with the following types:
+  -  `mqtt-broker` agent type for message transfer via MQTT (see [Section&nbsp;4.1.1](#411-mqtt-broker-agent))
+  -  `openc2-https` agent type for message transfer via HTTPS (see [Section&nbsp;4.1.2](#412-https-agent)
+- `variable-type-ov` is extended with the following types
+  - `topic-list` to identify publish / subscribe topics to which a message should be published (see [Section&nbsp;5.1](#51-__mqtt-topics__-variable))
 
 
 ---
 
 # 3 OpenC2 Commands In CACAO
 
+This section describes the implementation of OpenC2 commands under CACAO,
+including the format and processing of an `openc2 ` command object, the handling
+of base64 encoding and decoding, and the invocation of OpenC2 via `openc2`
+command objects in a subordinate playbook.
+
+This specification recommends deprecating CACAO's `openc2-http` command type in
+favor of the transport-neutral `openc2` command type defined here, in keeping
+with OpenC2's intent for the language to be defined in a transport-independent
+manner.
+
 
 ## 3.1 OpenC2 Command Action Step
 
+> NOTE: Copied in the `openc2-http` command from the CACAO v2.0 spec as a
+> starting point
+
+The `openc2` command represents a command that is intended to be processed via
+an OpenC2 Consumer. The delivery of the command and specification of transfer
+mechanism and desired OpenC2 AP are handled by defining appropriate CACAO agents
+and targets. The command type open vocabulary (`command-type-ov`) defined in Section 5.2 of
+[[CACAO v2.0](#cacao-security-playbooks-v20)] is extended with the new value
+`openc2`:
+
+| **Command Type**    |                                         **Description**                                   |
+|---------------------|:------------------------------------------------------------------------------------------|
+| `openc2`            | An OpenC2 command to be transmitted to an OpenC2 Consumer via an OpenC2 transfer protocol.|
+
+In addition to the inherited properties of a command object defined
+in Section 5.1 of [[CACAO v2.0](#cacao-security-playbooks-v20)], this section
+defines the following additional properties that are valid for this type.
+
+***
+
+> **To-Do:** Should `content_b64` be changed to `command_b64` for consistency
+> with virtually all other CACAO command objects?  Opened [issue in CACAO
+> repo](https://github.com/oasis-tcs/cacao/issues/12); using `command_b64` for
+> now.
+
+***
+
+| **Property Name** | **Data Type** | **Details** |
+|---|---|---|
+| **type** (required) | `string` | The value of this property **must** be `openc2` |
+| **command_b64** (required) | `string` | An OpenC2 command that is base64 encoded (see Section 4 of [RFC 4649]). |
+| **step_variables** | `dictionary` | The common workflow `step_variables` property for an `openc2` command **MUST** include an agent for message transfer. That agent **MUST** be one of `mqtt-broker` or `http-api`. |
+
+**Example 3.1 (OpenC2 Command, transfer via MQTT)**<br>
+_The IDs used in this example are notional and for illustrative purposes, they do not represent real objects._
+
+```json
+{
+  "type": "openc2",
+  "command_b64": "ewogICJoZWFkZXJzIjogewogICAgInJlcXVlc3RfaWQiOiAiZDFhYzA0ODktZWQ1MS00MzQ1LTkxNzUtZjMwNzhmMzBhZmU1IiwKICAgICJjcmVhdGVkIjogMTU0NTI1NzcwMDAwMCwKICAgICJmcm9tIjogIm9jMnByb2R1Y2VyLmNvbXBhbnkubmV0IiwKICAgICJ0byI6IFsKICAgICAgIm9jMmNvbnN1bWVyLmNvbXBhbnkubmV0IgogICAgXQogIH0sCiAgImJvZHkiOiB7CiAgICAib3BlbmMyIjogewogICAgICAicmVxdWVzdCI6IHsKICAgICAgICAiYWN0aW9uIjogImRlbnkiLAogICAgICAgICJ0YXJnZXQiOiB7CiAgICAgICAgICAiaXB2NF9jb25uZWN0aW9uIjogewogICAgICAgICAgICAicHJvdG9jb2wiOiAidGNwIiwKICAgICAgICAgICAgInNyY19hZGRyIjogIjEuMi4zLjQiLAogICAgICAgICAgICAic3JjX3BvcnQiOiAxMDk5NiwKICAgICAgICAgICAgImRzdF9hZGRyIjogIjE5OC4yLjMuNCIsCiAgICAgICAgICAgICJkc3RfcG9ydCI6IDgwCiAgICAgICAgICB9CiAgICAgICAgfSwKICAgICAgICAiYXJncyI6IHsKICAgICAgICAgICJzdGFydF90aW1lIjogMTUzNDc3NTQ2MDAwMCwKICAgICAgICAgICJkdXJhdGlvbiI6IDUwMCwKICAgICAgICAgICJyZXNwb25zZV9yZXF1ZXN0ZWQiOiAiYWNrIiwKICAgICAgICAgICJzbHBmIjogewogICAgICAgICAgICAiZHJvcF9wcm9jZXNzIjogIm5vbmUiCiAgICAgICAgICB9CiAgICAgICAgfSwKICAgICAgICAicHJvZmlsZSI6ICJzbHBmIgogICAgICB9CiAgICB9CiAgfQp9",
+  "agent": "mqtt-broker--7125c6f6-7f78-4a3d-8a43-f20d20632305",
+  "step_variables": {
+    "__mqtt-topics__:value": ["oc2/cmd/ap/pf","oc2/cmd/ap/edr"]
+  }
+}
+```
+
+**Example 3.2 (OpenC2 Command, transfer via HTTPS)**<br>
+_The IDs used in this example are notional and for illustrative purposes, they do not represent real objects._
+
+```json
+{
+  "type": "openc2",
+  "command_b64": "ewogICJoZWFkZXJzIjogewogICAgInJlcXVlc3RfaWQiOiAiZDFhYzA0ODktZWQ1MS00MzQ1LTkxNzUtZjMwNzhmMzBhZmU1IiwKICAgICJjcmVhdGVkIjogMTU0NTI1NzcwMDAwMCwKICAgICJmcm9tIjogIm9jMnByb2R1Y2VyLmNvbXBhbnkubmV0IiwKICAgICJ0byI6IFsKICAgICAgIm9jMmNvbnN1bWVyLmNvbXBhbnkubmV0IgogICAgXQogIH0sCiAgImJvZHkiOiB7CiAgICAib3BlbmMyIjogewogICAgICAicmVxdWVzdCI6IHsKICAgICAgICAiYWN0aW9uIjogImRlbnkiLAogICAgICAgICJ0YXJnZXQiOiB7CiAgICAgICAgICAiaXB2NF9jb25uZWN0aW9uIjogewogICAgICAgICAgICAicHJvdG9jb2wiOiAidGNwIiwKICAgICAgICAgICAgInNyY19hZGRyIjogIjEuMi4zLjQiLAogICAgICAgICAgICAic3JjX3BvcnQiOiAxMDk5NiwKICAgICAgICAgICAgImRzdF9hZGRyIjogIjE5OC4yLjMuNCIsCiAgICAgICAgICAgICJkc3RfcG9ydCI6IDgwCiAgICAgICAgICB9CiAgICAgICAgfSwKICAgICAgICAiYXJncyI6IHsKICAgICAgICAgICJzdGFydF90aW1lIjogMTUzNDc3NTQ2MDAwMCwKICAgICAgICAgICJkdXJhdGlvbiI6IDUwMCwKICAgICAgICAgICJyZXNwb25zZV9yZXF1ZXN0ZWQiOiAiYWNrIiwKICAgICAgICAgICJzbHBmIjogewogICAgICAgICAgICAiZHJvcF9wcm9jZXNzIjogIm5vbmUiCiAgICAgICAgICB9CiAgICAgICAgfSwKICAgICAgICAicHJvZmlsZSI6ICJzbHBmIgogICAgICB9CiAgICB9CiAgfQp9",
+  "agent": "oc2-http-api--5ceccd83-8052-4d12-8b42-e941647867c7",
+  "step_variables": {
+    "__http-endpoints__:value": {
+        "ipv4" : ["11.22.33.44", "55.66.77.88"]
+    },
+  }
+}
+```
+
+The content of the above base64 command (**command\_b64**) in both of the above
+examples is the encoded version of the OpenC2 content that is shown below
+(decoded version). The command content is shown as text for illustration
+purposes only.
+
+```json
+{
+  "headers": {
+    "request_id": "d1ac0489-ed51-4345-9175-f3078f30afe5",
+    "created": 1545257700000,
+    "from": "oc2producer.company.net",
+    "to": [
+      "oc2consumer.company.net"
+    ]
+  },
+  "body": {
+    "openc2": {
+      "request": {
+        "action": "deny",
+        "target": {
+          "ipv4_connection": {
+            "protocol": "tcp",
+            "src_addr": "1.2.3.4",
+            "src_port": 10996,
+            "dst_addr": "198.2.3.4",
+            "dst_port": 80
+          }
+        },
+        "args": {
+          "start_time": 1534775460000,
+          "duration": 500,
+          "response_requested": "ack",
+          "slpf": {
+            "drop_process": "none"
+          }
+        },
+        "profile": "slpf"
+      }
+    }
+  }
+}
+```
 
 ## 3.2 Base64 Encoding and Decoding
 
+CACAO uses base64 encoding, as defined in Section 4 of [[RFC 4648](#rfc4648)], to
+preserve the integrity of complex commands and scripts, such as the example
+OpenC2 command shown in [Section&nbsp;3.1](#31-openc2-command-action-step). The
+default encoding for OpenC2 commands and responses is JSON, as defined in section 3.1.4 of the
+[[OpenC2 Language Specification](#openc2-lang-v11)]. The recommended conventions
+for the handling of base64 encoding of OpenC2 commands and responses in the
+context of a CACAO playbook being executed by a CACAO Consumer are:
+
+- OpenC2 commands in JSON format will be base64 encoded by the CACAO Producer
+  creating the playbook and stored as a string in the `command_b64` field of an
+  OpenC2 command object.
+
+- The base64-encoded content will be passed to the specified OpenC2 CACAO agent
+  when the OpenC2 command object is executed.
+
+- The OpenC2 CACAO agent will decode the base64-encoded content and re-encode in
+  the appropriate transfer encoding (e.g., JSON, CBOR) for transfer to the
+  Consumer identified by the specified OpenC2 CACAO target. The mechanism for
+  exchange of the the transfer-encoded command between agent and target is the
+  responsibility of the CACAO Consumer executing the playbook.
+
+- The OpenC2 CACAO agent will accept transfer-encoded responses from the OpenC2
+  CACAO target.
+
+***
+
+> **To-Do:** what happens to responses once they are accepted by the OpenC2 CACAO
+> agent? Are they base64 encoded? Where do they go? How are they represented
+> back to the CACAO Consumer to support any decision(s) that are dependent on
+> the response(s)?
+
+***
+
 ## 3.3 Invoking OpenC2 via Playbook Action Step
+
+***
+
+> **To-Do:** How much complexity is worthwhile here?
+> - Selection of agent based on values in __mqtt-topics__ or __http-endpoints__?
+> - Selection of targets based on _something_ that identifies the desired AP?
+
+***
 
 ---
 
@@ -252,23 +407,219 @@ Playbooks](#cacao-security-playbooks-v20)] specification.
 
 ## 4.1 OpenC2 CACAO Agents
 
-CACAO agents for OpenC2 correspond to OpenC2 transfer specifications. Each type of OpenC2 CACAO agent supports the use of one transfer protocol for sending OpenC2 commands and receiving OpenC2 responses.
+CACAO agents for OpenC2 correspond to OpenC2 transfer specifications. Each type
+of OpenC2 CACAO agent supports the use of one transfer protocol for sending
+OpenC2 commands and receiving OpenC2 responses.
 
-### 4.1.1 MQTT Agents
+### 4.1.1 MQTT Broker Agent
 
-### 4.1.2 HTTPS Agents
+An `mqtt-broker` agent type supports publish / subscribe communications via the
+OASIS [[MQTT v5](#mqtt-v50)] protocol. The CACAO `agent-target-type-ov` "Devices
+and Equipment" subcategory is extended as follows:
+
+| **Type**    |                                     **Description**                                   |
+|-------------|:--------------------------------------------------------------------------------------|
+| `mqtt-broker` | A publish/subscribe message transfer agent conforming to the OASIS MQTT v5.0 protocol.|
+
+The `mqtt-broker` agent is not specific to OpenC2 but when used for sending and
+receiving OpenC2 messages its use MUST conform to the [[OpenC2 MQTT Transfer
+Specification](#openc2-mqtt-v10)]. In particular:
+
+- Topics for message publication passed to this agent for transmitting OpenC2
+messages MUST conform to the default topic structure specified in
+Section&nbsp;2.2 of the OpenC2 MQTT Transfer Specification.
+
+- A CACAO `mqtt-broker` agent in an environment using OpenC2 MUST subscribe to
+the response topics specified in Section&nbsp;2.2 of the OpenC2 MQTT Transfer Specification.
+
+The `__mqtt-topics__` variable (see
+[Section&nbsp;5.1](#51-__mqtt-topics__-variable)) is used to pass the
+requested topic(s) for publishing a message to an `mqtt-broker` agent.
+
+This type defines an MQTT Broker agent object and is used for messages to be
+transmitted via MQTT. In addition to the inherited properties, this section
+defines the following additional properties that are valid for this type.
+
+| **Property Name**                  |      **Data Type**     | **Details**                                          |
+|------------------------------------|------------------------|------------------------------------------------------|
+| **type** (required)                | `string`               | The value of this property **MUST** be `mqtt-broker` |
+| **address** (required)             | `dictionary`           | The key for each entry in the dictionary **MUST** be a string that uniquely identifies one or more address types. The key(s) MUST be one of the following values `dname` (domain name), `ipv4`, `ipv6`, `l2mac`, `vlan`, or `url`. The dictionary value associated with each key **MUST** be a `list` of `string` that contains the corresponding address(es) for that particular key type.<br><br>The `address` dictionary for an `mqtt-broker` agent **MUST** specify only a single address for the broker to be used. |
+| **authentication_info** (optional) | `identifier`           | This property contains an ID reference to a CACAO `authentication-info` object that is stored at the Playbook level in the **`authentication_info_definitions`** property.<br><br>The ID **MUST** reference a CACAO `authentication-info` object (see section 6 of the [[CACAO v2.0 Specification](#cacao-security-playbooks-v20)]). |
+| **category** (optional)            | `list` of `open-vocab` | One or more identified categories of security infrastructure types that this agent represents (see section 7.11.1 of the [[CACAO v2.0 Specification](#cacao-security-playbooks-v20)]).<br><br>The value for this property **SHOULD** come from the `security-category-type-ov` vocabulary. |
+
+
+**Example 4.1.1 (MQTT Broker Agent)**<br>
+_The IDs used in this example are notional and for illustrative purposes, they do not represent real objects._
+```json
+"agent_definitions": {
+  "mqtt-broker--7125c6f6-7f78-4a3d-8a43-f20d20632305": {
+    "type": "mqtt-broker",
+    "name": "mqtt.example.com",
+    "description": "An MQTT pub/sub broker for company example dot com",
+    "address": {
+      "url": ["https://mqtt.example.com"]
+    },
+    "category": "server"
+  }
+}
+```
+
+***
+
+> **To-Do:** Should we define a new `security-category-ov` entry `message-broker`
+> or is `server` sufficient?
+
+***
+
+### 4.1.2 OpenC2 HTTP-API Agent
+
+An `oc2-http-api` agent type supports point-to-point communications via the
+HTTP or HTTPS protocol. The CACAO `agent-target-type-ov` "Devices
+and Equipment" subcategory is extended as follows:
+
+| **Type**    |                                     **Description**                                   |
+|-------------|:--------------------------------------------------------------------------------------|
+| `oc2-http-api` | An agent capable of transferring OpenC2 commands to one or more specified endpoints per requirements of the OASIS [[OpenC2 HTTPS Transfer Protocol Specification](#openc2-https-v11)].|
+
+The `oc2-http-api` agent is an extension of the CACAO `http-api` agent to
+address the particular requirements for handling OpenC2 messages defined in the
+[[OpenC2 HTTPS Transfer Protocol Specification](#openc2-https-v11)]. In
+particular:
+
+- The preferred transfer protocols is HTTPS.
+
+- The HTTP message MUST begin with the headers:
+  - `POST /.well-known/openc2 HTTP/1.1`
+  - `Content-type: application/openc2+json;version=1.0`
+
+- The URL for destinations (i.e., OpenC2 consumers) MUST use the URI scheme
+  specified in Section 3.2.2 of the [[OpenC2 HTTPS Transfer Protocol
+  Specification](#openc2-https-v11)] (i.e., `https://<consumer address>/.well-known/openc2`).
+
+The `__http-endpoints__` variable (see
+[Section&nbsp;5.2](#52-__http-endpoints__-variable)) is used to pass the desired
+destinations for transferring an OpenC2 message to an `oc2-http-api` agent.
+
+This type defines an OpenC2 HTTP-API agent object and is used for messages to be
+transmitted via HTTP(S). In addition to the inherited properties, this section
+defines the following additional properties that are valid for this type.
+
+| **Property Name**                  |      **Data Type**     | **Details**                                          |
+|------------------------------------|------------------------|------------------------------------------------------|
+| **type** (required)                | `string`               | The value of this property **MUST** be `oc2-http-api` |
+| **address** (required)             | `dictionary`           | The destination(s) for transfer of this OpenC2 command. The values for `address` are taken from the `__http_endpoints__` variable |
+| **authentication_info** (optional) | `identifier`           | This property contains an ID reference to a CACAO `authentication-info` object that is stored at the Playbook level in the **`authentication_info_definitions`** property.<br><br>The ID **MUST** reference a CACAO `authentication-info` object (see section 6 of the [[CACAO v2.0 Specification](#cacao-security-playbooks-v20)]). |
+| **category** (optional)            | `list` of `open-vocab` | One or more identified categories of security infrastructure types that this agent represents (see section 7.11.1 of the [[CACAO v2.0 Specification](#cacao-security-playbooks-v20)]).<br><br>The value for this property **SHOULD** come from the `security-category-type-ov` vocabulary. |
+
+
+**Example 4.1.1 (OpenC2 HTTP-API)**<br>
+_The IDs used in this example are notional and for illustrative purposes, they do not represent real objects._
+```json
+"agent_definitions": {
+  "oc2-http-api--5ceccd83-8052-4d12-8b42-e941647867c7": {
+    "type": "oc2-http-api",
+    "name": "p2p.example.com",
+    "description": "An MQTT pub/sub broker for company example dot com",
+    "address": "__http-endpoints__:value",
+    "category": "server"
+  }
+}
+```
+***
+
+> **To-Do:** Should we define a new `security-category-ov` entry `oc2-consumer`
+> or is `server` sufficient?
+
+***
 
 ## 4.2 OpenC2 CACAO Targets
 
 OpenC2 CACAO Targets correspond to OpenC2 Actuator Specifications.
 
-> NOTE: determine what, if anything, needs to be defined beyond the correlation of APs and CACAO Targets.
+***
 
-> NOTE: provide examples of CACAO targets for OpenC2 APs
+> **To-Do:** determine what, if anything, needs to be defined beyond the correlation of APs and CACAO Targets.<br>
+> **To-Do:** provide examples of CACAO targets for OpenC2 APs
+
+***
+
+# 5 Standard Playbook Variables
+
+A set of standard CACAO variables are defined for use when invoking an MQTT
+broker or OpenC2 HTTP API agent to handle message transfer. These CACAO
+variables are playbook variables whose values can be set internally via an
+`openc2` command object or from a `playbook-action` step in a calling playbook
+and accessed by the appropriate agent.
+
+## 5.1 `__mqtt-topics__` Variable
+
+The `__mqtt-topics__` variable is used to convey a list of MQTT topics onto
+which a message should be published. The `mqtt-broker` agent is general purpose
+and not limited to sending and receiving OpenC2 commands and responses, however
+when employed for that purpose the topics specified as `__mqtt-topics__:value`
+should conform to the topic structure guidance in Section&nbsp;2.2 of the
+[[OpenC2 MQTT Transfer Specification](#openc2-mqtt-v10)].
+
+The `variable-type-ov` is extended as follows:
+
+| Vocabulary Value | Description                                                                                                                                                                                                      | Examples                                                             |
+|------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|----------------------------------------------------------------------|
+| `topic-list`       | A list of strings that identify one or more publish / subscribe topics to which a message should be published. The format of the topic names should be appropriate to the messaging protocol being invoked.  | `"type": "topic-list",`<br>`"value": ["oc2/cmd/"]` |
+
+**Example 5.1 (`__mqtt-topics__`)**<br>
+_The IDs used in this example are notional and for illustrative purposes, they do not represent real objects._*_
+
+```json
+{
+  "type": "playbook",
+  …,
+  "playbook_variables": {
+    "__mqtt-topics__": {
+      "type": "topic-list",
+      "description": "Provides a list of topics to publish a message via an MQTT broker",
+      "value": ["oc2/cmd/ap/pf","oc2/cmd/ap/edr"],
+      "constant": false,
+      "external": true
+    }
+  }
+}
+```
+
+## 5.2 `__http-endpoints__` Variable
+
+The `__http_endpoints__` variable is used to convey a list of endpoints to an OpenC2 command should be published. 
+
+The `variable-type-ov` for `__http-endpoints__` MUST be `dictionary`. 
+
+The value of `__http-endpoints__` MUST be a `dictionary` of address(es) as
+defined for the CACAO `http-api` agent object (section 7.8 of the [[CACAO
+Playbooks](#cacao-security-playbooks-v20)] specification).
+
+**Example 5.2 (`__http-endpoints__`)**<br>
+*The IDs used in this example are notional and for illustrative purposes, they do not represent real objects.*
+
+```json
+{
+  "type": "playbook",
+  …,
+  "playbook_variables": {
+    "__http-endpoints__": {
+      "type": "dictionary",
+      "description": "A list of endpoints for delivery of an OpenC2 command via HTTP(S)",
+      "value": {
+        "url": ["https://oc2consumer.example.com"],
+        "ipv4" : ["11.22.33.44", "55.66.77.88"]
+      },
+      "constant": false,
+      "external": true
+    }
+  }
+}
+```
 
 -------
 
-# 5 Conformance
+# 6 Conformance
 <!-- Required section -->
 
 (Note: The [OASIS TC Process](https://www.oasis-open.org/policies-guidelines/tc-process#wpComponentsConfClause) requires that a specification approved by the TC at the Committee Specification Public Review Draft, Committee Specification or OASIS Standard level must include a separate section, listing a set of numbered conformance clauses, to which any implementation of the specification must adhere in order to claim conformance to the specification (or any optional portion thereof). This is done by listing the conformance clauses here.
@@ -306,6 +657,10 @@ Remove this note before submitting for publication.)
 
 CACAO Security Playbooks Version 2.0. Edited by Bret Jordan and Allan Thomson. 27 November 2023. OASIS Committee Specification 01. https://docs.oasis-open.org/cacao/security-playbooks/v2.0/cs01/security-playbooks-v2.0-cs01.html. Latest version: https://docs.oasis-open.org/cacao/security-playbooks/v2.0/security-playbooks-v2.0.html.
 
+###### [mqtt-v5.0]
+
+MQTT Version 5.0. Edited by Andrew Banks, Ed Briggs, Ken Borgendale, and Rahul Gupta. 07 March 2019. OASIS Standard. https://docs.oasis-open.org/mqtt/mqtt/v5.0/os/mqtt-v5.0-os.html. Latest version: https://docs.oasis-open.org/mqtt/mqtt/v5.0/mqtt-v5.0.html.
+
 ###### [OpenC2-Lang-v1.1]
 
 _Open Command and Control (OpenC2) Language Specification Version 1.1_. Edited by Duncan Sparrell and Toby Considine. Latest stage: https://docs.oasis-open.org/openc2/oc2ls/v1.1/oc2ls-v1.1.html
@@ -325,6 +680,10 @@ _Open Command and Control (OpenC2) Profile for Stateless Packet Filtering Versio
 ###### [RFC2119]
 
 Bradner, S., "Key words for use in RFCs to Indicate Requirement Levels", BCP 14, RFC 2119, DOI 10.17487/RFC2119, March 1997, http://www.rfc-editor.org/info/rfc2119.
+
+###### [RFC4648] 
+
+Josefsson, S., "The Base16, Base32, and Base64 Data Encodings", RFC 4648, DOI 10.17487/RFC4648, October 2006, <https://www.rfc-editor.org/info/rfc4648>.
 
 ###### [RFC8174]
 
