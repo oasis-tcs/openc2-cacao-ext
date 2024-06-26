@@ -130,9 +130,25 @@ For complete copyright information please see the full Notices section in an App
 
 # 1 Introduction
 
-<!-- All text is normative unless otherwise labeled -->
+_This section is non-normative._
 
-Introductory text.
+Collaborative Automated Course of Action Operations (CACAO) is a schema and
+taxonomy for cyber security playbooks. The [[CACAO Security
+Playbooks](#cacao-security-playbooks-v20)] specification describes how these
+playbooks can be created, documented, and shared in a structured and
+standardized way across organizational boundaries and technological solutions.
+
+OpenC2 is a suite of specifications that enables command and control of cyber
+defense systems and components. OpenC2 typically uses a request-response
+paradigm where a Command is encoded by a Producer (managing application) and
+transferred to a Consumer (managed device or virtualized function) using a
+secure transfer protocol, and the Consumer can respond with status and any
+requested information.
+
+This extension builds on existing CACAO v2.0 OpenC2 features to improve playbook
+modularity when using OpenC2 capabilities, and to utilize the current OpenC2
+Transfer Specifications for [[MQTT](#openc2-mqtt-v10)] and
+[[HTTPS](#openc2-https-v11)].
 
 
 ## 1.1 Glossary
@@ -141,7 +157,19 @@ Introductory text.
 
 ### 1.1.1 Definitions of terms
 
+The [[OpenC2 Architecture](#openc2-arch-v10)] and [[CACAO Security
+Playbooks](#cacao-security-playbooks-v20)] specifications should be consulted
+for the authoritative definition of terms used in this specification. A brief
+overview of relevant concepts and associated terminology from those
+specification is provided in [Section&nbsp;2.1](#21-key-concepts).
+
 ### 1.1.2 Acronyms and abbreviations
+
+| **Acronym** | **Expansion**                      |
+|:-----------:|------------------------------------|
+|      AP     | Actuator Profile                   |
+|    HTTPS    | Hypertext Transfer Protocol Secure |
+|             |                                    |
 
 ### 1.1.3 Document conventions
 
@@ -155,14 +183,44 @@ Introductory text.
 
 ## 2.1 Key Concepts
 
-- OpenC2 Command
--	OpenC2 Response
--	OpenC2 Actuator Profile
--	OpenC2 Transfer Specification
-- CACAO Action Step
-- CACAO Agent
-- CACAO Target
+_This section is non-normative._
 
+The following key concepts from OpenC2 and CACAO are applicable to this
+specification:
+
+* **OpenC2 Command:** An OpenC2 action-target pair, plus other optional
+  information, used to command an OpenC2 Consumer.
+
+* **OpenC2 Response:** An OpenC2 message sent from a Consumer to a Producer
+  reporting on the outcome of processing a Command.
+
+* **OpenC2 Actuator Profile:** A tailored  subset of the OpenC2 language plus
+  any extensions that specifies the use of OpenC2 to command a particular
+  function.
+
+* **OpenC2 Transfer Specification:** The description of how an existing standard
+  transfer protocol (e.g., MQTT, HTTPS) is used to send and receive OpenC2
+  commands and responses.
+
+* **CACAO Action Step:** This type of CACAO workflow step contains commands to
+  be executed.
+
+* **CACAO Playbook Action:** This type of CACAO workflow step executes a
+  referenced playbook using the agents and targets defined in the referenced
+  playbook.
+
+* **CACAO Agents and Targets:** CACAO agents are entities that execute commands
+  on or against CACAO targets.
+
+Both OpenC2 and CACAO employ the term "target" but the meanings differ. In this
+extension specification, the CACAO target is used to integrate the OpenC2
+Actuator Profile concept. The logical flow is as follows:
+
+* An OpenC2 command is defined in a CACAO playbook `openc2` action step
+* The `openc2` action step specifies a CACAO agent that supports the desired
+  transfer protocol
+* The `openc2` action step specifies a CACAO target that represents the AP that
+  should process the command.
 
 ## 2.2 CACAO Vocabulary Modifications
 
@@ -644,7 +702,15 @@ Rescorla, E. and B. Korver, "Guidelines for Writing RFC Text on Security Conside
 
 # Appendix B. Safety, Security and Privacy Considerations
 
-> NOTE: Reference the related sections in the OpenC2 Architecture Specification and CACAO v2.0 Playbook Specification
+OpenC2, as a cyber defense automation tool, is high-value target for adversaries
+attempting to exploit an environment where it is used. Appendix B of the OpenC2
+Architecture Specification [[OpenC2-Arch-v1.0](#openc2-arch-v10)] discusses:
+
+- Threats to OpenC2
+- Applying security services to OpenC2 operations
+- Network topology considerations for OpenC2 messages
+
+Refer to that document for a review of these topics in the context of OpenC2.
 
 
 -------
