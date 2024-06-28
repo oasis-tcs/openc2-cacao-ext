@@ -91,6 +91,7 @@ For complete copyright information please see the full Notices section in an App
     - [1.1.3 Document conventions](#113-document-conventions)
 - [2 Key Concepts \& Vocabularies](#2-key-concepts--vocabularies)
   - [2.1 Key Concepts](#21-key-concepts)
+    - [2.1.1 Producers and Consumers](#211-producers-and-consumers)
   - [2.2 CACAO Vocabulary Modifications](#22-cacao-vocabulary-modifications)
 - [3 OpenC2 Commands In CACAO](#3-openc2-commands-in-cacao)
   - [3.1 OpenC2 Command Action Step](#31-openc2-command-action-step)
@@ -258,7 +259,7 @@ specification:
 The specific extended values are:
 
 - `command-type-ov` is extended with the type `openc2` (see [Section&nbsp;3.1](#31-openc2-command-action-step))
-- Command type `openc2-http` is deprecated in favor of the non-transport specific `openc2` command type
+  - Command type `openc2-http` is deprecated in favor of the non-transport specific `openc2` command type
 - `agent-target-type-ov` "Devices and Equipment" vocabulary is extended with the following types:
   -  `mqtt-broker` agent type for message transfer via MQTT (see [Section&nbsp;4.1.1](#411-mqtt-broker-agent))
   -  `openc2-https` agent type for message transfer via HTTPS (see [Section&nbsp;4.1.2](#412-https-agent)
