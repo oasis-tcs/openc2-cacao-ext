@@ -69,7 +69,7 @@ When referencing this specification the following citation format should be used
 
 **[OpenC2-CACAO-ext-v1.0]**
 
-_CACAO OpenC2 Extension Version 1.0_. Edited by Duncan Sparrell. 08 May 2024. OASIS Committee Specification Draft 01. https://docs.oasis-open.org/openc2/openc2-cacao-ext/v1.0/csd01/openc2-cacao-ext-v1.0-csd01.html. Latest stage: https://docs.oasis-open.org/openc2/openc2-cacao-ext/v1.0/openc2-cacao-ext-v1.0.html.
+_CACAO OpenC2 Extension Version 1.0_. Edited by David Lemire. 08 May 2024. OASIS Committee Specification Draft 01. https://docs.oasis-open.org/openc2/openc2-cacao-ext/v1.0/csd01/openc2-cacao-ext-v1.0-csd01.html. Latest stage: https://docs.oasis-open.org/openc2/openc2-cacao-ext/v1.0/openc2-cacao-ext-v1.0.html.
 
 #### Notices
 Copyright © OASIS Open 2024. All Rights Reserved.
