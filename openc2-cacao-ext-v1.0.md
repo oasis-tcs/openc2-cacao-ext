@@ -228,9 +228,9 @@ different meanings. The following table identifies the relevant definitions,
 drawing on the CACAO v2.0 Specification and the OpenC2 Architecture
 Specification.
 
-|            |                                                                          **Producer**                                                                         |                                                                          **Consumer**                                                                          |
-|------------|:-------------------------------------------------------------------------------------------------------------------------------------------------------------|:--------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| **OpenC2** | An OpenC2 Producer is a manager application that sends Commands.                                                                                          | An OpenC2 Consumer is a managed device/application that receives commands.                                                                                  |
+|            | <center>**Producer**<center>| <center>**Consumer**</center> |
+|------------|:----------------------------|:------------------------------|
+| **OpenC2** | An OpenC2 Producer is a manager application that sends Commands. | An OpenC2 Consumer is a managed device/application that receives commands. |
 |  **CACAO** | A "CACAO 2.0 Producer" is any software that can create CACAO 2.0 content and conforms to the requirements of Section 11.1 of the CACAO Specification. | A "CACAO 2.0 Consumer" is any software that can consume CACAO 2.0 content and conforms to the requirements of Section 11.1 of the CACAO Specification. |
 
 Figure 2-1 illustrates how the concepts of producer and consumer apply when
