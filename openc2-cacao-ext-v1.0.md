@@ -221,6 +221,25 @@ Actuator Profile concept. The logical flow is as follows:
 * The `openc2` action step specifies a CACAO target that represents the AP that
   should process the command.
 
+### 2.1.1 Producers and Consumers
+
+Both OpenC2 and CACAO employ the terms "producer" and "consumer" but with
+different meanings. The following table identifies the relevant definitions,
+drawing on the CACAO v2.0 Specification and the OpenC2 Architecture
+Specification.
+
+|            |                                                                          **Producer**                                                                         |                                                                          **Consumer**                                                                          |
+|------------|:-------------------------------------------------------------------------------------------------------------------------------------------------------------|:--------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| **OpenC2** | An OpenC2 Producer is a manager application that sends Commands.                                                                                          | An OpenC2 Consumer is a managed device/application that receives commands.                                                                                  |
+|  **CACAO** | A "CACAO 2.0 Producer" is any software that can create CACAO 2.0 content and conforms to the requirements of Section 11.1 of the CACAO Specification. | A "CACAO 2.0 Consumer" is any software that can consume CACAO 2.0 content and conforms to the requirements of Section 11.1 of the CACAO Specification. |
+
+Figure 2-1 illustrates how the concepts of producer and consumer apply when
+OpenC2 commands are incorporated into CACAO playbooks.
+
+**Figure 2-1: Producer and Consumer Relationships**
+
+![Producer and Consumer Relationships](images/OC2-CACAO-P-and-C.drawio.png)
+
 ## 2.2 CACAO Vocabulary Modifications
 
 _This section is non-normative._
