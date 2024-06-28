@@ -169,7 +169,6 @@ specification is provided in [Section&nbsp;2.1](#21-key-concepts).
 |:-----------:|------------------------------------|
 |      AP     | Actuator Profile                   |
 |    HTTPS    | Hypertext Transfer Protocol Secure |
-|             |                                    |
 
 ### 1.1.3 Document conventions
 
@@ -223,6 +222,21 @@ Actuator Profile concept. The logical flow is as follows:
   should process the command.
 
 ## 2.2 CACAO Vocabulary Modifications
+
+_This section is non-normative._
+
+CACAO employs the concept of vocabularies to improve interoperability. Some
+CACAO vocabularies are "open" (designated by `<vocabulary-type>-ov`), which
+means that they contain suggested values but that types that employ open
+vocabularies can be extended with additional values if needed. This
+specification proposes extensions to several open vocabularies from the CACAO
+specification:
+
+- `command-type-ov` (CACAO Specification Section 5.2)
+- `agent-target-type-ov` (CACAO Specification Section 7.2)
+- `variable-type-ov` (CACAO Specification Section 10.18.4)
+
+The specific extended values are:
 
 - `command-type-ov` is extended with the type `openc2` (see [Section&nbsp;3.1](#31-openc2-command-action-step))
 - Command type `openc2-http` is deprecated in favor of the non-transport specific `openc2` command type
