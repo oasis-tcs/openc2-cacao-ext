@@ -224,6 +224,8 @@ Actuator Profile concept. The logical flow is as follows:
 
 ### 2.1.1 Producers and Consumers
 
+_This section is non-normative._
+
 Both OpenC2 and CACAO employ the terms "producer" and "consumer" but with
 different meanings. The following table identifies the relevant definitions,
 drawing on the CACAO v2.0 Specification and the OpenC2 Architecture
