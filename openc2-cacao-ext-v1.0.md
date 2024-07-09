@@ -565,10 +565,23 @@ The Property Names of registered OpenC2 APs are found in the [[OpenC2 Namespace 
 "openc2-profile" : "slpf"
 ```
 
+**Example 4.2 (OpenC2 Target)**<br>
+*The IDs used in this example are notional and for illustrative purposes, they do not represent real objects.*
+
+```json
+"target_definitions": {
+  "security-category--09b5b900-f333-41fd-9fdc-cb466e9b1f20": {
+    "type": "security-category",
+    "name": "OC2 Packet Filter",
+    "category": [ "openc2-consumer" ],
+    "openc2-profile" : "slpf"
+  }
+}
+```
+
 ***
 
 > **To-Do:** determine what, if anything, needs to be defined beyond the correlation of APs and CACAO Targets.<br>
-> **To-Do:** provide examples of CACAO targets for OpenC2 APs
 
 ***
 
