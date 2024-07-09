@@ -229,6 +229,9 @@ Actuator Profile concept. The logical flow is as follows:
 - `agent-target-type-ov` "Devices and Equipment" vocabulary is extended with the following types:
   -  `mqtt-broker` agent type for message transfer via MQTT (see [Section&nbsp;4.1.1](#411-mqtt-broker-agent))
   -  `openc2-https` agent type for message transfer via HTTPS (see [Section&nbsp;4.1.2](#412-https-agent)
+  -  `openc2-profile` target type (see [Section&nbsp;4.2](#42-openc2-cacao-targets))
+-  `security-category-type-ov` is extended with the following types:
+   -  `openc2-consumer` (see [Section&nbsp;4.2](#42-openc2-cacao-targets))
 - `variable-type-ov` is extended with the following types
   - `topic-list` to identify publish / subscribe topics to which a message should be published (see [Section&nbsp;5.1](#51-__mqtt-topics__-variable))
 
@@ -534,7 +537,33 @@ _The IDs used in this example are notional and for illustrative purposes, they d
 
 ## 4.2 OpenC2 CACAO Targets
 
-OpenC2 CACAO Targets correspond to OpenC2 Actuator Specifications.
+OpenC2 CACAO Targets correspond to OpenC2 Actuator Profile (AP) specifications.
+An `openc2` command object SHOULD specify one or more CACAO targets to identify
+the OpenC2 APs to be invoked for the execution of the object's OpenC2 command.
+
+An OpenC2 CACAO target SHALL be of type `security-category` as defined in
+Section&nbsp;7.11 of the [[CACAO v2.0 Specification](#cacao-security-playbooks-v20)].
+The CACAO `security-category-type-ov` is extended as follows:
+
+| **Type**    |                                     **Description**                                   |
+|-------------|:--------------------------------------------------------------------------------------|
+| `openc2-consumer` | A category of CACAO targets representing OpenC2 Consumers supporting one or more OpenC2 APs|
+
+The `category` value of an OpenC2 CACAO target SHALL be set to `openc2-consumer`.
+
+The `security-category` target object is extended with a new field: `openc2-profile`. The resulting extended `security-category` target is structured as follows:
+
+| **Property Name**             |      **Data Type**     | **Details**                                          |
+|-------------------------------|------------------------|------------------------------------------------------|
+| **type** (required)           | `string`               | The value of this property **MUST** be `security-category`. |
+| **category** (required)       | `list` of `open-vocab` | The value for this property **MUST** be `openc2-consumer`. |
+| **openc2-profile** (required) | `string`               | The value for this property **SHOULD** be the "Property Name" of an OpenC2 AP. |
+
+The Property Names of registered OpenC2 APs are found in the [[OpenC2 Namespace Registry](#openc2-namespaces)]. For example an OpenC2 CACAO target for the Stateless Packet Filtering AP would specify the profile as follows:
+
+```json
+"openc2-profile" : "slpf"
+```
 
 ***
 
@@ -661,6 +690,10 @@ CACAO Security Playbooks Version 2.0. Edited by Bret Jordan and Allan Thomson. 2
 
 MQTT Version 5.0. Edited by Andrew Banks, Ed Briggs, Ken Borgendale, and Rahul Gupta. 07 March 2019. OASIS Standard. https://docs.oasis-open.org/mqtt/mqtt/v5.0/os/mqtt-v5.0-os.html. Latest version: https://docs.oasis-open.org/mqtt/mqtt/v5.0/mqtt-v5.0.html.
 
+###### [OpenC2-HTTPS-v1.1]
+
+_Specification for Transfer of OpenC2 Messages via HTTPS Version 1.1_. Edited by David Lemire. Latest stage: https://docs.oasis-open.org/openc2/open-impl-https/v1.1/open-impl-https-v1.1.html
+
 ###### [OpenC2-Lang-v1.1]
 
 _Open Command and Control (OpenC2) Language Specification Version 1.1_. Edited by Duncan Sparrell and Toby Considine. Latest stage: https://docs.oasis-open.org/openc2/oc2ls/v1.1/oc2ls-v1.1.html
@@ -669,9 +702,9 @@ _Open Command and Control (OpenC2) Language Specification Version 1.1_. Edited b
 
 Specification for Transfer of OpenC2 Messages via MQTT Version 1.0. Edited by David Lemire. 19 November 2021. OASIS Committee Specification 01. https://docs.oasis-open.org/openc2/transf-mqtt/v1.0/cs01/transf-mqtt-v1.0-cs01.html. Latest stage: https://docs.oasis-open.org/openc2/transf-mqtt/v1.0/transf-mqtt-v1.0.html
 
-###### [OpenC2-HTTPS-v1.1]
+###### [OpenC2-Namespaces]
 
-_Specification for Transfer of OpenC2 Messages via HTTPS Version 1.1_. Edited by David Lemire. Latest stage: https://docs.oasis-open.org/openc2/open-impl-https/v1.1/open-impl-https-v1.1.html
+_OpenC2 Namespace Registry_. <https://github.com/oasis-tcs/openc2-oc2arch/blob/published/namespace-registry.md>
 
 ###### [OpenC2-SLPF-v1.1]
 
