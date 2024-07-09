@@ -550,7 +550,9 @@ The CACAO `security-category-type-ov` is extended as follows:
 
 The `category` value of an OpenC2 CACAO target SHALL be set to `openc2-consumer`.
 
-The `security-category` target object is extended with a new field: `openc2-profile`. The resulting extended `security-category` target is structured as follows:
+The `security-category` target object is extended with a new property:
+`openc2-profile`. The resulting extended `security-category` target is
+structured as follows:
 
 | **Property Name**             |      **Data Type**     | **Details**                                          |
 |-------------------------------|------------------------|------------------------------------------------------|
@@ -558,7 +560,10 @@ The `security-category` target object is extended with a new field: `openc2-prof
 | **category** (required)       | `list` of `open-vocab` | The value for this property **MUST** be `openc2-consumer`. |
 | **openc2-profile** (required) | `string`               | The value for this property **SHOULD** be the "Property Name" of an OpenC2 AP. |
 
-The Property Names of registered OpenC2 APs are found in the [[OpenC2 Namespace Registry](#openc2-namespaces)]. For example an OpenC2 CACAO target for the Stateless Packet Filtering AP would specify the profile as follows:
+The Property Names of registered OpenC2 APs are found in the 
+[[OpenC2 Namespace Registry](#openc2-namespaces)]. 
+For example an OpenC2 CACAO target for the
+Stateless Packet Filtering AP would specify the profile as follows:
 
 ```json
 "openc2-profile" : "slpf"
