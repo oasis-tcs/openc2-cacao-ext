@@ -677,7 +677,7 @@ users of the MQTT Broker CACAO agent and `__mqtt-topics__` variable for publish
 
 The `__http_endpoints__` variable is used to convey a list of endpoints to an OpenC2 command should be published. 
 
-The `variable-type-ov` for `__http-endpoints__` MUST be `dictionary`. 
+The `variable-type-ov` for `__http-endpoints__` MUST be `dictionary`.
 
 The value of `__http-endpoints__` MUST be a `dictionary` of address(es) as
 defined for the CACAO `http-api` agent object (section 7.8 of the [[CACAO
@@ -711,9 +711,12 @@ more OpenC2 Consumers for return to the calling `openc2 ` command action step.
 The return of results from OpenC2 Consumer responses enables conditional
 processing by subsequent action steps in the CACAO playbook.
 
-> To-Do: determine (or define) a suitable `variable-type-ov` for this variable.
+> To-Do: confirm this is a suitable `variable-type-ov` for this variable.
 > Since it's an `-ov` a new type may be in order.
 
+The `variable-type-ov` for `__openc2-responses__` MUST be `dictionary`.
+
+> To-Do: develop more realistic response content for this example
 
 **Example 5.3 (`__openc2-response__`)**
 
@@ -722,15 +725,16 @@ processing by subsequent action steps in the CACAO playbook.
   "type": "playbook",
   …,
   "playbook_variables": {
-    "__http-endpoints__": {
+    "__openc2-response__": {
       "type": "dictionary",
-      "description": "A list of endpoints for delivery of an OpenC2 command via HTTP(S)",
+      "description": "A collection of responses for an OpenC2 command",
       "value": {
-        "url": ["https://oc2consumer.example.com"],
-        "ipv4" : ["11.22.33.44", "55.66.77.88"]
+        "device1": { <response from Device1>},
+        "device4": { <response from Device4>},
+        "device9": { <response from Device9>}
       },
       "constant": false,
-      "external": true
+      "external": false
     }
   }
 }
