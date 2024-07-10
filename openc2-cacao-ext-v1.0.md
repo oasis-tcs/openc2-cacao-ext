@@ -625,35 +625,37 @@ Stateless Packet Filtering AP would specify the profile as follows:
 
 ***
 
-# 5 Standard Playbook Variables
+# 5 Standardized Playbook Variables
 
-A set of standard CACAO variables are defined for use when invoking an MQTT
-broker or OpenC2 HTTP API agent to handle message transfer. These CACAO
+This section defines a set of standardized CACAO variables for use when invoking
+an MQTT broker or OpenC2 HTTP API agent to handle message transfer. These CACAO
 variables are playbook variables whose values can be set internally via an
 `openc2` command object or from a `playbook-action` step in a calling playbook
 and accessed by the appropriate agent.
 
+A standardized CACAO variable is also defined for returning OpenC2 responses to
+the calling `openc2` playbook action step for subsequent processing.
+
 ## 5.1 `__mqtt-topics__` Variable
 
 The `__mqtt-topics__` variable is used to convey a list of MQTT topics onto
-which a message should be published. The `mqtt-broker` agent is general purpose
-and not limited to sending and receiving OpenC2 commands and responses, however
-when employed for that purpose the topics specified as `__mqtt-topics__:value`
-should conform to the topic structure guidance in Section&nbsp;2.2 of the
-[[OpenC2 MQTT Transfer Specification](#openc2-mqtt-v10)].
-
-The `variable-type-ov` is extended as follows:
+which a message should be published. The `variable-type-ov` is extended as follows:
 
 | Vocabulary Value | Description                                                                                                                                                                                                      | Examples                                                             |
 |------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|----------------------------------------------------------------------|
 | `topic-list`       | A list of strings that identify one or more publish / subscribe topics to which a message should be published. | `"type": "topic-list",`<br>`"value": ["oc2/cmd/"]` |
 
-MQTT offers great flexibility regarding topic naming. The format of the topic
-names in the `topic-list` value should be appropriate to the application. The
-[[OpenC2 MQTT Transfer Specification](#openc2-mqtt-v10)] provides specific
-guidance regarding the use of MQTT topics for OpenC2 message transfer. Other
-users of the MQTT Broker CACAO agent and `__mqtt-topics__` variable for publish
-/ subscribe messaging should apply their own corresponding guidance.
+The `mqtt-broker` agent is general purpose. MQTT offers great flexibility
+regarding topic naming. The format of the topic names in the `topic-list` value
+should be appropriate to the application. The [[OpenC2 MQTT Transfer
+Specification](#openc2-mqtt-v10)] provides specific guidance regarding the use
+of MQTT topics for OpenC2 message transfer.  When an `mqtt-broker` agent is
+employed for sending and receiving OpenC2 messages the topics specified as
+`__mqtt-topics__:value` should conform to the topic structure guidance in
+Section&nbsp;2.2 of the 
+[[OpenC2 MQTT Transfer Specification](#openc2-mqtt-v10)].  
+Other users of the MQTT Broker CACAO agent and `__mqtt-topics__` variable for
+publish / subscribe messaging should apply their own corresponding guidance.
 
 **Example 5.1 (`__mqtt-topics__`)**
 
