@@ -648,8 +648,7 @@ The `variable-type-ov` is extended as follows:
 |------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|----------------------------------------------------------------------|
 | `topic-list`       | A list of strings that identify one or more publish / subscribe topics to which a message should be published. The format of the topic names should be appropriate to the messaging protocol being invoked.  | `"type": "topic-list",`<br>`"value": ["oc2/cmd/"]` |
 
-**Example 5.1 (`__mqtt-topics__`)**<br>
-_The IDs used in this example are notional and for illustrative purposes, they do not represent real objects._*_
+**Example 5.1 (`__mqtt-topics__`)**
 
 ```json
 {
@@ -677,8 +676,39 @@ The value of `__http-endpoints__` MUST be a `dictionary` of address(es) as
 defined for the CACAO `http-api` agent object (section 7.8 of the [[CACAO
 Playbooks](#cacao-security-playbooks-v20)] specification).
 
-**Example 5.2 (`__http-endpoints__`)**<br>
-*The IDs used in this example are notional and for illustrative purposes, they do not represent real objects.*
+**Example 5.2 (`__http-endpoints__`)**
+
+```json
+{
+  "type": "playbook",
+  …,
+  "playbook_variables": {
+    "__http-endpoints__": {
+      "type": "dictionary",
+      "description": "A list of endpoints for delivery of an OpenC2 command via HTTP(S)",
+      "value": {
+        "url": ["https://oc2consumer.example.com"],
+        "ipv4" : ["11.22.33.44", "55.66.77.88"]
+      },
+      "constant": false,
+      "external": true
+    }
+  }
+}
+```
+
+## 5.3 `__openc2-responses__` Variable
+
+The `__openc2-responses` variable is used to aggregate the responses from one or
+more OpenC2 Consumers for return to the calling `openc2 ` command action step.
+The return of results from OpenC2 Consumer responses enables conditional
+processing by subsequent action steps in the CACAO playbook.
+
+> To-Do: determine (or define) a suitable `variable-type-ov` for this variable.
+> Since it's an `-ov` a new type may be in order.
+
+
+**Example 5.3 (`__openc2-response__`)**
 
 ```json
 {
