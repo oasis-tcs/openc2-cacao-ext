@@ -653,7 +653,7 @@ of MQTT topics for OpenC2 message transfer.  When an `mqtt-broker` agent is
 employed for sending and receiving OpenC2 messages the topics specified as
 `__mqtt-topics__:value` should conform to the topic structure guidance in
 Section&nbsp;2.2 of the 
-[[OpenC2 MQTT Transfer Specification](#openc2-mqtt-v10)].  
+[[OpenC2 MQTT Transfer Specification](#openc2-mqtt-v10)].
 Other users of the MQTT Broker CACAO agent and `__mqtt-topics__` variable for
 publish / subscribe messaging should apply their own corresponding guidance.
 
