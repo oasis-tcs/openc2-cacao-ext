@@ -646,7 +646,14 @@ The `variable-type-ov` is extended as follows:
 
 | Vocabulary Value | Description                                                                                                                                                                                                      | Examples                                                             |
 |------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|----------------------------------------------------------------------|
-| `topic-list`       | A list of strings that identify one or more publish / subscribe topics to which a message should be published. The format of the topic names should be appropriate to the messaging protocol being invoked.  | `"type": "topic-list",`<br>`"value": ["oc2/cmd/"]` |
+| `topic-list`       | A list of strings that identify one or more publish / subscribe topics to which a message should be published. | `"type": "topic-list",`<br>`"value": ["oc2/cmd/"]` |
+
+MQTT offers great flexibility regarding topic naming. The format of the topic
+names in the `topic-list` value should be appropriate to the application. The
+[[OpenC2 MQTT Transfer Specification](#openc2-mqtt-v10)] provides specific
+guidance regarding the use of MQTT topics for OpenC2 message transfer. Other
+users of the MQTT Broker CACAO agent and `__mqtt-topics__` variable for publish
+/ subscribe messaging should apply their own corresponding guidance.
 
 **Example 5.1 (`__mqtt-topics__`)**
 
