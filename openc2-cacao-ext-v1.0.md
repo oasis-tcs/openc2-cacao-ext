@@ -634,7 +634,7 @@ variables are playbook variables whose values can be set internally via an
 and accessed by the appropriate agent.
 
 A standardized CACAO variable is also defined for returning OpenC2 responses to
-the calling `openc2` playbook action step for subsequent processing.
+the calling `openc2` action step for subsequent processing.
 
 ## 5.1 `__mqtt-topics__` Variable
 
