@@ -69,7 +69,7 @@ When referencing this specification the following citation format should be used
 
 **[OpenC2-CACAO-ext-v1.0]**
 
-_CACAO OpenC2 Extension Version 1.0_. Edited by Duncan Sparrell. 08 May 2024. OASIS Committee Specification Draft 01. https://docs.oasis-open.org/openc2/openc2-cacao-ext/v1.0/csd01/openc2-cacao-ext-v1.0-csd01.html. Latest stage: https://docs.oasis-open.org/openc2/openc2-cacao-ext/v1.0/openc2-cacao-ext-v1.0.html.
+_CACAO OpenC2 Extension Version 1.0_. Edited by David Lemire. 08 May 2024. OASIS Committee Specification Draft 01. https://docs.oasis-open.org/openc2/openc2-cacao-ext/v1.0/csd01/openc2-cacao-ext-v1.0-csd01.html. Latest stage: https://docs.oasis-open.org/openc2/openc2-cacao-ext/v1.0/openc2-cacao-ext-v1.0.html.
 
 #### Notices
 Copyright © OASIS Open 2024. All Rights Reserved.
@@ -91,6 +91,7 @@ For complete copyright information please see the full Notices section in an App
     - [1.1.3 Document conventions](#113-document-conventions)
 - [2 Key Concepts \& Vocabularies](#2-key-concepts--vocabularies)
   - [2.1 Key Concepts](#21-key-concepts)
+    - [2.1.1 Producers and Consumers](#211-producers-and-consumers)
   - [2.2 CACAO Vocabulary Modifications](#22-cacao-vocabulary-modifications)
 - [3 OpenC2 Commands In CACAO](#3-openc2-commands-in-cacao)
   - [3.1 OpenC2 Command Action Step](#31-openc2-command-action-step)
@@ -169,7 +170,6 @@ specification is provided in [Section&nbsp;2.1](#21-key-concepts).
 |:-----------:|------------------------------------|
 |      AP     | Actuator Profile                   |
 |    HTTPS    | Hypertext Transfer Protocol Secure |
-|             |                                    |
 
 ### 1.1.3 Document conventions
 
@@ -222,10 +222,46 @@ Actuator Profile concept. The logical flow is as follows:
 * The `openc2` action step specifies a CACAO target that represents the AP that
   should process the command.
 
+### 2.1.1 Producers and Consumers
+
+_This section is non-normative._
+
+Both OpenC2 and CACAO employ the terms "producer" and "consumer" but with
+different meanings. The following table identifies the relevant definitions,
+drawing on the CACAO v2.0 Specification and the OpenC2 Architecture
+Specification.
+
+|            | <center>**Producer**<center>| <center>**Consumer**</center> |
+|------------|:----------------------------|:------------------------------|
+| **OpenC2** | An OpenC2 Producer is a manager application that sends Commands. | An OpenC2 Consumer is a managed device/application that receives commands. |
+|  **CACAO** | A "CACAO 2.0 Producer" is any software that can create CACAO 2.0 content and conforms to the requirements of Section 11.1 of the CACAO Specification. | A "CACAO 2.0 Consumer" is any software that can consume CACAO 2.0 content and conforms to the requirements of Section 11.1 of the CACAO Specification. |
+
+Figure 2-1 illustrates how the concepts of producer and consumer apply when
+OpenC2 commands are incorporated into CACAO playbooks.
+
+**Figure 2-1: Producer and Consumer Relationships**
+
+![Producer and Consumer Relationships](images/OC2-CACAO-P-and-C.drawio.png)
+
 ## 2.2 CACAO Vocabulary Modifications
 
+_This section is non-normative._
+
+CACAO employs the concept of vocabularies to improve interoperability. Some
+CACAO vocabularies are "open" (designated by `<vocabulary-type>-ov`), which
+means that they contain suggested values but that types that employ open
+vocabularies can be extended with additional values if needed. This
+specification proposes extensions to several open vocabularies from the CACAO
+specification:
+
+- `command-type-ov` (CACAO Specification Section 5.2)
+- `agent-target-type-ov` (CACAO Specification Section 7.2)
+- `variable-type-ov` (CACAO Specification Section 10.18.4)
+
+The specific extended values are:
+
 - `command-type-ov` is extended with the type `openc2` (see [Section&nbsp;3.1](#31-openc2-command-action-step))
-- Command type `openc2-http` is deprecated in favor of the non-transport specific `openc2` command type
+  - Command type `openc2-http` is deprecated in favor of the non-transport specific `openc2` command type
 - `agent-target-type-ov` "Devices and Equipment" vocabulary is extended with the following types:
   -  `mqtt-broker` agent type for message transfer via MQTT (see [Section&nbsp;4.1.1](#411-mqtt-broker-agent))
   -  `openc2-https` agent type for message transfer via HTTPS (see [Section&nbsp;4.1.2](#412-https-agent)
@@ -655,11 +691,11 @@ Remove this note before submitting for publication.)
 
 ###### [CACAO-Security-Playbooks-v2.0]
 
-CACAO Security Playbooks Version 2.0. Edited by Bret Jordan and Allan Thomson. 27 November 2023. OASIS Committee Specification 01. https://docs.oasis-open.org/cacao/security-playbooks/v2.0/cs01/security-playbooks-v2.0-cs01.html. Latest version: https://docs.oasis-open.org/cacao/security-playbooks/v2.0/security-playbooks-v2.0.html.
+*CACAO Security Playbooks Version 2.0*. Edited by Bret Jordan and Allan Thomson. 27 November 2023. OASIS Committee Specification 01. https://docs.oasis-open.org/cacao/security-playbooks/v2.0/cs01/security-playbooks-v2.0-cs01.html. Latest version: https://docs.oasis-open.org/cacao/security-playbooks/v2.0/security-playbooks-v2.0.html.
 
 ###### [mqtt-v5.0]
 
-MQTT Version 5.0. Edited by Andrew Banks, Ed Briggs, Ken Borgendale, and Rahul Gupta. 07 March 2019. OASIS Standard. https://docs.oasis-open.org/mqtt/mqtt/v5.0/os/mqtt-v5.0-os.html. Latest version: https://docs.oasis-open.org/mqtt/mqtt/v5.0/mqtt-v5.0.html.
+*MQTT Version 5.0*. Edited by Andrew Banks, Ed Briggs, Ken Borgendale, and Rahul Gupta. 07 March 2019. OASIS Standard. https://docs.oasis-open.org/mqtt/mqtt/v5.0/os/mqtt-v5.0-os.html. Latest version: https://docs.oasis-open.org/mqtt/mqtt/v5.0/mqtt-v5.0.html.
 
 ###### [OpenC2-Lang-v1.1]
 
@@ -667,7 +703,7 @@ _Open Command and Control (OpenC2) Language Specification Version 1.1_. Edited b
 
 ###### [OpenC2-MQTT-v1.0]
 
-Specification for Transfer of OpenC2 Messages via MQTT Version 1.0. Edited by David Lemire. 19 November 2021. OASIS Committee Specification 01. https://docs.oasis-open.org/openc2/transf-mqtt/v1.0/cs01/transf-mqtt-v1.0-cs01.html. Latest stage: https://docs.oasis-open.org/openc2/transf-mqtt/v1.0/transf-mqtt-v1.0.html
+*Specification for Transfer of OpenC2 Messages via MQTT Version 1.0*. Edited by David Lemire. 19 November 2021. OASIS Committee Specification 01. https://docs.oasis-open.org/openc2/transf-mqtt/v1.0/cs01/transf-mqtt-v1.0-cs01.html. Latest stage: https://docs.oasis-open.org/openc2/transf-mqtt/v1.0/transf-mqtt-v1.0.html
 
 ###### [OpenC2-HTTPS-v1.1]
 
@@ -693,7 +729,7 @@ Leiba, B., "Ambiguity of Uppercase vs Lowercase in RFC 2119 Key Words", BCP 14, 
 
 ###### [OpenC2-Arch-v1.0]
 
-Open Command and Control (OpenC2) Architecture Specification Version 1.0. Edited by Duncan Sparrell. 30 September 2022. OASIS Committee Specification 01. https://docs.oasis-open.org/openc2/oc2arch/v1.0/cs01/oc2arch-v1.0-cs01.html. Latest stage: https://docs.oasis-open.org/openc2/oc2arch/v1.0/oc2arch-v1.0.html.
+*Open Command and Control (OpenC2) Architecture Specification Version 1.0*. Edited by Duncan Sparrell. 30 September 2022. OASIS Committee Specification 01. https://docs.oasis-open.org/openc2/oc2arch/v1.0/cs01/oc2arch-v1.0-cs01.html. Latest stage: https://docs.oasis-open.org/openc2/oc2arch/v1.0/oc2arch-v1.0.html.
 
 ###### [RFC3552]
 Rescorla, E. and B. Korver, "Guidelines for Writing RFC Text on Security Considerations", BCP 72, RFC 3552, DOI 10.17487/RFC3552, July 2003, https://www.rfc-editor.org/info/rfc3552.
