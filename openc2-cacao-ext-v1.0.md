@@ -5,9 +5,9 @@
 
 # OpenC2 Extension for CACAO Version 1.0
 
-## Committee Specification Draft 01
+## Working Draft 01
 
-## 08 May 2024
+## 24 July 2024
 
 &nbsp;
 
@@ -115,14 +115,7 @@ For complete copyright information please see the full Notices section in an App
 - [Appendix D. Revision History](#appendix-d-revision-history)
 - [Appendix E. Use Cases and Examples](#appendix-e-use-cases-and-examples)
   - [E.1 Use Cases](#e1-use-cases)
-    - [E.1.1 Multiple OpenC2 Consumers With Common Profile](#e11-multiple-openc2-consumers-with-common-profile)
-    - [E.1.2 OpenC2 Command With Response Requested](#e12-openc2-command-with-response-requested)
-    - [E.1.3 OpenC2 Message Transfer via MQTT](#e13-openc2-message-transfer-via-mqtt)
-    - [E.1.4 Extended OpenC2 Consumer Execution Times](#e14-extended-openc2-consumer-execution-times)
   - [E.2 Examples](#e2-examples)
-    - [E.2.1 OpenC2 Single Consumer Command / Response via MQTT](#e21-openc2-single-consumer-command--response-via-mqtt)
-    - [E.2.2 OpenC2 Multiple Consumer Command / Response via MQTT](#e22-openc2-multiple-consumer-command--response-via-mqtt)
-    - [E.2.3 OpenC2 Command / Response via HTTPS](#e23-openc2-command--response-via-https)
 - [Appendix F. Notices](#appendix-f-notices)
 
 
