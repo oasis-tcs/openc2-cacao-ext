@@ -102,17 +102,16 @@ For complete copyright information please see the full Notices section in an App
     - [4.1.1 MQTT Broker Agent](#411-mqtt-broker-agent)
     - [4.1.2 OpenC2 HTTP-API Agent](#412-openc2-http-api-agent)
   - [4.2 OpenC2 CACAO Targets](#42-openc2-cacao-targets)
-- [5 Standard Playbook Variables](#5-standard-playbook-variables)
+- [5 Standardized Playbook Variables](#5-standardized-playbook-variables)
   - [5.1 `__mqtt-topics__` Variable](#51-__mqtt-topics__-variable)
   - [5.2 `__http-endpoints__` Variable](#52-__http-endpoints__-variable)
+  - [5.3 `__openc2-responses__` Variable](#53-__openc2-responses__-variable)
 - [6 Conformance](#6-conformance)
 - [Appendix A. References](#appendix-a-references)
   - [A.1 Normative References](#a1-normative-references)
   - [A.2 Informative References](#a2-informative-references)
 - [Appendix B. Safety, Security and Privacy Considerations](#appendix-b-safety-security-and-privacy-considerations)
 - [Appendix C. Acknowledgments](#appendix-c-acknowledgments)
-  - [C.1 Special Thanks](#c1-special-thanks)
-  - [C.2 Participants](#c2-participants)
 - [Appendix D. Revision History](#appendix-d-revision-history)
 - [Appendix E. Use Cases and Examples](#appendix-e-use-cases-and-examples)
   - [E.1 Use Cases](#e1-use-cases)
@@ -625,31 +624,39 @@ Stateless Packet Filtering AP would specify the profile as follows:
 
 ***
 
-# 5 Standard Playbook Variables
+# 5 Standardized Playbook Variables
 
-A set of standard CACAO variables are defined for use when invoking an MQTT
-broker or OpenC2 HTTP API agent to handle message transfer. These CACAO
+This section defines a set of standardized CACAO variables for use when invoking
+an MQTT broker or OpenC2 HTTP API agent to handle message transfer. These CACAO
 variables are playbook variables whose values can be set internally via an
 `openc2` command object or from a `playbook-action` step in a calling playbook
 and accessed by the appropriate agent.
 
+A standardized CACAO variable is also defined for returning OpenC2 responses to
+the calling `openc2` action step for subsequent processing.
+
 ## 5.1 `__mqtt-topics__` Variable
 
 The `__mqtt-topics__` variable is used to convey a list of MQTT topics onto
-which a message should be published. The `mqtt-broker` agent is general purpose
-and not limited to sending and receiving OpenC2 commands and responses, however
-when employed for that purpose the topics specified as `__mqtt-topics__:value`
-should conform to the topic structure guidance in Section&nbsp;2.2 of the
-[[OpenC2 MQTT Transfer Specification](#openc2-mqtt-v10)].
-
-The `variable-type-ov` is extended as follows:
+which a message should be published. The `variable-type-ov` is extended as follows:
 
 | Vocabulary Value | Description                                                                                                                                                                                                      | Examples                                                             |
 |------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|----------------------------------------------------------------------|
-| `topic-list`       | A list of strings that identify one or more publish / subscribe topics to which a message should be published. The format of the topic names should be appropriate to the messaging protocol being invoked.  | `"type": "topic-list",`<br>`"value": ["oc2/cmd/"]` |
+| `topic-list`       | A list of strings that identify one or more publish / subscribe topics to which a message should be published. | `"type": "topic-list",`<br>`"value": ["oc2/cmd/"]` |
 
-**Example 5.1 (`__mqtt-topics__`)**<br>
-_The IDs used in this example are notional and for illustrative purposes, they do not represent real objects._*_
+The `mqtt-broker` agent is general purpose. MQTT offers great flexibility
+regarding topic naming. The format of the topic names in the `topic-list` value
+should be appropriate to the application. The [[OpenC2 MQTT Transfer
+Specification](#openc2-mqtt-v10)] provides specific guidance regarding the use
+of MQTT topics for OpenC2 message transfer.  When an `mqtt-broker` agent is
+employed for sending and receiving OpenC2 messages the topics specified as
+`__mqtt-topics__:value` should conform to the topic structure guidance in
+Section&nbsp;2.2 of the 
+[[OpenC2 MQTT Transfer Specification](#openc2-mqtt-v10)].
+Other users of the MQTT Broker CACAO agent and `__mqtt-topics__` variable for
+publish / subscribe messaging should apply their own corresponding guidance.
+
+**Example 5.1 (`__mqtt-topics__`)**
 
 ```json
 {
@@ -671,14 +678,13 @@ _The IDs used in this example are notional and for illustrative purposes, they d
 
 The `__http_endpoints__` variable is used to convey a list of endpoints to an OpenC2 command should be published. 
 
-The `variable-type-ov` for `__http-endpoints__` MUST be `dictionary`. 
+The `variable-type-ov` for `__http-endpoints__` MUST be `dictionary`.
 
 The value of `__http-endpoints__` MUST be a `dictionary` of address(es) as
 defined for the CACAO `http-api` agent object (section 7.8 of the [[CACAO
 Playbooks](#cacao-security-playbooks-v20)] specification).
 
-**Example 5.2 (`__http-endpoints__`)**<br>
-*The IDs used in this example are notional and for illustrative purposes, they do not represent real objects.*
+**Example 5.2 (`__http-endpoints__`)**
 
 ```json
 {
@@ -694,6 +700,42 @@ Playbooks](#cacao-security-playbooks-v20)] specification).
       },
       "constant": false,
       "external": true
+    }
+  }
+}
+```
+
+## 5.3 `__openc2-responses__` Variable
+
+The `__openc2-responses` variable is used to aggregate the responses from one or
+more OpenC2 Consumers for return to the calling `openc2 ` command action step.
+The return of results from OpenC2 Consumer responses enables conditional
+processing by subsequent action steps in the CACAO playbook.
+
+> To-Do: confirm this is a suitable `variable-type-ov` for this variable.
+> Since it's an `-ov` a new type may be in order.
+
+The `variable-type-ov` for `__openc2-responses__` MUST be `dictionary`.
+
+> To-Do: develop more realistic response content for this example
+
+**Example 5.3 (`__openc2-response__`)**
+
+```json
+{
+  "type": "playbook",
+  …,
+  "playbook_variables": {
+    "__openc2-response__": {
+      "type": "dictionary",
+      "description": "A collection of responses for an OpenC2 command",
+      "value": {
+        "device1": { <response from Device1>},
+        "device4": { <response from Device4>},
+        "device9": { <response from Device9>}
+      },
+      "constant": false,
+      "external": false
     }
   }
 }
