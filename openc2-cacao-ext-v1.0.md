@@ -296,10 +296,12 @@ the new value `openc2`:
 |---------------------|:------------------------------------------------------------------------------------------|
 | `openc2`            | An OpenC2 command to be transmitted to an OpenC2 Consumer via an OpenC2 transfer protocol.|
 
-In addition to the inherited properties of a command object defined in Section
-5.1 of [[CACAO v2.0](#cacao-security-playbooks-v20)], this section defines the
-use of CACAO workflow step and action step properties that are valid for an
-`openc2` action.
+This section defines the use of properties defined in the [[CACAO v2.0](#cacao-security-playbooks-v20)] specification for an `opec2` action step. Specifically, it addresses the content of:
+
+- Workflow step common properties (CACAO Specification Section 4.1)
+- Workflow action step properties (CACAO Specification Section 4.5)
+- Workflow command object common properties (CACAO Specification Section 5.1)
+
 
 ***
 
@@ -310,12 +312,12 @@ use of CACAO workflow step and action step properties that are valid for an
 
 ***
 
-| **Property Name** | **Data Type** | **Details** |
-|---|---|---|
-| **type** (required) | `string` | The value of this property **must** be `openc2` |
-| **command_b64** (required) | `string` | An OpenC2 command that is base64 encoded (see Section 4 of [RFC 4649]). |
-| **agent** (required) | `identifier` | The `agent` property of the workflow `action` type step **MUST** specify a suitable agent for OpenC2 message transfer |
-| **step_variables** (required) | `dictionary` | The common workflow `step_variables` property for an `openc2` command **MUST** specify a variable suitable for conveying OpenC2 command message destinations to the specified agent. |
+|**Level**| **Property Name** | **Data Type** | **Details** |
+|:--:|:---:|:---:|---|
+|**Command**| **type** (required) | `string` | The value of this property **must** be `openc2` |
+|**Command**| **command_b64** (required) | `string` | An OpenC2 command that is base64 encoded (see Section 4 of [RFC 4649]). |
+|**Workflow<br>Action Step**| **agent** (required) | `identifier` | The `agent` property of the workflow `action` type step **MUST** specify a suitable agent for OpenC2 message transfer |
+|**Workflow<br>Common**| **step_variables** (required) | `dictionary` | The common workflow `step_variables` property for an `openc2` command **MUST** specify a variable suitable for conveying OpenC2 command message destinations to the specified agent. |
 
 **Usage Requirements**
 - When the `agent` is specified as an `mqtt-broker` (see
