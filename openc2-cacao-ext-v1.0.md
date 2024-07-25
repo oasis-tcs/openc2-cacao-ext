@@ -308,15 +308,6 @@ The table below defines how particular properties are address for an `openc2`
 command object. The table also identifies the level of CACAO playbook where each
 property is defined.
 
-***
-
-> **To-Do:** Should `content_b64` be changed to `command_b64` for consistency
-> with virtually all other CACAO command objects?  Opened [issue in CACAO
-> repo](https://github.com/oasis-tcs/cacao/issues/12); using `command_b64` for
-> now.
-
-***
-
 |**Level**| **Property Name** | **Data Type** | **Details** |
 |:--:|:---:|:---:|---|
 |**Command**| **type** (required) | `string` | The value of this property **must** be `openc2` |
@@ -333,6 +324,16 @@ property is defined.
    [Section&nbsp;4.1.2](#412-openc2-http-api-agent)) the `step_variables_`
    **MUST** include an `__http-endpoints__` variable (see
    [Section&nbsp;5.2](#52-__http-endpoints__-variable)).
+
+***
+
+> **To-Do:** Should `content_b64` be changed to `command_b64` for consistency
+> with virtually all other CACAO command objects?  Opened [issue in CACAO
+> repo](https://github.com/oasis-tcs/cacao/issues/12); using `command_b64` for
+> now.
+
+***
+
 
 **Example 3.1 (OpenC2 Command, transfer via MQTT)**<br>
 _The IDs used in this example are notional and for illustrative purposes, they do not represent real objects._
