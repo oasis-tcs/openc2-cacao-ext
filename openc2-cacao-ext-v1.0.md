@@ -287,7 +287,7 @@ manner.
 
 The `openc2` command represents a command that is intended to be processed via
 an OpenC2 Consumer. The delivery of the command and specification of transfer
-mechanism and desired OpenC2 AP are handled by defining appropriate CACAO agents
+mechanism and desired OpenC2 AP are handled by identifying appropriate CACAO agents
 and targets. The command type open vocabulary (`command-type-ov`) defined in
 Section 5.2 of [[CACAO v2.0](#cacao-security-playbooks-v20)] is extended with
 the new value `openc2`:
