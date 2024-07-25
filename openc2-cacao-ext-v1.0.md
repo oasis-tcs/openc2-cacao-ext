@@ -194,12 +194,14 @@ specification:
   transfer protocol (e.g., MQTT, HTTPS) is used to send and receive OpenC2
   commands and responses.
 
-* **CACAO Action Step:** This type of CACAO workflow step contains commands to
-  be executed.
+* **CACAO Workflow Step:** A CACAO playbook contains a with the processing logic
+  organized in to a set of workflow steps.
 
-* **CACAO Playbook Action:** This type of CACAO workflow step executes a
-  referenced playbook using the agents and targets defined in the referenced
-  playbook.
+* **CACAO Action:** This type of CACAO workflow step contains commands to be
+  executed.
+
+* **CACAO Playbook-Action:** This type of CACAO workflow step executes a named
+  playbook from within the current playbook.
 
 * **CACAO Agents and Targets:** CACAO agents are entities that execute commands
   on or against CACAO targets.
@@ -229,7 +231,9 @@ Specification.
 |  **CACAO** | A "CACAO 2.0 Producer" is any software that can create CACAO 2.0 content and conforms to the requirements of Section 11.1 of the CACAO Specification. | A "CACAO 2.0 Consumer" is any software that can consume CACAO 2.0 content and conforms to the requirements of Section 11.1 of the CACAO Specification. |
 
 Figure 2-1 illustrates how the concepts of producer and consumer apply when
-OpenC2 commands are incorporated into CACAO playbooks.
+OpenC2 commands are incorporated into CACAO playbooks, illustrating an OpenC2
+command invoked from a CACAO playbook action step, with the command sent and
+received via the MQTT protocol using a corresponding CACAO agent.
 
 **Figure 2-1: Producer and Consumer Relationships**
 
@@ -248,6 +252,7 @@ specification:
 
 - `command-type-ov` (CACAO Specification Section 5.2)
 - `agent-target-type-ov` (CACAO Specification Section 7.2)
+- `security-category-type-ov` (CACAO Specification Section 7.11.1)
 - `variable-type-ov` (CACAO Specification Section 10.18.4)
 
 The specific extended values are:
