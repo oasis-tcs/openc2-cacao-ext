@@ -296,7 +296,9 @@ the new value `openc2`:
 |---------------------|:------------------------------------------------------------------------------------------|
 | `openc2`            | An OpenC2 command to be transmitted to an OpenC2 Consumer via an OpenC2 transfer protocol.|
 
-This section defines the use of properties defined in the [[CACAO v2.0](#cacao-security-playbooks-v20)] specification for an `opec2` action step. Specifically, it addresses the content of:
+This section defines the use of properties defined in the [[CACAO
+v2.0](#cacao-security-playbooks-v20)] specification for an `openc2` action step.
+Specifically, it addresses the content of:
 
 - Workflow step common properties (CACAO Specification Section 4.1)
 - Workflow action step properties (CACAO Specification Section 4.5)
