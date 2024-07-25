@@ -302,6 +302,9 @@ This section defines the use of properties defined in the [[CACAO v2.0](#cacao-s
 - Workflow action step properties (CACAO Specification Section 4.5)
 - Workflow command object common properties (CACAO Specification Section 5.1)
 
+The table below defines how particular properties are address for an `openc2`
+command object. The table also identifies the level of CACAO playbook where each
+property is defined.
 
 ***
 
