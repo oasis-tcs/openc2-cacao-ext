@@ -285,9 +285,6 @@ manner.
 
 ## 3.1 OpenC2 Command Action Step
 
-> NOTE: Copied in the `openc2-http` command from the CACAO v2.0 spec as a
-> starting point
-
 The `openc2` command represents a command that is intended to be processed via
 an OpenC2 Consumer. The delivery of the command and specification of transfer
 mechanism and desired OpenC2 AP are handled by defining appropriate CACAO agents
