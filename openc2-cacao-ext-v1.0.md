@@ -291,17 +291,18 @@ manner.
 The `openc2` command represents a command that is intended to be processed via
 an OpenC2 Consumer. The delivery of the command and specification of transfer
 mechanism and desired OpenC2 AP are handled by defining appropriate CACAO agents
-and targets. The command type open vocabulary (`command-type-ov`) defined in Section 5.2 of
-[[CACAO v2.0](#cacao-security-playbooks-v20)] is extended with the new value
-`openc2`:
+and targets. The command type open vocabulary (`command-type-ov`) defined in
+Section 5.2 of [[CACAO v2.0](#cacao-security-playbooks-v20)] is extended with
+the new value `openc2`:
 
 | **Command Type**    |                                         **Description**                                   |
 |---------------------|:------------------------------------------------------------------------------------------|
 | `openc2`            | An OpenC2 command to be transmitted to an OpenC2 Consumer via an OpenC2 transfer protocol.|
 
-In addition to the inherited properties of a command object defined
-in Section 5.1 of [[CACAO v2.0](#cacao-security-playbooks-v20)], this section
-defines the use of CACAO workflow step and action properties that are valid for an `openc2` action.
+In addition to the inherited properties of a command object defined in Section
+5.1 of [[CACAO v2.0](#cacao-security-playbooks-v20)], this section defines the
+use of CACAO workflow step and action step properties that are valid for an
+`openc2` action.
 
 ***
 
@@ -316,7 +317,18 @@ defines the use of CACAO workflow step and action properties that are valid for 
 |---|---|---|
 | **type** (required) | `string` | The value of this property **must** be `openc2` |
 | **command_b64** (required) | `string` | An OpenC2 command that is base64 encoded (see Section 4 of [RFC 4649]). |
-| **step_variables** | `dictionary` | The common workflow `step_variables` property for an `openc2` command **MUST** include an agent for message transfer. That agent **MUST** be one of `mqtt-broker` or `http-api`. |
+| **agent** (required) | `identifier` | The `agent` property of the workflow `action` type step **MUST** specify a suitable agent for OpenC2 message transfer |
+| **step_variables** (required) | `dictionary` | The common workflow `step_variables` property for an `openc2` command **MUST** specify a variable suitable for conveying OpenC2 command message destinations to the specified agent. |
+
+**Usage Requirements**
+- When the `agent` is specified as an `mqtt-broker` (see
+  [Section&nbsp;4.1.1](#411-mqtt-broker-agent)) the `step_variables_` **MUST**
+  include an `__mqtt-topics__` variable (see
+  [Section&nbsp;5.1](#51-__mqtt-topics__-variable)).
+-  When the `agent` is specified as an `oc2-http-api` agent (see
+   [Section&nbsp;4.1.2](#412-openc2-http-api-agent)) the `step_variables_`
+   **MUST** include an `__http-endpoints__` variable (see
+   [Section&nbsp;5.2](#52-__http-endpoints__-variable)).
 
 **Example 3.1 (OpenC2 Command, transfer via MQTT)**<br>
 _The IDs used in this example are notional and for illustrative purposes, they do not represent real objects._
@@ -348,8 +360,8 @@ _The IDs used in this example are notional and for illustrative purposes, they d
 }
 ```
 
-The content of the above base64 command (**command\_b64**) in both of the above
-examples is the encoded version of the OpenC2 content that is shown below
+The abbreviated content of the base64 command (`command_b64`) in both of the
+above examples is the encoded version of the OpenC2 content that is shown below
 (decoded version). The command content is shown as text for illustration
 purposes only.
 
