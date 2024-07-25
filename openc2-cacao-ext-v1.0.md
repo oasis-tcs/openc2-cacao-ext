@@ -273,7 +273,7 @@ The specific extended values are:
 # 3 OpenC2 Commands In CACAO
 
 This section describes the implementation of OpenC2 commands under CACAO,
-including the format and processing of an `openc2 ` command object, the handling
+including the format and processing of an `openc2` command object, the handling
 of base64 encoding and decoding, and the invocation of OpenC2 via `openc2`
 command objects in a subordinate playbook.
 
