@@ -427,9 +427,11 @@ context of a CACAO playbook being executed by a CACAO Consumer are:
 
 - The OpenC2 CACAO agent will decode the base64-encoded content and re-encode in
   the appropriate transfer encoding (e.g., JSON, CBOR) for transfer to the
-  Consumer identified by the specified OpenC2 CACAO target. The mechanism for
-  exchange of the the transfer-encoded command between agent and target is the
-  responsibility of the CACAO Consumer executing the playbook.
+  Consumer identified by the specified OpenC2 CACAO target, incorporating any
+  command content specified by CACAO variables when re-encoding the command.
+  
+- The mechanism for exchange of the the transfer-encoded command between agent
+  and target is the responsibility of the CACAO Consumer executing the playbook.
 
 - The OpenC2 CACAO agent will accept transfer-encoded responses from the OpenC2
   CACAO target.
