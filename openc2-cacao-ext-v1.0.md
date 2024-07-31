@@ -243,7 +243,8 @@ received via the MQTT protocol using a corresponding CACAO agent.
 
 _This section is non-normative._
 
-CACAO employs the concept of vocabularies to improve interoperability. Some
+CACAO employs the concept of vocabularies to "enhance interoperability by increasing 
+the likelihood that different entities use the exact same string to represent the same concept". Some
 CACAO vocabularies are "open" (designated by `<vocabulary-type>-ov`), which
 means that they contain suggested values but that types that employ open
 vocabularies can be extended with additional values if needed. This
