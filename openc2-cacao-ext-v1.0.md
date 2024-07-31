@@ -256,7 +256,7 @@ specification:
 - `security-category-type-ov` (CACAO Specification Section 7.11.1)
 - `variable-type-ov` (CACAO Specification Section 10.18.4)
 
-The specific extended values are:
+The specific proposed extended values are:
 
 - `command-type-ov` is extended with the type `openc2` (see [Section&nbsp;3.1](#31-openc2-command-action-step))
   - Command type `openc2-http` is deprecated in favor of the non-transport specific `openc2` command type
