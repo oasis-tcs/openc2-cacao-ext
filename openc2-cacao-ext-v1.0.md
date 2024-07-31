@@ -480,14 +480,14 @@ and Equipment" subcategory is extended as follows:
 | `mqtt-broker` | A publish/subscribe message transfer agent conforming to the OASIS MQTT v5.0 protocol.|
 
 The `mqtt-broker` agent is not specific to OpenC2 but when used for sending and
-receiving OpenC2 messages its use MUST conform to the [[OpenC2 MQTT Transfer
+receiving OpenC2 messages its use **MUST** conform to the [[OpenC2 MQTT Transfer
 Specification](#openc2-mqtt-v10)]. In particular:
 
 - Topics for message publication passed to this agent for transmitting OpenC2
-messages MUST conform to the default topic structure specified in
+messages **MUST** conform to the default topic structure specified in
 Section&nbsp;2.2 of the OpenC2 MQTT Transfer Specification.
 
-- A CACAO `mqtt-broker` agent in an environment using OpenC2 MUST subscribe to
+- A CACAO `mqtt-broker` agent in an environment using OpenC2 **MUST** subscribe to
 the response topics specified in Section&nbsp;2.2 of the OpenC2 MQTT Transfer Specification.
 
 The `__mqtt-topics__` variable (see
