@@ -345,10 +345,13 @@ _The IDs used in this example are notional and for illustrative purposes, they d
   "command_b64": "ewogICJoZWFkZXJzIjogewogICAgInJlcXVlc3RfaWQiOiAiZDFhYzA0ODktZWQ1MS00MzQ1 ... B9CiAgfQp9",
   "agent": "mqtt-broker--7125c6f6-7f78-4a3d-8a43-f20d20632305",
   "step_variables": {
-    "__mqtt-topics__:value": ["oc2/cmd/ap/pf","oc2/cmd/ap/edr"]
+    "__mqtt-topics__:value": {
+          "topic-array": ["oc2/cmd/ap/pf","oc2/cmd/ap/edr"]
+      },
   }
 }
 ```
+
 
 **Example 3.2 (OpenC2 Command, transfer via HTTPS)**<br>
 _The IDs used in this example are notional and for illustrative purposes, they do not represent real objects._
