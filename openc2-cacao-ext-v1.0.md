@@ -863,6 +863,10 @@ Architecture Specification [[OpenC2-Arch-v1.0](#openc2-arch-v10)] discusses:
 
 Refer to that document for a review of these topics in the context of OpenC2.
 
+Appendix B of the [[CACAO v2.0](#cacao-security-playbooks-v20)] Specification
+includes information regarding security and privacy considerations for CACAO
+playbook generation, consumption, and content sensitivity. Refer to that
+document for information regarding these topics in the context of CACAO.
 
 -------
 
