@@ -566,7 +566,7 @@ defines the following additional properties that are valid for this type.
 |------------------------------------|------------------------|------------------------------------------------------|
 | **type** (required)                | `string`               | The value of this property **MUST** be `oc2-http-api` |
 | **address** (required)             | `dictionary`           | The destination(s) for transfer of this OpenC2 command. The values for `address` are taken from the `__http_endpoints__` variable |
-| **authentication_info** (optional) | `identifier`           | This property contains an ID reference to a CACAO `authentication-info` object that is stored at the Playbook level in the **`authentication_info_definitions`** property.<br><br>The ID **MUST** reference a CACAO `authentication-info` object (see section 6 of the [[CACAO v2.0 Specification](#cacao-security-playbooks-v20)]). |
+| **authentication_info** (optional) | `identifier`           | This property contains an ID reference to a CACAO `authentication-info` object that is stored at the Playbook level in the `authentication_info_definitions` property.<br><br>The ID **MUST** reference a CACAO `authentication-info` object (see section 6 of the [[CACAO v2.0 Specification](#cacao-security-playbooks-v20)]). |
 | **category** (optional)            | `list` of `open-vocab` | One or more identified categories of security infrastructure types that this agent represents (see section 7.11.1 of the [[CACAO v2.0 Specification](#cacao-security-playbooks-v20)]).<br><br>The value for this property **SHOULD** come from the `security-category-type-ov` vocabulary. |
 
 
