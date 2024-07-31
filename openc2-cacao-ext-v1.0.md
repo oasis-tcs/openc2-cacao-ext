@@ -659,10 +659,10 @@ which a message should be published. The `variable-type-ov` is extended as follo
 
 | Vocabulary Value | Description                                                                                                                                                                                                      | Examples                                                             |
 |------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|----------------------------------------------------------------------|
-| `topic-list`       | A list of strings that identify one or more publish / subscribe topics to which a message should be published. | `"type": "topic-list",`<br>`"value": ["oc2/cmd/"]` |
+| `topic-list`       | An object containing a list of strings that identify one or more publish / subscribe topics to which a message should be published. | `"type": "topic-list",`<br>`"value": { "topic-array": ["oc2/cmd/"] } |
 
 The `mqtt-broker` agent is general purpose. MQTT offers great flexibility
-regarding topic naming. The format of the topic names in the `topic-list` value
+regarding topic naming. The format of the topic names in the `__mqtt-topics__` value
 should be appropriate to the application. The [[OpenC2 MQTT Transfer
 Specification](#openc2-mqtt-v10)] provides specific guidance regarding the use
 of MQTT topics for OpenC2 message transfer.  When an `mqtt-broker` agent is
@@ -683,7 +683,9 @@ publish / subscribe messaging should apply their own corresponding guidance.
     "__mqtt-topics__": {
       "type": "topic-list",
       "description": "Provides a list of topics to publish a message via an MQTT broker",
-      "value": ["oc2/cmd/ap/pf","oc2/cmd/ap/edr"],
+      "value": {
+          "topic-array": ["oc2/cmd/ap/pf","oc2/cmd/ap/edr"]
+      },
       "constant": false,
       "external": true
     }
