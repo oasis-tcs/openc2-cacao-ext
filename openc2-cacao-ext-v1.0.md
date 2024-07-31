@@ -311,7 +311,7 @@ property is defined.
 
 |**Level**| **Property Name** | **Data Type** | **Details** |
 |:--:|:---:|:---:|---|
-|*Command*| **type** (required) | `string` | The value of this property **must** be `openc2` |
+|*Command*| **type** (required) | `string` | The value of this property **MUST** be `openc2` |
 |*Command*| **command_b64** (required) | `string` | An OpenC2 command that is base64 encoded (see Section 4 of [RFC 4649]). |
 |*Workflow<br>Action Step*| **agent** (required) | `identifier` | The `agent` property of the workflow `action` type step **MUST** specify a suitable agent for OpenC2 message transfer |
 |*Workflow<br>Common*| **step_variables** (required) | `dictionary` | The common workflow `step_variables` property for an `openc2` command **MUST** specify a variable suitable for conveying OpenC2 command message destinations to the specified agent. |
