@@ -177,34 +177,39 @@ specification is provided in [Section&nbsp;2.1](#21-key-concepts).
 
 _This section is non-normative._
 
-The following key concepts from OpenC2 and CACAO are applicable to this
-specification:
+The key concepts from CACAO and OpenC2 listed below are applicable to this
+specification. For additional information consult the [[CACAO&nbsp;v2.0](#cacao-security-playbooks-v20)]
+ and the [[OpenC2&nbsp;Architecture](#openc2-arch-v10)] Specifications, respectively.
 
-* **OpenC2 Command:** An OpenC2 action-target pair, plus other optional
+- **CACAO Concepts**
+
+  - **Workflow Step:** A CACAO playbook contains a with the processing logic
+  organized in to a set of workflow steps.
+
+  - **Action:** The type of CACAO workflow step that contains commands to be
+  executed.
+
+  - **Playbook-Action:** The type of CACAO workflow step that executes a
+  separate named playbook from within the current playbook.
+
+  - **Agents and Targets:** CACAO agents are entities that execute commands on
+  or against CACAO targets.
+
+- **OpenC2 Concepts**
+
+  - **Command:** An OpenC2 action-target pair, plus other optional
   information, used to command an OpenC2 Consumer.
 
-* **OpenC2 Response:** An OpenC2 message sent from a Consumer to a Producer
+  - **Response:** An OpenC2 message sent from a Consumer to a Producer
   reporting on the outcome of processing a Command.
 
-* **OpenC2 Actuator Profile:** A tailored  subset of the OpenC2 language plus
+  - **Actuator Profile:** A tailored  subset of the OpenC2 language plus
   any extensions that specifies the use of OpenC2 to command a particular
   function.
 
-* **OpenC2 Transfer Specification:** The description of how an existing standard
+  - **Transfer Specification:** The description of how an existing standard
   transfer protocol (e.g., MQTT, HTTPS) is used to send and receive OpenC2
   commands and responses.
-
-* **CACAO Workflow Step:** A CACAO playbook contains a with the processing logic
-  organized in to a set of workflow steps.
-
-* **CACAO Action:** This type of CACAO workflow step contains commands to be
-  executed.
-
-* **CACAO Playbook-Action:** This type of CACAO workflow step executes a named
-  playbook from within the current playbook.
-
-* **CACAO Agents and Targets:** CACAO agents are entities that execute commands
-  on or against CACAO targets.
 
 Both OpenC2 and CACAO employ the term "target" but the meanings differ. In this
 extension specification, the CACAO target is used to integrate the OpenC2
