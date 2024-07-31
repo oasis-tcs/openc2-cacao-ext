@@ -91,8 +91,8 @@ For complete copyright information please see the full Notices section in an App
     - [1.1.3 Document conventions](#113-document-conventions)
 - [2 Key Concepts \& Vocabularies](#2-key-concepts--vocabularies)
   - [2.1 Key Concepts](#21-key-concepts)
-    - [2.1.1 Producers and Consumers](#211-producers-and-consumers)
-  - [2.2 CACAO Vocabulary Modifications](#22-cacao-vocabulary-modifications)
+  - [2.2 Producers and Consumers](#22-producers-and-consumers)
+  - [2.3 CACAO Vocabulary Modifications](#23-cacao-vocabulary-modifications)
 - [3 OpenC2 Commands In CACAO](#3-openc2-commands-in-cacao)
   - [3.1 OpenC2 Command Action Step](#31-openc2-command-action-step)
   - [3.2 Base64 Encoding and Decoding](#32-base64-encoding-and-decoding)
@@ -216,7 +216,7 @@ Actuator Profile concept. The logical flow is as follows:
 * The `openc2` action step specifies a CACAO target that represents the AP that
   should process the command.
 
-### 2.1.1 Producers and Consumers
+## 2.2 Producers and Consumers
 
 _This section is non-normative._
 
@@ -239,7 +239,7 @@ received via the MQTT protocol using a corresponding CACAO agent.
 
 ![Producer and Consumer Relationships](images/OC2-CACAO-P-and-C.drawio.png)
 
-## 2.2 CACAO Vocabulary Modifications
+## 2.3 CACAO Vocabulary Modifications
 
 _This section is non-normative._
 
