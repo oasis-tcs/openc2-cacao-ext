@@ -262,7 +262,7 @@ The specific proposed extended values are:
   - Command type `openc2-http` is deprecated in favor of the non-transport specific `openc2` command type
 - `agent-target-type-ov` "Devices and Equipment" vocabulary is extended with the following types:
   -  `mqtt-broker` agent type for message transfer via MQTT (see [Section&nbsp;4.1.1](#411-mqtt-broker-agent))
-  -  `openc2-https` agent type for OpenC2 message transfer via HTTPS (see [Section&nbsp;4.1.2](#412-https-agent)
+  -  `openc2-https` agent type for OpenC2 message transfer via HTTPS (see [Section&nbsp;4.1.2](#412-https-agent))
 -  `security-category-type-ov` is extended with the following types:
    -  `openc2-consumer` (see [Section&nbsp;4.2](#42-openc2-cacao-targets))
 - `variable-type-ov` is extended with the following types
