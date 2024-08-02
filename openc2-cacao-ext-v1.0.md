@@ -891,7 +891,49 @@ Darren | Anstman | Big Networks
 
 ## E.2 Examples
 
+This section presents example CACAO playbooks aligned with this extension
+specification for notional OpenC2 command scenarios.
+
 ### E.2.1 OpenC2 Single Consumer Command / Response via MQTT
+
+In this example an OpenC2 command is sent to a single consumer using MQTT as the
+transfer mechanism. Consistent with the [[OpenC2 MQTT Transfer Specification](#openc2-mqtt-v10)],
+the consumer is addressed as an individual device. This scenario requires:
+
+- A CACAO `openc2` command object containing the OpenC2 command to be sent
+- A CACAO agent defining an MQTT broker
+- A CACAO `__mqtt-topics__` variable to convey the publication topic
+- A CACAO `security-category` target to identify the OpenC2 actuator profile being invoked'
+- A CACAO `__openc2-responses__` variable to return the consumer's response for any subsequent decision logic
+- Knowledge of the OpenC2 consumer device address
+
+This example assumes an OpenC2 consumer implementing the [[_OpenC2 Profile for
+Stateless Packet Filtering_](#openc2-slpf-v11)] (SLPF). A notional device
+identification of `oc2-slpf-consumer` is assumed for MQTT topic addressing and
+the OpenC2 command denies outbound FTP transfers (example A.1.2 in the SLPF AP).
+The OpenC2 command to be sent is:
+
+```json
+{
+  "action": "deny",
+  "target": {
+    "ipv4_connection": {
+      "protocol": "tcp",
+      "src_port": 21
+    }
+  },
+  "args": {
+    "response_requested": "ack",
+    "slpf": {
+      "drop_process": "false_ack",
+      "direction": "egress"
+    }
+  },
+  "profile": {
+    "slpf": {}
+  }
+}
+```
 
 ### E.2.2 OpenC2 Multiple Consumer Command / Response via MQTT
 
