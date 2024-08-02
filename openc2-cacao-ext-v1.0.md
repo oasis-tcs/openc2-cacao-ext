@@ -964,7 +964,7 @@ property is truncated for presentation purposes.
   "type": "action",
   "commands": [
     {
-      "type": "openc2-http",
+      "type": "openc2",
       "description": "Example openc2 command",
       "content_b64": "ewogICJhY3Rpb24iOi ..."
     }
