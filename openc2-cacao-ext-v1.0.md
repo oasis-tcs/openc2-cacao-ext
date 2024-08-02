@@ -624,7 +624,7 @@ structured as follows:
 | **Property Name**             |      **Data Type**     | **Details**                                          |
 |-------------------------------|------------------------|------------------------------------------------------|
 | **type** (required)           | `string`               | The value of this property **MUST** be `security-category`. |
-| **category** (required)       | `list` of `open-vocab` | The value for this property **MUST** be `openc2-consumer`. |
+| **category** (required)       | `list` of `open-vocab` | The value for this property **MUST** include `openc2-consumer`. |
 | **openc2-profile** (required) | `string`               | The value for this property **SHOULD** be the "Property Name" of a registered OpenC2 AP. |
 
 The Property Names of registered OpenC2 APs are found in the 
