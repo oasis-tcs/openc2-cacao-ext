@@ -934,6 +934,71 @@ The OpenC2 command to be sent is:
   }
 }
 ```
+The following is an excerpt from the CACAO playbook showing the `openc2` action
+workflow step and the CACAO agent and target definitions. The `command_b64`
+property is truncated for presentation purposes.
+
+```json
+"action--629b12de-f0e5-402e-944d-2c4df0883caa": {
+  "name": "Example OpenC2 Action Step",
+  "description": "Example openc2 action step based on the OpenC2 Extension for CACAO Specification",
+  "step_variables": {
+    "__mqtt-topics__": {
+      "type": "topic-list",
+      "description": "example of MQTT topics IAW OC2 Ext. for CACAO Spec",
+      "value": 
+      {
+         "topic-array": ["oc2/cmd/device/oc2-slpf-consumer"]
+       },          
+       "constant": false,
+      "external": false
+    },
+    "__openc2-responses__": {
+      "type": "dictionary",
+      "description": "Captures responses returned from OpenC2 consumers",
+      "constant": false,
+      "external": false
+    }
+  },
+  "on_completion": "end--4f6a186d-89da-4da7-9da4-0df89b223658",
+  "type": "action",
+  "commands": [
+    {
+      "type": "openc2-http",
+      "description": "Example openc2 command",
+      "content_b64": "ewogICJhY3Rpb24iOi ..."
+    }
+  ],
+  "agent": "mqtt-broker--29ede420-29c1-4fa9-8d91-5ed0a26d6708",
+  "targets": [
+    "security-category--b0852f76-1c36-4f00-8dd7-bf433cdbb954"
+  ]
+},
+"end--4f6a186d-89da-4da7-9da4-0df89b223658": {
+  "type": "end"
+},
+"agent_definitions": {
+  "mqtt-broker--29ede420-29c1-4fa9-8d91-5ed0a26d6708": {
+    "type": "mqtt-broker",
+    "name": "Example MQTT broker",
+    "description": "Agent to provide an MQTT 5.0 broker per the requirements of the OpenC2 MQTT Transfer Specification",
+    "location": {
+      "name": "example-mqtt-broker",
+      "network_details": "mqtt.example.com"
+    }
+  }
+},
+"target_definitions": {
+  "security-category--b0852f76-1c36-4f00-8dd7-bf433cdbb954": {
+    "type": "openc2-consumer",
+    "category": ["openc2-consumer"],
+    "name": "openc2 SLPF consumer",
+    "openc2-profile":"slpf"
+  }
+}
+```
+
+
 
 ### E.2.2 OpenC2 Multiple Consumer Command / Response via MQTT
 
