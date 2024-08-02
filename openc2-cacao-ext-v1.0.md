@@ -896,7 +896,7 @@ specification for notional OpenC2 command scenarios.
 
 ### E.2.1 OpenC2 Single Consumer Command / Response via MQTT
 
-In this example an OpenC2 command is sent to a single consumer using MQTT as the
+In this example an OpenC2 command is sent to a single OpenC2 consumer using MQTT as the
 transfer mechanism. Consistent with the [[OpenC2 MQTT Transfer Specification](#openc2-mqtt-v10)],
 the consumer is addressed as an individual device. This scenario requires:
 
@@ -966,7 +966,7 @@ property is truncated for presentation purposes.
     {
       "type": "openc2",
       "description": "Example openc2 command",
-      "content_b64": "ewogICJhY3Rpb24iOi ..."
+      "command_b64": "ewogICJhY3Rpb24iOi ..."
     }
   ],
   "agent": "mqtt-broker--29ede420-29c1-4fa9-8d91-5ed0a26d6708",
@@ -977,17 +977,19 @@ property is truncated for presentation purposes.
 "end--4f6a186d-89da-4da7-9da4-0df89b223658": {
   "type": "end"
 },
+
 "agent_definitions": {
   "mqtt-broker--29ede420-29c1-4fa9-8d91-5ed0a26d6708": {
     "type": "mqtt-broker",
     "name": "Example MQTT broker",
-    "description": "Agent to provide an MQTT 5.0 broker per the requirements of the OpenC2 MQTT Transfer Specification",
+    "description": "Agent to provide an MQTT 5.0 broker",
     "location": {
       "name": "example-mqtt-broker",
       "network_details": "mqtt.example.com"
     }
   }
 },
+
 "target_definitions": {
   "security-category--b0852f76-1c36-4f00-8dd7-bf433cdbb954": {
     "type": "openc2-consumer",
