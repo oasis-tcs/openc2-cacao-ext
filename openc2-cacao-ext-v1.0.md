@@ -557,11 +557,11 @@ particular:
 
 - The preferred transfer protocols is HTTPS.
 
-- The HTTP message MUST begin with the headers:
+- The HTTP message **MUST** begin with the headers:
   - `POST /.well-known/openc2 HTTP/1.1`
   - `Content-type: application/openc2+json;version=1.0`
 
-- The URL for destinations (i.e., OpenC2 consumers) MUST use the URI scheme
+- The URL for destinations (i.e., OpenC2 consumers) **MUST** use the URI scheme
   specified in Section 3.2.2 of the [[OpenC2 HTTPS Transfer Protocol
   Specification](#openc2-https-v11)] (i.e., `https://<consumer address>/.well-known/openc2`).
 
@@ -604,10 +604,10 @@ _The IDs used in this example are notional and for illustrative purposes, they d
 ## 4.2 OpenC2 CACAO Targets
 
 OpenC2 CACAO Targets correspond to OpenC2 Actuator Profile (AP) specifications.
-An `openc2` command object SHOULD specify one or more CACAO targets to identify
+An `openc2` command object **SHOULD** specify one or more CACAO targets to identify
 the OpenC2 APs to be invoked for the execution of the object's OpenC2 command.
 
-An OpenC2 CACAO target SHALL be of type `security-category` as defined in
+An OpenC2 CACAO target **MUST** be of type `security-category` as defined in
 Section&nbsp;7.11 of the [[CACAO v2.0 Specification](#cacao-security-playbooks-v20)].
 The CACAO `security-category-type-ov` is extended as follows:
 
@@ -615,7 +615,7 @@ The CACAO `security-category-type-ov` is extended as follows:
 |-------------|:--------------------------------------------------------------------------------------|
 | `openc2-consumer` | A category of CACAO targets representing OpenC2 Consumers supporting one or more OpenC2 APs|
 
-The `category` value of an OpenC2 CACAO target SHALL be set to `openc2-consumer`.
+The `category` value of an OpenC2 CACAO target **SHALL** be set to `openc2-consumer`.
 
 The `security-category` target object is extended with a new property:
 `openc2-profile`. The resulting extended `security-category` target is
@@ -682,7 +682,7 @@ should be appropriate to the application. The [[OpenC2 MQTT Transfer
 Specification](#openc2-mqtt-v10)] provides specific guidance regarding the use
 of MQTT topics for OpenC2 message transfer.  When an `mqtt-broker` agent is
 employed for sending and receiving OpenC2 messages the topics specified as
-`__mqtt-topics__:value` should conform to the topic structure guidance in
+`__mqtt-topics__:value` **SHOULD** conform to the topic structure guidance in
 Section&nbsp;2.2 of the 
 [[OpenC2 MQTT Transfer Specification](#openc2-mqtt-v10)].
 Other users of the MQTT Broker CACAO agent and `__mqtt-topics__` variable for
@@ -712,9 +712,9 @@ publish / subscribe messaging should apply their own corresponding guidance.
 
 The `__http_endpoints__` variable is used to convey a list of endpoints to an OpenC2 command should be published. 
 
-The `variable-type-ov` for `__http-endpoints__` MUST be `dictionary`.
+The `variable-type-ov` for `__http-endpoints__` **MUST** be `dictionary`.
 
-The value of `__http-endpoints__` MUST be a `dictionary` of address(es) as
+The value of `__http-endpoints__` **MUST** be a `dictionary` of address(es) as
 defined for the CACAO `http-api` agent object (section 7.8 of the [[CACAO
 Playbooks](#cacao-security-playbooks-v20)] specification).
 
@@ -749,7 +749,7 @@ processing by subsequent action steps in the CACAO playbook.
 > To-Do: confirm this is a suitable `variable-type-ov` for this variable.
 > Since it's an `-ov` a new type may be in order.
 
-The `variable-type-ov` for `__openc2-responses__` MUST be `dictionary`.
+The `variable-type-ov` for `__openc2-responses__` **MUST** be `dictionary`.
 
 > To-Do: develop more realistic response content for this example
 
