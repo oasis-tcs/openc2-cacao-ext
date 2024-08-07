@@ -1,0 +1,140 @@
+{
+  "info": {
+    "package": "https://github.com/oasis-tcs/openc2-cacao-ext",
+    "title": "OpenC2 Extension for CACAO",
+    "description": "Extends existing CACAO elements and defines new ones to better integrate OpenC2 with CACAO playbooks.",
+    "exports": ["OpenC2"]
+  },
+  "types": [
+    ["Workflow-Step-Common-Props", "Record", [], "Base properties common to all workflow steps", [
+        [1, "type", "WF-Step-Type-Enum", ["[1", "]1"], "Type of workflow step being used; value MUST come from workflow-step-type-enum enumeration."],
+        [2, "name", "String", ["[0", "]1"], "A name for this step to display in a UI."],
+        [3, "description", "String", ["[0", "]1"], "More details, context, and possibly an explanation about what this step does and tries to accomplish."],
+        [4, "external_references", "ArrayOf", ["*External-Reference", "[0", "]1"], "A list of external references for this command."],
+        [5, "delay", "Integer", ["[0", "]1"], "A number that represents the amount of time in milliseconds that this step SHOULD wait before it starts processing."],
+        [6, "timeout", "Integer", ["[0", "]1"], "A number that represents the amount of time in milliseconds that this step MUST wait before considering the step has failed."],
+        [7, "step_variables", "MapOf", ["*Variable", "+Identifier", "[0", "]1"], "The variables that can be used within this workflow step or within commands, agents, and targets referenced by this workflow step."],
+        [8, "owner", "Identifier", ["[0", "]1"], "The entity that is assigned as the owner or responsible party for this step."],
+        [9, "on_completion", "Identifier", ["[0", "]1"], "The ID of the next step to be processed upon completion of the defined commands."],
+        [10, "on_success", "Identifier", ["[0", "]1"], "The ID of the next step to be processed if this step completes successfully."],
+        [11, "on_failure", "Identifier", ["[0", "]1"], "(To-Do: convert to Identifier) The ID of the next step to be processed if this step fails to complete successfully."],
+        [12, "step_extensions", "Map", ["[0", "]1"], "(To-Do: better define the map) This property declares the extensions that are in use on this step and contains any of the properties and values that are to be used by that extension."]
+      ]],
+    ["WF-Step-Type-Enum", "Enumerated", [], "Defined list of CACAO workflow step types.", [
+        [1, "start", ""],
+        [2, "end", ""],
+        [3, "action", ""],
+        [4, "playbook-action", ""],
+        [5, "parallel", ""],
+        [6, "if-condition", ""],
+        [7, "while-condition", ""],
+        [8, "switch-condition", ""]
+      ]],
+    ["Action-Step", "Record", [], "contains the actual commands to be executed by an agent against a set of targets", [
+        [1, "type", "WF-Step-Type-Enum", ["[1", "]1"], "from WF-Step-Type-Enum, value must be \"action\" (3)"],
+        [2, "commands", "ArrayOf", ["*Command-Common-Props", "[1"], "A list of commands that are to be executed as part of this step."],
+        [3, "agent", "Identifier", ["[1", "]1"], "an ID reference to a CACAO agent-target object that is stored at the playbook level in the agent_definitions property"],
+        [4, "targets", "ArrayOf", ["*Identifier", "[0", "]0"], "list of ID references to CACAO agent-target objects that are stored at the playbook level in the target_definitions property."],
+        [5, "in_args", "ArrayOf", ["*String", "[0", "]0"], "list of variable names from the local step_variables dictionary or passed into this step from the global playbook_variables dictionary that are used in either an agent or one of the target(s) associated with this step."],
+        [6, "out_args", "ArrayOf", ["*String", "[0", "]0"], "list of variable names from the local step_variables dictionary or global playbook_variables dictionary 17 that are to be returned to this step after execution of the commands by the agent(s)"]
+      ]],
+    ["Command-Common-Props", "Record", [], "Basic properties common to all CACAO command objects", [
+        [1, "type", "Command-Type-OV", ["[1", "]1"], "Type of command being used; value SHOULD come from command-type-ov vocabulary."],
+        [2, "description", "String", ["[0", "]1"], "A description of this command."],
+        [3, "version", "String", ["[0", "]1"], "The version of the command type being used."],
+        [4, "playbook_activity", "Playbook-Activity-Type-OV", [], "A meta data description of the playbook activity that the command provides. This property SHOULD be populated.  The value for this property SHOULD come from the playbook-activity-type-ov vocabulary."],
+        [5, "external_references", "ArrayOf", ["*External-Reference", "[0", "]1"], "A list of external references for this command."]
+      ]],
+    ["Command-Type-OV", "Enumerated", [], "pre defines the types of commands that can be used within a CACAO workflow step but may be extended by implementers", [
+        [1, "manual", "represents a command that is intended to be processed by a human or a system that acts on behalf of a human."],
+        [2, "bash", "a bash (shell) command"],
+        [3, "caldera_cmd", "A caldera command that is used by an attack orchestration system to attack or simulate an attack against a target."],
+        [4, "elastic", "an elastic search query"],
+        [5, "http-api", "an http-api command"],
+        [6, "jupyter", "a Jupyter notebook"],
+        [7, "kestrel", "a kestrel command"],
+        [8, "openc2-http", "an OpenC2 command that uses http transport (deprecated in favor of openc2)"],
+        [9, "powershell", "a PowerShell command"],
+        [10, "sigma", "a Sigma rule (expressed in YAML)"],
+        [11, "ssh", "an SSH command"],
+        [12, "yara", "a Yara rule"],
+        [13, "openc2", "(OpenC2 extension) an OpenC2 command to be transmitted to an OpenC2 Consumer via an OpenC2 Transfer Protocol"]
+      ]],
+    ["Playbook-Activity-Type-OV", "Enumerated", [], "A meta data description of the playbook activity that the command provides that enables summarization at the playbook level of all activities defined within the playbook.", [
+        [1, "compose-content", ""],
+        [2, "deliver-content", ""],
+        [3, "identify-audience", ""],
+        [4, "identify-channel", ""],
+        [5, "scan-system", ""],
+        [6, "match-indicator", ""],
+        [7, "analyze-collected-data", ""],
+        [8, "identify-indicators", ""],
+        [9, "scan-vulnerabilities", ""],
+        [10, "configure-systems", ""],
+        [11, "restrict-access", ""],
+        [12, "disconnect-system", ""],
+        [13, "eliminate-risk", ""],
+        [14, "revert-system", ""],
+        [15, "restore-data", ""],
+        [16, "restore-capabilities", ""],
+        [17, "map-network", ""],
+        [18, "identify-steps", ""],
+        [19, "step-sequence", ""],
+        [20, "prepare-engagement", ""],
+        [21, "execute-operation", "This activity implements and deploys denial and deception activities designed for adversary engagement."],
+        [22, "analyze-engagement-results", ""]
+      ]],
+    ["OpenC2", "Record", [], "", [
+        [1, "common_props", "Command-Common-Props", ["[1", "]1"], "Common CACAO command properties; the \"type\" field MUST be set to \"openc2\" for this command type"],
+        [2, "b64_command", "String", ["[1", "]1"], "An OpenC2 command that is base64 encoded (see Section 4 of [RFC 4649])."]
+      ]],
+    ["Variable", "Record", [], "The variable data type captures variable information and uses the JSON object type [RFC8259] for serialization.", [
+        [1, "type", "Variable-Type-OV", ["[1", "]1"], "The type of variable being used. The value for this property SHOULD come from the variable-type-ov vocabulary."],
+        [2, "description", "String", ["[0", "]1"], "A detailed description of this variable"],
+        [3, "value", "String", ["[0", "]1"], "The value MUST be defined as one of the following JSON types: a string value, a number or boolean encoded as a JSON string,  an empty string \"\", the special JSON NULL value, or a JSON object."],
+        [4, "constant", "Boolean", ["[0", "]1"], "This property defines if this variable is immutable. If true, the variable is immutable and MUST NOT be changed.  The default value is false."],
+        [5, "external", "Boolean", ["[0", "]1"], "For playbook scoped variable:  if true  the variable's initial value is passed from the calling context; if false (default) "]
+      ]],
+    ["Variable-Type-OV", "Enumerated", [], "A meta data description of the playbook activity that the command provides that enables summarization at the playbook level of all activities defined within the playbook.", [
+        [1, "bool", ""],
+        [2, "dictionary", ""],
+        [3, "float", ""],
+        [4, "hexstring", ""],
+        [5, "integer", ""],
+        [6, "ipv4-addr", ""],
+        [7, "ipv6-addr", ""],
+        [8, "long", ""],
+        [9, "mac-addr", ""],
+        [10, "hash", ""],
+        [11, "md5-hash", ""],
+        [12, "sha256-hash", ""],
+        [13, "string", ""],
+        [14, "uri", ""],
+        [15, "uuid", ""],
+        [16, "topic-list", "(OpenC2 extension) Identifies publish / subscribe topics to which a message should be published"]
+      ]],
+    ["Agent-Target-Type-OV", "Enumerated", [], "Pre-defined, extensible list of CACAO agents and targets.", [
+        [1, "group", ""],
+        [2, "individual", ""],
+        [3, "location", ""],
+        [4, "organization", ""],
+        [5, "sector", ""],
+        [6, "http-api", ""],
+        [7, "linux", ""],
+        [8, "net-address", ""],
+        [9, "security-category", ""],
+        [10, "ssh", ""],
+        [11, "mqtt-broker", "(OpenC2 extension) A publish/subscribe message transfer agent conforming to the OASIS MQTT v5.0 protocol."],
+        [12, "oc2-http-api", "(OpenC2 extension) An agent capable of transfering OpenC2 commands to one or more specified endpoints per requirements of the OASIS OpenC2 HTTPS Transfer Protocol Specification."]
+      ]],
+    ["External-Reference", "Record", [], "captures the location of information represented outside of a CACAO playbook and uses the JSON object type [RFC8259] for serialization", [
+        [1, "name", "String", ["[1", "]1"], "The name of the author or title of the source of this external reference."],
+        [2, "description", "String", ["[0", "]1"], "A detailed description of this external reference."],
+        [3, "source", "String", ["[0", "]1"], "A textual citation of this source."],
+        [4, "url", "String", ["[0", "]1"], "A URL [RFC3986] for this external reference.."],
+        [5, "external_id", "String", ["[0", "]1"], "An identifier used by the source to reference this content."],
+        [6, "reference_id", "String", ["[0", "]1"], "An identifier that represents the data that this content is referring to."]
+      ]],
+    ["Identifier", "String", ["%^[a-z][a-z0-9-]+[a-z0-9]--[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-5][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}$"], ""]
+  ]
+}

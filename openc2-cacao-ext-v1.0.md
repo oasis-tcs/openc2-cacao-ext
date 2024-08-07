@@ -40,7 +40,9 @@ David Lemire (david.lemire@hii-tsd.com), [National Security Agency](https://www.
 
 #### Additional artifacts:
 This prose specification is one component of a Work Product that also includes:
-* XML schemas: (list file names or directory name)
+* JADN schemas:
+  * `oc2-cacao-ext.jadn`
+  * `oc2-cacao-ext.jidl`
 * Other parts (list titles and/or file names)
 * `(Note: Any normative computer language definitions that are part of the Work Product, such as XML instances, schemas and Java(TM) code, including fragments of such, must be (a) well formed and valid, (b) provided in separate plain text files, (c) referenced from the Work Product; and (d) where any definition in these separate files disagrees with the definition found in the specification, the definition in the separate file prevails. Remove this note before submitting for publication.)`
 
@@ -84,6 +86,20 @@ For complete copyright information please see the full Notices section in an App
 
 # Table of Contents
 
+- [OpenC2 Extension for CACAO Version 1.0](#openc2-extension-for-cacao-version-10)
+  - [Working Draft 01](#working-draft-01)
+  - [24 July 2024](#24-july-2024)
+      - [Technical Committee:](#technical-committee)
+      - [Chairs:](#chairs)
+      - [Editor:](#editor)
+      - [Additional artifacts:](#additional-artifacts)
+      - [Related work:](#related-work)
+      - [Abstract:](#abstract)
+      - [Status:](#status)
+      - [Key words:](#key-words)
+      - [Citation format:](#citation-format)
+      - [Notices](#notices)
+- [Table of Contents](#table-of-contents)
 - [1 Introduction](#1-introduction)
   - [1.1 Glossary](#11-glossary)
     - [1.1.1 Definitions of terms](#111-definitions-of-terms)
@@ -109,13 +125,34 @@ For complete copyright information please see the full Notices section in an App
 - [6 Conformance](#6-conformance)
 - [Appendix A. References](#appendix-a-references)
   - [A.1 Normative References](#a1-normative-references)
+          - [\[CACAO-Security-Playbooks-v2.0\]](#cacao-security-playbooks-v20)
+          - [\[mqtt-v5.0\]](#mqtt-v50)
+          - [\[OpenC2-HTTPS-v1.1\]](#openc2-https-v11)
+          - [\[OpenC2-Lang-v1.1\]](#openc2-lang-v11)
+          - [\[OpenC2-MQTT-v1.0\]](#openc2-mqtt-v10)
+          - [\[OpenC2-Namespaces\]](#openc2-namespaces)
+          - [\[OpenC2-SLPF-v1.1\]](#openc2-slpf-v11)
+          - [\[RFC2119\]](#rfc2119)
+          - [\[RFC4648\]](#rfc4648)
+          - [\[RFC8174\]](#rfc8174)
   - [A.2 Informative References](#a2-informative-references)
+          - [\[OpenC2-Arch-v1.0\]](#openc2-arch-v10)
+          - [\[RFC3552\]](#rfc3552)
 - [Appendix B. Safety, Security and Privacy Considerations](#appendix-b-safety-security-and-privacy-considerations)
 - [Appendix C. Acknowledgments](#appendix-c-acknowledgments)
+  - [C.1 Special Thanks](#c1-special-thanks)
+  - [C.2 Participants](#c2-participants)
 - [Appendix D. Revision History](#appendix-d-revision-history)
 - [Appendix E. Use Cases and Examples](#appendix-e-use-cases-and-examples)
   - [E.1 Use Cases](#e1-use-cases)
+    - [E.1.1 Multiple OpenC2 Consumers With Common Profile](#e11-multiple-openc2-consumers-with-common-profile)
+    - [E.1.2 OpenC2 Command With Response Requested](#e12-openc2-command-with-response-requested)
+    - [E.1.3 OpenC2 Message Transfer via MQTT](#e13-openc2-message-transfer-via-mqtt)
+    - [E.1.4 Extended OpenC2 Consumer Execution Times](#e14-extended-openc2-consumer-execution-times)
   - [E.2 Examples](#e2-examples)
+    - [E.2.1 OpenC2 Single Consumer Command / Response via MQTT](#e21-openc2-single-consumer-command--response-via-mqtt)
+    - [E.2.2 OpenC2 Multiple Consumer Command / Response via MQTT](#e22-openc2-multiple-consumer-command--response-via-mqtt)
+    - [E.2.3 OpenC2 Command / Response via HTTPS](#e23-openc2-command--response-via-https)
 - [Appendix F. Notices](#appendix-f-notices)
 
 
