@@ -206,7 +206,7 @@ specification is provided in [Section&nbsp;2.1](#21-key-concepts).
 The following color, font and font style conventions are used in this document:
 
 * A fixed width font is used for all type names, property names, and literals.
-* Property names are in bold style – **'created_at'**.
+* Property names are in bold style: **created_at**.
 * All examples in this document are expressed in JSON. They are in fixed width
   font, with straight quotes, black text and a light shaded background, and
   4-space indentation. JSON examples in this document are representations of
