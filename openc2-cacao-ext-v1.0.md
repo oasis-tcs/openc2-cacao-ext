@@ -5,9 +5,9 @@
 
 # OpenC2 Extension for CACAO Version 1.0
 
-## Working Draft 01
+## Working Draft 02
 
-## 24 July 2024
+## 7 August 2024
 
 &nbsp;
 
@@ -40,11 +40,7 @@ David Lemire (david.lemire@hii-tsd.com), [National Security Agency](https://www.
 
 #### Additional artifacts:
 This prose specification is one component of a Work Product that also includes:
-* JADN schemas:
-  * `oc2-cacao-ext.jadn`
-  * `oc2-cacao-ext.jidl`
-* Other parts (list titles and/or file names)
-* `(Note: Any normative computer language definitions that are part of the Work Product, such as XML instances, schemas and Java(TM) code, including fragments of such, must be (a) well formed and valid, (b) provided in separate plain text files, (c) referenced from the Work Product; and (d) where any definition in these separate files disagrees with the definition found in the specification, the definition in the separate file prevails. Remove this note before submitting for publication.)`
+* JADN schema: `schemas/oc2-cacao-ext.jadn`
 
 #### Related work:
 This specification is related to:
@@ -195,16 +191,54 @@ specification is provided in [Section&nbsp;2.1](#21-key-concepts).
 
 ### 1.1.2 Acronyms and abbreviations
 
-| **Acronym** | **Expansion**                      |
-|:-----------:|------------------------------------|
-|      AP     | Actuator Profile                   |
-|    HTTPS    | Hypertext Transfer Protocol Secure |
+| **Acronym** | **Expansion**                            |
+|:-------:|--------------------------------------|
+| CACAO   | Collaborative Automated Course of Action Operations |
+| CBOR    | Concise Binary Object Representation |
+| JADN    | JSON Abstract Data Notation          |
+| JSON    | Javascript Object Notation           |
+| OpenC2  | Open Command and Control             |
+| SLPF    | Stateless Packet Filtering           |
+| UUID    | Universally Unique Identifier        |
 
 ### 1.1.3 Document conventions
 
-- Naming conventions
-- Font colors and styles
-- Typographic conventions
+The following color, font and font style conventions are used in this document:
+
+* A fixed width font is used for all type names, property names, and literals.
+* Property names are in bold style: **created_at**.
+* All examples in this document are expressed in JSON. They are in fixed width
+  font, with straight quotes, black text and a light shaded background, and
+  4-space indentation. JSON examples in this document are representations of
+  JSON Objects. They should not be interpreted as string literals. The ordering
+  of object keys is insignificant. Whitespace before or after JSON structural
+  characters in the examples are insignificant [[RFC8259]](#rfc8259).
+* Parts of the example may be omitted for conciseness and clarity. These omitted
+  parts are denoted with ellipses (...).
+* All CACAO identifiers (i.e., \<object-type\>--\<UUID\>) shown in the examples are
+  notional and for illustrative purposes, they do not represent real objects.
+
+Example:
+
+```json
+{
+  "type": "openc2",
+  "command_b64": "ewogICJoZWFkZXJzIjogewogICAgInJlcXVlc3RfaWQiOiAiZDFhYzA0ODktZWQ1MS00MzQ1...",
+  "agent": "mqtt-broker--7125c6f6-7f78-4a3d-8a43-f20d20632305",
+  "step_variables": {
+    "__mqtt-topics__:value": {
+          "topic-array": ["oc2/cmd/ap/pf","oc2/cmd/ap/edr"]
+      },
+  }
+}
+```
+
+## 1.2 Schema
+
+The schema for this AP is defined using a [[JSON Abstract Data Notation
+(JADN)](#jadn-v10)] information model. The scope of the schema includes those
+aspects of CACAO relevant to the extension described herein but does not
+constitute a complete CACAO IM.
 
 ---
 
@@ -887,6 +921,11 @@ Josefsson, S., "The Base16, Base32, and Base64 Data Encodings", RFC 4648, DOI 10
 ###### [RFC8174]
 
 Leiba, B., "Ambiguity of Uppercase vs Lowercase in RFC 2119 Key Words", BCP 14, RFC 8174, DOI 10.17487/RFC8174, May 2017, http://www.rfc-editor.org/info/rfc8174.
+
+###### [RFC8259]
+
+Bray, T., Ed., "The JavaScript Object Notation (JSON) Data Interchange Format", STD 90, RFC 8259, DOI 10.17487/RFC8259, December 2017, <https://www.rfc-editor.org/info/rfc8259>.
+
 
 ## A.2 Informative References
 
