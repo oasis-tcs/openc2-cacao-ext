@@ -198,9 +198,27 @@ specification is provided in [Section&nbsp;2.1](#21-key-concepts).
 
 ### 1.1.3 Document conventions
 
-- Naming conventions
-- Font colors and styles
-- Typographic conventions
+The following color, font and font style conventions are used in this document:
+
+* A fixed width font is used for all type names, property names, and literals.
+* Property names are in bold style – **'created_at'**.
+* All examples in this document are expressed in JSON. They are in fixed width font, with straight quotes, black text and a light shaded background, and 4-space indentation. JSON examples in this document are representations of JSON Objects. They should not be interpreted as string literals. The ordering of object keys is insignificant. Whitespace before or after JSON structural characters in the examples are insignificant [[RFC8259]](#rfc8259).
+* Parts of the example may be omitted for conciseness and clarity. These omitted parts are denoted with ellipses (...).
+
+Example:
+
+```json
+{
+  "type": "openc2",
+  "command_b64": "ewogICJoZWFkZXJzIjogewogICAgInJlcXVlc3RfaWQiOiAiZDFhYzA0ODktZWQ1MS00MzQ1...",
+  "agent": "mqtt-broker--7125c6f6-7f78-4a3d-8a43-f20d20632305",
+  "step_variables": {
+    "__mqtt-topics__:value": {
+          "topic-array": ["oc2/cmd/ap/pf","oc2/cmd/ap/edr"]
+      },
+  }
+}
+```
 
 ## 1.2 Schema
 
