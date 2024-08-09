@@ -202,6 +202,13 @@ specification is provided in [Section&nbsp;2.1](#21-key-concepts).
 - Font colors and styles
 - Typographic conventions
 
+## 1.2 Schema
+
+The schema for this AP is defined using a [[JSON Abstract Data Notation
+(JADN)](#jadn-v10)] information model. The scope of the schema includes those
+aspects of CACAO relevant to the extension described herein but does not
+constitute a complete CACAO IM.
+
 ---
 
 # 2 Key Concepts & Vocabularies
