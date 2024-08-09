@@ -5,9 +5,9 @@
 
 # OpenC2 Extension for CACAO Version 1.0
 
-## Working Draft 01
+## Working Draft 02
 
-## 24 July 2024
+## 7 August 2024
 
 &nbsp;
 
@@ -40,11 +40,7 @@ David Lemire (david.lemire@hii-tsd.com), [National Security Agency](https://www.
 
 #### Additional artifacts:
 This prose specification is one component of a Work Product that also includes:
-* JADN schemas:
-  * `oc2-cacao-ext.jadn`
-  * `oc2-cacao-ext.jidl`
-* Other parts (list titles and/or file names)
-* `(Note: Any normative computer language definitions that are part of the Work Product, such as XML instances, schemas and Java(TM) code, including fragments of such, must be (a) well formed and valid, (b) provided in separate plain text files, (c) referenced from the Work Product; and (d) where any definition in these separate files disagrees with the definition found in the specification, the definition in the separate file prevails. Remove this note before submitting for publication.)`
+* JADN schema: `schemas/oc2-cacao-ext.jadn`
 
 #### Related work:
 This specification is related to:
