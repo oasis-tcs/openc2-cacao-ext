@@ -191,10 +191,14 @@ specification is provided in [Section&nbsp;2.1](#21-key-concepts).
 
 ### 1.1.2 Acronyms and abbreviations
 
-| **Acronym** | **Expansion**                      |
-|:-----------:|------------------------------------|
-|      AP     | Actuator Profile                   |
-|    HTTPS    | Hypertext Transfer Protocol Secure |
+| **Acronym** | **Expansion**                            |
+|:-------:|--------------------------------------|
+| CACAO   | Collaborative Automated Course of Action Operations |
+| CBOR    | Concise Binary Object Representation |
+| JADN    | JSON Abstract Data Notation          |
+| JSON    | Javascript Object Notation           |
+| OpenC2  | Open Command and Control             |
+| SLPF    | Stateless Packet Filtering           |
 
 ### 1.1.3 Document conventions
 
